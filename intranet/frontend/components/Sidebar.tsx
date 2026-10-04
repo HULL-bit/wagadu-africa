@@ -167,6 +167,16 @@ export function Sidebar() {
           ))}
         </nav>
 
+        <a
+          href={process.env.NEXT_PUBLIC_WEBSITE_URL ?? "https://wagadu-africa.org"}
+          target="_blank"
+          rel="noreferrer"
+          className="mx-3 mb-2 flex items-center gap-3 rounded-xl p-3 text-[14px] font-semibold text-wagadu-ivory/85 hover:bg-white/10 transition-colors"
+        >
+          <Icon name="globe" className="w-5 h-5 shrink-0 opacity-90" />
+          <span>Voir le site public ↗</span>
+        </a>
+
         <Link href="/account" onClick={() => setOpen(false)}
           className="m-3 mt-0 flex items-center gap-3 rounded-xl p-3 bg-white/5 hover:bg-white/10 transition-colors">
           <Avatar user={me} size={42} />

@@ -19,6 +19,16 @@
 	reverse_proxy site:3000
 }
 
+# Domaine alternatif (ex. .com) — redirection permanente vers le domaine
+# principal plutôt que de servir le même contenu sur deux domaines (évite le
+# contenu dupliqué en SEO). WEBSITE_DOMAIN_ALT doit toujours avoir une vraie
+# valeur dans .env (une adresse de bloc Caddy vide invaliderait tout le
+# fichier) — mettre la même valeur que WEBSITE_DOMAIN si aucun second
+# domaine n'est réellement possédé.
+{$WEBSITE_DOMAIN_ALT} {
+	redir https://{$WEBSITE_DOMAIN}{uri} permanent
+}
+
 {$CMS_DOMAIN} {
 	encode gzip zstd
 
