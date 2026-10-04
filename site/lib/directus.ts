@@ -199,6 +199,24 @@ function getClient(nextFetchOptions?: NextFetchRequestConfig & { revalidate?: nu
 }
 
 /**
+ * Toutes les requêtes `get*` ci-dessous passent par ici : si Directus est
+ * injoignable (build Docker lancé avant que le conteneur `directus` ne
+ * tourne — ordre de démarrage, voir docs/deploiement-vps.md —, ou panne
+ * transitoire en production), on dégrade vers une valeur vide plutôt que de
+ * faire planter toute la page (et donc tout `next build`, puisque ces pages
+ * sont pré-rendues statiquement). Le vrai contenu arrive dès la première
+ * revalidation ISR une fois Directus accessible.
+ */
+async function safe<T>(promise: Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await promise;
+  } catch (error) {
+    console.warn("[directus] requête échouée, repli sur une valeur vide :", error);
+    return fallback;
+  }
+}
+
+/**
  * Ne restreint QUE le sous-ensemble de traductions renvoyé dans le tableau
  * `translations` (via `deep`) — ne doit jamais définir de clé `filter` ici,
  * pour ne pas écraser le filtre principal de chaque requête au spread (bug
@@ -234,31 +252,37 @@ function query(options: Record<string, unknown>) {
 
 export async function getRealisations(locale: AppLocale): Promise<RealisationItem[]> {
   const client = getClient({ tags: ["realisations"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "realisations",
-      query({
-        filter: { status: { _eq: "published" } },
-        sort: ["-mise_en_avant", "sort"],
-        fields: REALISATION_FIELDS,
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "realisations",
+        query({
+          filter: { status: { _eq: "published" } },
+          sort: ["-mise_en_avant", "sort"],
+          fields: REALISATION_FIELDS,
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as RealisationItem[];
 }
 
 export async function getAllRealisationSlugs(): Promise<Array<{ slug: string }>> {
   const client = getClient({ tags: ["realisations"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "realisations",
-      query({
-        filter: { status: { _eq: "published" } },
-        fields: ["slug"],
-        limit: -1,
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "realisations",
+        query({
+          filter: { status: { _eq: "published" } },
+          fields: ["slug"],
+          limit: -1,
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as Array<{ slug: string }>;
 }
@@ -268,31 +292,37 @@ export async function getRealisationBySlug(
   locale: AppLocale,
 ): Promise<RealisationItem | undefined> {
   const client = getClient({ tags: ["realisations"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "realisations",
-      query({
-        filter: { slug: { _eq: slug }, status: { _eq: "published" } },
-        fields: REALISATION_FIELDS,
-        limit: 1,
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "realisations",
+        query({
+          filter: { slug: { _eq: slug }, status: { _eq: "published" } },
+          fields: REALISATION_FIELDS,
+          limit: 1,
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return (rows as unknown as RealisationItem[])[0];
 }
 
 export async function getPiliers(locale: AppLocale): Promise<PilierItem[]> {
   const client = getClient({ tags: ["piliers"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "piliers",
-      query({
-        sort: ["sort"],
-        fields: ["*", { translations: ["*"] }],
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "piliers",
+        query({
+          sort: ["sort"],
+          fields: ["*", { translations: ["*"] }],
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as PilierItem[];
 }
@@ -302,16 +332,19 @@ export async function getValeurs(
   locale: AppLocale,
 ): Promise<ValeurItem[]> {
   const client = getClient({ tags: ["valeurs"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "valeurs",
-      query({
-        filter: { contexte: { _eq: contexte } },
-        sort: ["sort"],
-        fields: ["*", { translations: ["*"] }],
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "valeurs",
+        query({
+          filter: { contexte: { _eq: contexte } },
+          sort: ["sort"],
+          fields: ["*", { translations: ["*"] }],
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as ValeurItem[];
 }
@@ -321,59 +354,71 @@ export async function getPageStatique(
   locale: AppLocale,
 ): Promise<PageStatiqueItem | undefined> {
   const client = getClient({ tags: ["pages_statiques"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "pages_statiques",
-      query({
-        filter: { slug: { _eq: slug } },
-        fields: ["*", { translations: ["*"] }],
-        limit: 1,
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "pages_statiques",
+        query({
+          filter: { slug: { _eq: slug } },
+          fields: ["*", { translations: ["*"] }],
+          limit: 1,
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return (rows as unknown as PageStatiqueItem[])[0];
 }
 
 export async function getProjets(locale: AppLocale): Promise<ProjetItem[]> {
   const client = getClient({ tags: ["projets"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "projets",
-      query({
-        filter: { statut_publication: { _eq: "published" } },
-        sort: ["sort"],
-        fields: ["*", { translations: ["*"] }, { piliers: [{ piliers_id: ["*", { translations: ["*"] }] }] }],
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "projets",
+        query({
+          filter: { statut_publication: { _eq: "published" } },
+          sort: ["sort"],
+          fields: ["*", { translations: ["*"] }, { piliers: [{ piliers_id: ["*", { translations: ["*"] }] }] }],
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as ProjetItem[];
 }
 
 export async function getActualites(locale: AppLocale): Promise<ActualiteItem[]> {
   const client = getClient({ tags: ["actualites"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "actualites",
-      query({
-        filter: { status: { _eq: "published" } },
-        sort: ["-date_publication"],
-        fields: ["*", { translations: ["*"] }],
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "actualites",
+        query({
+          filter: { status: { _eq: "published" } },
+          sort: ["-date_publication"],
+          fields: ["*", { translations: ["*"] }],
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return rows as unknown as ActualiteItem[];
 }
 
 export async function getAllActualiteSlugs(): Promise<Array<{ slug: string }>> {
   const client = getClient({ tags: ["actualites"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "actualites",
-      query({ filter: { status: { _eq: "published" } }, fields: ["slug"] }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "actualites",
+        query({ filter: { status: { _eq: "published" } }, fields: ["slug"] }),
+      ),
     ),
+    [],
   );
   return rows as unknown as Array<{ slug: string }>;
 }
@@ -383,30 +428,36 @@ export async function getActualiteBySlug(
   locale: AppLocale,
 ): Promise<ActualiteItem | undefined> {
   const client = getClient({ tags: ["actualites"], revalidate: 3600 });
-  const rows = await client.request(
-    readItems(
-      "actualites",
-      query({
-        filter: { slug: { _eq: slug }, status: { _eq: "published" } },
-        fields: ["*", { translations: ["*"] }],
-        limit: 1,
-        ...translationFilter(locale),
-      }),
+  const rows = await safe(
+    client.request(
+      readItems(
+        "actualites",
+        query({
+          filter: { slug: { _eq: slug }, status: { _eq: "published" } },
+          fields: ["*", { translations: ["*"] }],
+          limit: 1,
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    [],
   );
   return (rows as unknown as ActualiteItem[])[0];
 }
 
 export async function getParametresSite(locale: AppLocale): Promise<ParametresSite> {
   const client = getClient({ tags: ["parametres_site"], revalidate: 3600 });
-  const row = await client.request(
-    readSingleton(
-      "parametres_site",
-      query({
-        fields: ["*", { translations: ["*"] }],
-        ...translationFilter(locale),
-      }),
+  const row = await safe(
+    client.request(
+      readSingleton(
+        "parametres_site",
+        query({
+          fields: ["*", { translations: ["*"] }],
+          ...translationFilter(locale),
+        }),
+      ),
     ),
+    {} as ParametresSite,
   );
   return row as unknown as ParametresSite;
 }
