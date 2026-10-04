@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "accueil": "Accueil",
+    "quiSommesNous": "Qui sommes-nous",
+    "thematiques": "Nos thématiques",
+    "realisations": "Nos réalisations",
+    "outils": "Nos outils technologiques",
+    "projets": "Nos Projets",
+    "actualites": "Actualités",
+    "ressources": "Ressources & publications",
+    "media": "Médiathèque",
+    "transparence": "Transparence financière",
+    "gouvernance": "Gouvernance",
+    "presse": "Revue de presse",
+    "partenaires": "Partenaires & bailleurs",
+    "faq": "FAQ",
+    "nousRejoindre": "Nous rejoindre",
+    "don": "Faire un don",
+    "contact": "Contact",
+    "menu": "Menu",
+    "fermer": "Fermer"
+  },
+  "footer": {
+    "coordonnees": "Coordonnées",
+    "email": "Email",
+    "telephone": "Téléphone",
+    "adresse": "Adresse",
+    "institutionnel": "Institutionnel",
+    "suivezNous": "Suivez-nous",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Recevez nos actualités et nos réalisations.",
+    "newsletterPlaceholder": "Votre adresse e-mail",
+    "newsletterSubmit": "S'inscrire",
+    "newsletterEnCours": "Inscription…",
+    "newsletterSucces": "Merci, vous êtes inscrit·e !",
+    "newsletterErreur": "Une erreur est survenue, merci de réessayer.",
+    "mentionsLegales": "Mentions légales",
+    "confidentialite": "Politique de confidentialité",
+    "cgu": "Conditions d'utilisation",
+    "espaceEquipe": "Espace équipe",
+    "administration": "Administration du contenu",
+    "tousDroitsReserves": "Tous droits réservés."
+  },
+  "contact": {
+    "horaires": "Horaires",
+    "horairesValeur": "Lundi–Vendredi 8h–16h, Samedi 8h–13h",
+    "formTitre": "Envoyez-nous un message",
+    "nom": "Nom",
+    "email": "Email",
+    "telephone": "Téléphone (optionnel)",
+    "message": "Message",
+    "envoyer": "Envoyer",
+    "envoiEnCours": "Envoi…",
+    "succes": "Merci, votre message a bien été envoyé — nous vous répondrons rapidement.",
+    "erreur": "Une erreur est survenue, merci de réessayer ou de nous écrire directement à contact@wagadu-africa.org."
+  },
+  "common": {
+    "lireLaSuite": "Lire la suite",
+    "enSavoirPlus": "En savoir plus",
+    "voirTout": "Voir tout",
+    "voirLaPlateforme": "Voir la plateforme",
+    "rechercher": "Rechercher",
+    "filtrer": "Filtrer",
+    "toutesLesThematiques": "Toutes les thématiques",
+    "chargement": "Chargement…",
+    "aucunResultat": "Aucun résultat.",
+    "retourAccueil": "Retour à l'accueil"
+  },
+  "langue": {
+    "fr": "Français",
+    "en": "English",
+    "changerDeLangue": "Changer de langue"
+  },
+  "notFound": {
+    "titre": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée."
+  },
+  "error": {
+    "titre": "Une erreur est survenue",
+    "description": "Le contenu n'a pas pu être chargé. Cela peut être temporaire — réessayez dans un instant.",
+    "reessayer": "Réessayer"
+  }
+}

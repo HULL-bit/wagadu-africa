@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wagadu-ivory: #FBF6EC;
+  --wagadu-sand: #F0E4C8;
+  --wagadu-gold: #F6BB24;
+  --wagadu-amber: #FFA900;
+  --wagadu-terracotta: #D2812E;
+  --wagadu-brown: #6E3C13;
+  --wagadu-bark: #4A2A12;
+  --wagadu-ebony: #1E0F04;
+}
+
+html {
+  font-size: 17px;              /* base agrandie (défaut 16) → tout le rem grandit */
+}
+body {
+  background: var(--wagadu-ivory);
+  color: var(--wagadu-ebony);
+  line-height: 1.6;
+}
+
+/* Lisibilité : les petites tailles Tailwind sont remontées d'un cran et les
+   textes atténués sont rendus plus contrastés (moins « fins »). */
+@layer utilities {
+  .text-xs { font-size: 0.82rem; line-height: 1.15rem; }
+  .text-sm { font-size: 0.94rem; line-height: 1.45rem; }
+  .text-\[11px\] { font-size: 0.8rem; }
+  .text-\[13px\] { font-size: 0.9rem; }
+
+  .opacity-40 { opacity: 0.62; }
+  .opacity-50 { opacity: 0.7; }
+  .opacity-55 { opacity: 0.72; }
+  .opacity-60 { opacity: 0.78; }
+  .opacity-70 { opacity: 0.85; }
+  .opacity-75 { opacity: 0.88; }
+}
+
+/* Filigrane discret — clin d'œil à l'arbre du logo Wagadu. */
+.wagadu-branches {
+  background-image: radial-gradient(circle at 20% 10%, rgba(246, 187, 36, 0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(210, 129, 46, 0.10) 0, transparent 45%);
+}
+
+/* Motif bogolan en filigrane (image de marque, très discret). */
+.wagadu-pattern {
+  position: relative;
+}
+.wagadu-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/brand/bg-pattern.jpg);
+  background-size: 340px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Dégradé de marque or → terracotta (fonds sombres uniquement). */
+.wagadu-hero-gradient {
+  background: linear-gradient(120deg, #4A2A12 0%, #6E3C13 42%, #D2812E 100%);
+}
+
+@keyframes wg-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes wg-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-in {
+  animation: wg-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade {
+  animation: wg-fade 0.5s ease both;
+}
+/* décalage progressif pour les grilles */
+.stagger > * { animation: wg-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.06s; }
+.stagger > *:nth-child(3) { animation-delay: 0.10s; }
+.stagger > *:nth-child(4) { animation-delay: 0.14s; }
+.stagger > *:nth-child(5) { animation-delay: 0.18s; }
+.stagger > *:nth-child(6) { animation-delay: 0.22s; }
+.stagger > *:nth-child(7) { animation-delay: 0.26s; }
+.stagger > *:nth-child(8) { animation-delay: 0.30s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in, .animate-fade, .stagger > * { animation: none !important; }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white shadow-sm border border-wagadu-sand/60 p-6;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-wagadu-gold/50;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-wagadu-gold px-5 py-2.5
+      font-semibold text-wagadu-ebony hover:bg-wagadu-amber transition-colors
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-wagadu-brown/30
+      px-5 py-2.5 font-semibold text-wagadu-brown hover:bg-wagadu-sand/50 transition-colors;
+  }
+  .input {
+    @apply w-full rounded-xl border border-wagadu-brown/30 bg-white px-3.5 py-2.5 text-[1rem]
+      outline-none focus:border-wagadu-terracotta focus:ring-2 focus:ring-wagadu-gold/40;
+  }
+  .label {
+    @apply block text-[0.95rem] font-semibold text-wagadu-brown mb-1;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[0.8rem] font-semibold;
+  }
+  .stat-tile {
+    @apply card card-hover relative overflow-hidden;
+  }
+  .stat-value {
+    @apply font-display text-4xl md:text-5xl text-wagadu-brown leading-none;
+  }
+  .avatar {
+    @apply inline-flex items-center justify-center rounded-full bg-wagadu-sand
+      text-wagadu-brown font-display object-cover shrink-0;
+  }
+}

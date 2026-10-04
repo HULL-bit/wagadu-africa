@@ -1,0 +1,62 @@
+# Surcharge de développement local — chargée automatiquement par `docker compose`.
+#
+#   cd infra && cp .env.example .env      # puis ajuster si besoin
+#   docker compose up -d
+#   docker compose exec backend python manage.py createsuperadmin
+#   docker compose exec backend python manage.py seed_demo   # (jeu de démo)
+#
+#   Front direct : http://localhost:3000    API : http://localhost:8000/api/v1
+#   Tout-en-un   : http://localhost         (Caddy en HTTP)
+services:
+  caddy:
+    volumes:
+      - ./caddy/Caddyfile.dev:/etc/caddy/Caddyfile:ro
+
+  backend:
+    build: ../backend
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.dev
+      USE_SQLITE: "0"
+    volumes:
+      - ../backend:/app
+    ports:
+      - "8000:8000"
+    entrypoint: []
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build:
+      context: ../frontend
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_BASE_URL: /api/v1
+      INTERNAL_API_URL: http://backend:8000
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+      - /app/.next
+    entrypoint: []
+    command: sh -c "npm ci --prefer-offline --no-audit || npm install --no-save; npm run dev"
+    ports:
+      - "3000:3000"
+
+  celery-worker:
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.dev
+      USE_SQLITE: "0"
+    volumes:
+      - ../backend:/app
+
+  celery-beat:
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.dev
+      USE_SQLITE: "0"
+    volumes:
+      - ../backend:/app
+    command: >
+      sh -c "sleep 12 &&
+             celery -A wagadu beat -l info
+             --scheduler django_celery_beat.schedulers:DatabaseScheduler"

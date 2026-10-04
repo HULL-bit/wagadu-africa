@@ -1,0 +1,22 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "DJ", "C4"]
+ignore = ["E501", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/settings/*" = ["F403", "F405"]
+"*/tests/*" = ["S101"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "wagadu.settings.dev"
+python_files = ["test_*.py", "tests.py"]
+addopts = "-q --reuse-db"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+source = ["apps"]
+omit = ["*/migrations/*", "*/tests/*"]

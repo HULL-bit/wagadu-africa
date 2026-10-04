@@ -1,0 +1,15 @@
+# Reverse-proxy de développement — HTTP simple sur :80, pas de TLS.
+:80 {
+	@backend path /api/* /django-admin/* /media/* /static/*
+	handle @backend {
+		reverse_proxy backend:8000
+	}
+
+	handle_path /chat/* {
+		reverse_proxy rocketchat:3000
+	}
+
+	handle {
+		reverse_proxy frontend:3000
+	}
+}

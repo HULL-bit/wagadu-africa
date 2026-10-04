@@ -1,0 +1,172 @@
+name: wagadu-hub
+
+# Stack de production (VPS + `docker compose`). HTTPS automatique via Caddy,
+# fichiers utilisateurs sur Cloudflare R2 (pas de MinIO).
+#   docker compose -f infra/docker-compose.yml up -d
+# En local, `docker compose up -d` charge en plus docker-compose.override.yml
+# (mode développement : hot-reload, Caddy HTTP, settings dev).
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    env_file: .env
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - frontend
+
+  backend:
+    image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-hub-backend:${IMAGE_TAG:-latest}
+    build: ../backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.prod
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/v1/schema/"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 40s
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  frontend:
+    image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-hub-frontend:${IMAGE_TAG:-latest}
+    build:
+      context: ../frontend
+      args:
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-/api/v1}
+    restart: unless-stopped
+    env_file: .env
+    command: node server.js
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redisdata:/data
+    # File d'attente Celery : notifications, rappels d'échéance, e-mails,
+    # génération de PDF, purge du journal d'audit.
+
+  celery-worker:
+    image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-hub-backend:${IMAGE_TAG:-latest}
+    build: ../backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.prod
+    entrypoint: []
+    command: celery -A wagadu worker -l info
+    depends_on:
+      backend:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  celery-beat:
+    image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-hub-backend:${IMAGE_TAG:-latest}
+    build: ../backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: wagadu.settings.prod
+    entrypoint: []
+    command: celery -A wagadu beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    depends_on:
+      backend:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  # ─── Messagerie Rocket.Chat (profil « chat », optionnel) ────────────────
+  #   docker compose --profile chat up -d
+  mongodb:
+    image: mongo:6
+    profiles: ["chat"]
+    restart: unless-stopped
+    command: mongod --replSet rs0 --oplogSize 128
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  mongo-init:
+    image: mongo:6
+    profiles: ["chat"]
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: "no"
+    entrypoint: ["bash", "-c", "mongosh --host mongodb --quiet --eval 'try{rs.status().ok}catch(e){rs.initiate({_id:\"rs0\",members:[{_id:0,host:\"mongodb:27017\"}]})}'"]
+
+  rocketchat:
+    image: rocketchat/rocket.chat:6.13.0
+    profiles: ["chat"]
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MONGO_URL: mongodb://mongodb:27017/rocketchat?replicaSet=rs0
+      MONGO_OPLOG_URL: mongodb://mongodb:27017/local?replicaSet=rs0
+      ROOT_URL: ${ROCKETCHAT_URL:-http://localhost:3100}
+      PORT: "3000"
+      DEPLOY_METHOD: docker
+      ADMIN_USERNAME: ${ROCKETCHAT_ADMIN_USER:-wagadu-admin}
+      ADMIN_PASS: ${ROCKETCHAT_ADMIN_PASSWORD:-Wagadu2026!Chat}
+      ADMIN_EMAIL: ${ROCKETCHAT_ADMIN_EMAIL:-chat-admin@wagadu.africa}
+      OVERWRITE_SETTING_Show_Setup_Wizard: completed
+      OVERWRITE_SETTING_Iframe_Restrict_Access: "false"
+      OVERWRITE_SETTING_Iframe_Integration_send_enable: "true"
+      OVERWRITE_SETTING_Iframe_Integration_receive_enable: "true"
+      OVERWRITE_SETTING_API_Enable_CORS: "true"
+      OVERWRITE_SETTING_API_CORS_Origin: "*"
+      OVERWRITE_SETTING_Accounts_iframe_enabled: "false"
+      OVERWRITE_SETTING_Accounts_AllowUserProfileChange: "true"
+      OVERWRITE_SETTING_FileUpload_Storage_Type: GridFS
+      OVERWRITE_SETTING_Accounts_TwoFactorAuthentication_Enabled: "false"
+      OVERWRITE_SETTING_Accounts_TwoFactorAuthentication_By_Email_Enabled: "false"
+      OVERWRITE_SETTING_Accounts_TwoFactorAuthentication_By_TOTP_Enabled: "false"
+      OVERWRITE_SETTING_Accounts_RegistrationForm: disabled
+      OVERWRITE_SETTING_Accounts_PasswordReset: "false"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      mongo-init:
+        condition: service_completed_successfully
+    ports:
+      - "${ROCKETCHAT_HOST_PORT:-3100}:3000"
+
+volumes:
+  pgdata:
+  redisdata:
+  mongodata:
+  caddy_data:
+  caddy_config:

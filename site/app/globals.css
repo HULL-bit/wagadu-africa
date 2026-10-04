@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens mirrored verbatim from Wagadu Hub
+ * (PORTAIL-INTERNE/frontend/tailwind.config.ts) so the public site and the
+ * intranet read as the same organization.
+ */
+@theme {
+  --color-wagadu-ivory: #fbf6ec;
+  --color-wagadu-sand: #f0e4c8;
+  --color-wagadu-gold: #f6bb24;
+  --color-wagadu-amber: #ffa900;
+  --color-wagadu-terracotta: #d2812e;
+  --color-wagadu-brown: #6e3c13;
+  --color-wagadu-bark: #4a2a12;
+  --color-wagadu-ebony: #1e0f04;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --background: var(--color-wagadu-ivory);
+  --foreground: var(--color-wagadu-ebony);
+}
+
+/*
+ * Échelle typographique volontairement plus généreuse que les defaults
+ * Tailwind — retour explicite : le premier passage se lisait "trop petit,
+ * pas assez de contenu visuel". `body` part de 17px (au lieu de 16) et les
+ * titres utilisent `clamp()` pour rester lisibles en gros sur desktop sans
+ * casser le mobile.
+ */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/*
+ * Défauts de base uniquement — dans `@layer base` pour qu'une classe
+ * Tailwind explicite sur un titre précis (text-4xl, text-6xl...) continue de
+ * gagner normalement. Sans ce layer, ces règles passeraient devant TOUTES
+ * les utilities (les styles hors-layer priment sur les styles en layer dans
+ * l'ordre de cascade CSS), ce qui écraserait chaque taille choisie au cas
+ * par cas dans les composants.
+ */
+@layer base {
+  h1 {
+    font-size: clamp(2.75rem, 5vw + 1rem, 4.5rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3vw + 1rem, 3rem);
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+    line-height: 1.3;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/*
+ * Forme organique « feuille » (brief : bordures ultimes — feuille, arbre,
+ * vague — plutôt que des rectangles systématiques). À réserver à un ou deux
+ * visuels vedettes par page, jamais en traitement générique de toutes les
+ * cartes/images (brief 4 : un motif dense/décoratif doit respirer).
+ */
+.shape-leaf {
+  border-radius: 2% 46% 2% 46% / 2% 62% 2% 62%;
+}
+
+/* Variante miroir — coin opposé arrondi, pour alterner avec .shape-leaf sans
+   que toutes les images vedettes penchent dans le même sens. */
+.shape-leaf-mirror {
+  border-radius: 46% 2% 46% 2% / 62% 2% 62% 2%;
+}
+
+/* Blob asymétrique plus doux (moins pointu que la feuille) — troisième
+   variante pour garder de la diversité entre les visuels vedettes. */
+.shape-blob {
+  border-radius: 63% 37% 54% 46% / 43% 37% 63% 57%;
+}
+
+/* Variantes douces (rayons fixes, pas en %) — pour les cartes qui portent du
+   texte en surimpression : assez organique pour sortir du rectangle, assez
+   mesuré pour ne jamais empiéter sur le padding du texte (contrairement aux
+   formes vedettes ci-dessus, plus prononcées, réservées aux images seules). */
+.shape-soft-a {
+  border-radius: 3rem 1.25rem 3rem 1.25rem;
+}
+.shape-soft-b {
+  border-radius: 1.25rem 3rem 1.25rem 3rem;
+}
+
+/* Zoom doux au survol, à combiner avec `overflow-hidden` sur le parent —
+   cohérent avec le traitement déjà utilisé sur les cartes piliers. */
+.img-hover-zoom {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .img-hover-zoom {
+  transform: scale(1.06);
+}
+
+/* Anneau qui respire doucement — pour un accent ponctuel (ex. médaillon
+   d'appel à l'action), jamais en continu sur toute une section. */
+@keyframes pulse-ring {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 169, 0, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(255, 169, 0, 0);
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

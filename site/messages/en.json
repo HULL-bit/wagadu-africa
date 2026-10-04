@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "accueil": "Home",
+    "quiSommesNous": "About us",
+    "thematiques": "Our themes",
+    "realisations": "Our achievements",
+    "outils": "Our technology tools",
+    "projets": "Our Projects",
+    "actualites": "News",
+    "ressources": "Resources & publications",
+    "media": "Media library",
+    "transparence": "Financial transparency",
+    "gouvernance": "Governance",
+    "presse": "Press coverage",
+    "partenaires": "Partners & donors",
+    "faq": "FAQ",
+    "nousRejoindre": "Join us",
+    "don": "Donate",
+    "contact": "Contact",
+    "menu": "Menu",
+    "fermer": "Close"
+  },
+  "footer": {
+    "coordonnees": "Contact details",
+    "email": "Email",
+    "telephone": "Phone",
+    "adresse": "Address",
+    "institutionnel": "Institutional",
+    "suivezNous": "Follow us",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Get our news and achievements.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterSubmit": "Subscribe",
+    "newsletterEnCours": "Subscribing…",
+    "newsletterSucces": "Thanks, you're subscribed!",
+    "newsletterErreur": "Something went wrong, please try again.",
+    "mentionsLegales": "Legal notice",
+    "confidentialite": "Privacy policy",
+    "cgu": "Terms of use",
+    "espaceEquipe": "Team area",
+    "administration": "Content administration",
+    "tousDroitsReserves": "All rights reserved."
+  },
+  "contact": {
+    "horaires": "Hours",
+    "horairesValeur": "Monday–Friday 8am–4pm, Saturday 8am–1pm",
+    "formTitre": "Send us a message",
+    "nom": "Name",
+    "email": "Email",
+    "telephone": "Phone (optional)",
+    "message": "Message",
+    "envoyer": "Send",
+    "envoiEnCours": "Sending…",
+    "succes": "Thank you, your message has been sent — we'll get back to you shortly.",
+    "erreur": "Something went wrong, please try again or write to us directly at contact@wagadu-africa.org."
+  },
+  "common": {
+    "lireLaSuite": "Read more",
+    "enSavoirPlus": "Learn more",
+    "voirTout": "See all",
+    "voirLaPlateforme": "View the platform",
+    "rechercher": "Search",
+    "filtrer": "Filter",
+    "toutesLesThematiques": "All themes",
+    "chargement": "Loading…",
+    "aucunResultat": "No results.",
+    "retourAccueil": "Back to home"
+  },
+  "langue": {
+    "fr": "Français",
+    "en": "English",
+    "changerDeLangue": "Change language"
+  },
+  "notFound": {
+    "titre": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved."
+  },
+  "error": {
+    "titre": "Something went wrong",
+    "description": "The content couldn't be loaded. This may be temporary — please try again in a moment.",
+    "reessayer": "Try again"
+  }
+}

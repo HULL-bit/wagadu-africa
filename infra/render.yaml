@@ -1,0 +1,77 @@
+# Render Blueprint — site public Wagadu Africa (voir plan section A.3).
+# À importer depuis le dashboard Render une fois le Postgres du Hub exposé
+# (runbook dans infra/README.md) et les secrets ci-dessous renseignés.
+# `sync: false` = valeur à saisir manuellement dans le dashboard Render,
+# jamais committée ici.
+
+services:
+  - type: web
+    name: wagadu-directus
+    runtime: docker
+    image:
+      url: directus/directus:11 # pas d'extension custom pour l'instant — voir cms/extensions/ si ça change
+    envVars:
+      - key: DB_CLIENT
+        value: pg
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_DATABASE
+        value: wagadu_cms
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSL__REJECT_UNAUTHORIZED
+        value: "true"
+      - key: KEY
+        sync: false
+      - key: SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: PUBLIC_URL
+        value: https://cms.wagadu-africa.org
+      - key: STORAGE_LOCATIONS
+        value: r2
+      - key: STORAGE_R2_DRIVER
+        value: s3
+      - key: STORAGE_R2_KEY
+        sync: false
+      - key: STORAGE_R2_SECRET
+        sync: false
+      - key: STORAGE_R2_ENDPOINT
+        sync: false
+      - key: STORAGE_R2_BUCKET
+        value: wagadu-website-media
+    healthCheckPath: /server/health
+
+  - type: web
+    name: wagadu-site
+    runtime: node
+    rootDir: site
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: DIRECTUS_URL
+        value: https://wagadu-directus.onrender.com
+      - key: DIRECTUS_PUBLIC_TOKEN
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://wagadu-africa.org
+      - key: REVALIDATE_SECRET
+        sync: false
+
+  - type: web
+    name: wagadu-umami
+    runtime: docker
+    image:
+      url: ghcr.io/umami-software/umami:postgresql-latest
+    envVars:
+      - key: DATABASE_URL
+        sync: false # postgres://umami_app:...@<hote-public>:5432/wagadu_analytics?sslmode=require
+      - key: APP_SECRET
+        sync: false

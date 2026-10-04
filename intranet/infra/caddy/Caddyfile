@@ -1,0 +1,37 @@
+# Reverse-proxy de production — HTTPS automatique (Let's Encrypt).
+# Domaine et e-mail ACME lus dans .env : SITE_DOMAIN, ACME_EMAIL.
+{
+	email {$ACME_EMAIL}
+}
+
+{$SITE_DOMAIN} {
+	encode gzip zstd
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+
+	request_body {
+		max_size 50MB
+	}
+
+	# API Django + admin + statiques (WhiteNoise) → backend
+	@backend path /api/* /django-admin/* /static/*
+	handle @backend {
+		reverse_proxy backend:8000
+	}
+
+	# Messagerie Rocket.Chat (uniquement si le profil « chat » tourne)
+	handle_path /chat/* {
+		reverse_proxy rocketchat:3000
+	}
+
+	# Tout le reste → frontend Next.js
+	handle {
+		reverse_proxy frontend:3000
+	}
+}

@@ -1,0 +1,3359 @@
+version: 1
+directus: 11.17.4
+vendor: postgres
+collections:
+  - collection: languages
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: languages
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: translate
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: languages
+  - collection: pages_statiques
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: pages_statiques
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: description
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: pages_statiques
+  - collection: pages_statiques_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: pages_statiques_translations
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: pages_statiques_translations
+  - collection: piliers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: piliers
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: auto_awesome
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: piliers
+  - collection: piliers_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: piliers_translations
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: piliers_translations
+  - collection: projets
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: projets
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: rocket_launch
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projets
+  - collection: projets_piliers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: projets_piliers
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projets_piliers
+  - collection: projets_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: projets_translations
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projets_translations
+  - collection: realisations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: realisations
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: star
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: realisations
+  - collection: realisations_piliers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: realisations_piliers
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: realisations_piliers
+  - collection: realisations_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: realisations_translations
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: realisations_translations
+  - collection: valeurs
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: valeurs
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: favorite
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: valeurs
+  - collection: valeurs_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: valeurs_translations
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: valeurs_translations
+fields:
+  - collection: languages
+    field: code
+    type: string
+    meta:
+      collection: languages
+      conditions: null
+      display: null
+      display_options: null
+      field: code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: code
+      table: languages
+      data_type: character varying
+      default_value: null
+      max_length: 10
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: languages
+    field: name
+    type: string
+    meta:
+      collection: languages
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: languages
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques
+    field: id
+    type: uuid
+    meta:
+      collection: pages_statiques
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: pages_statiques
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques
+    field: slug
+    type: string
+    meta:
+      collection: pages_statiques
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: pages_statiques
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques
+    field: translations
+    type: alias
+    meta:
+      collection: pages_statiques
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 100
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: pages_statiques_translations
+    field: id
+    type: integer
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: pages_statiques_translations
+      data_type: integer
+      default_value: nextval('pages_statiques_translations_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques_translations
+    field: pages_statiques_id
+    type: uuid
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: pages_statiques_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: pages_statiques_id
+      table: pages_statiques_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: pages_statiques
+      foreign_key_column: id
+  - collection: pages_statiques_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: pages_statiques_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: pages_statiques_translations
+    field: titre
+    type: string
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: titre
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: titre
+      table: pages_statiques_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques_translations
+    field: sous_titre
+    type: text
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: sous_titre
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sous_titre
+      table: pages_statiques_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: pages_statiques_translations
+    field: body
+    type: text
+    meta:
+      collection: pages_statiques_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: body
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: body
+      table: pages_statiques_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers
+    field: id
+    type: uuid
+    meta:
+      collection: piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: piliers
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers
+    field: slug
+    type: string
+    meta:
+      collection: piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: piliers
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers
+    field: couleur_accent
+    type: string
+    meta:
+      collection: piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: couleur_accent
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Terracotta
+            value: terracotta
+          - text: Amber
+            value: amber
+          - text: Bark (technologie)
+            value: bark
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: couleur_accent
+      table: piliers
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers
+    field: sort
+    type: integer
+    meta:
+      collection: piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: piliers
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers
+    field: translations
+    type: alias
+    meta:
+      collection: piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 100
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: piliers_translations
+    field: id
+    type: integer
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: piliers_translations
+      data_type: integer
+      default_value: nextval('piliers_translations_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers_translations
+    field: piliers_id
+    type: uuid
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: piliers_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: piliers_id
+      table: piliers_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: piliers
+      foreign_key_column: id
+  - collection: piliers_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: piliers_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: piliers_translations
+    field: nom
+    type: string
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: nom
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: nom
+      table: piliers_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers_translations
+    field: resume
+    type: text
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: resume
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: resume
+      table: piliers_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: piliers_translations
+    field: description_longue
+    type: text
+    meta:
+      collection: piliers_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description_longue
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description_longue
+      table: piliers_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: id
+    type: uuid
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projets
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: slug
+    type: string
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: projets
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: statut
+    type: string
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: statut
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: En cours
+            value: en_cours
+          - text: À venir
+            value: a_venir
+          - text: Terminé
+            value: termine
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: statut
+      table: projets
+      data_type: character varying
+      default_value: a_venir
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: statut_publication
+    type: string
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: statut_publication
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Brouillon
+            value: draft
+          - text: Publié
+            value: published
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: statut_publication
+      table: projets
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: date_debut
+    type: date
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: date_debut
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_debut
+      table: projets
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: date_fin
+    type: date
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: date_fin
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_fin
+      table: projets
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: zone_geographique
+    type: string
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: zone_geographique
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: zone_geographique
+      table: projets
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: sort
+    type: integer
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: projets
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets
+    field: translations
+    type: alias
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 100
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: projets
+    field: piliers
+    type: alias
+    meta:
+      collection: projets
+      conditions: null
+      display: null
+      display_options: null
+      field: piliers
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 101
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: projets_piliers
+    field: id
+    type: integer
+    meta:
+      collection: projets_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projets_piliers
+      data_type: integer
+      default_value: nextval('projets_piliers_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets_piliers
+    field: projets_id
+    type: uuid
+    meta:
+      collection: projets_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: projets_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: projets_id
+      table: projets_piliers
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: projets
+      foreign_key_column: id
+  - collection: projets_piliers
+    field: piliers_id
+    type: uuid
+    meta:
+      collection: projets_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: piliers_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: piliers_id
+      table: projets_piliers
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: piliers
+      foreign_key_column: id
+  - collection: projets_translations
+    field: id
+    type: integer
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projets_translations
+      data_type: integer
+      default_value: nextval('projets_translations_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets_translations
+    field: projets_id
+    type: uuid
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: projets_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: projets_id
+      table: projets_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: projets
+      foreign_key_column: id
+  - collection: projets_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: projets_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: projets_translations
+    field: titre
+    type: string
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: titre
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: titre
+      table: projets_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets_translations
+    field: description_courte
+    type: text
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description_courte
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description_courte
+      table: projets_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projets_translations
+    field: description_detaillee
+    type: text
+    meta:
+      collection: projets_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description_detaillee
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description_detaillee
+      table: projets_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: id
+    type: uuid
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: realisations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: slug
+    type: string
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: realisations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: status
+    type: string
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Brouillon
+            value: draft
+          - text: Publié
+            value: published
+          - text: Archivé
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: status
+      table: realisations
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: mise_en_avant
+    type: boolean
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: mise_en_avant
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: mise_en_avant
+      table: realisations
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: template
+    type: string
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: template
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Standard
+            value: standard
+          - text: Scroll story
+            value: scroll_story
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: template
+      table: realisations
+      data_type: character varying
+      default_value: standard
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: sort
+    type: integer
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: realisations
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: lien_externe
+    type: string
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: lien_externe
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: lien_externe
+      table: realisations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: date_realisation
+    type: date
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: date_realisation
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_realisation
+      table: realisations
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: localisation_label
+    type: string
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: localisation_label
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        Texte libre pour l'instant (ex: "Kayar, Sénégal") — à remplacer par un
+        vrai champ geometry.Point une fois PostGIS confirmé sur l'instance de
+        production (voir plan section B.3).
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: localisation_label
+      table: realisations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations
+    field: translations
+    type: alias
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 100
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: realisations
+    field: piliers
+    type: alias
+    meta:
+      collection: realisations
+      conditions: null
+      display: null
+      display_options: null
+      field: piliers
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 101
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: realisations_piliers
+    field: id
+    type: integer
+    meta:
+      collection: realisations_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: realisations_piliers
+      data_type: integer
+      default_value: nextval('realisations_piliers_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations_piliers
+    field: realisations_id
+    type: uuid
+    meta:
+      collection: realisations_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: realisations_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: realisations_id
+      table: realisations_piliers
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: realisations
+      foreign_key_column: id
+  - collection: realisations_piliers
+    field: piliers_id
+    type: uuid
+    meta:
+      collection: realisations_piliers
+      conditions: null
+      display: null
+      display_options: null
+      field: piliers_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: piliers_id
+      table: realisations_piliers
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: piliers
+      foreign_key_column: id
+  - collection: realisations_translations
+    field: id
+    type: integer
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: realisations_translations
+      data_type: integer
+      default_value: nextval('realisations_translations_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations_translations
+    field: realisations_id
+    type: uuid
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: realisations_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: realisations_id
+      table: realisations_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: realisations
+      foreign_key_column: id
+  - collection: realisations_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: realisations_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: realisations_translations
+    field: titre
+    type: string
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: titre
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: titre
+      table: realisations_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations_translations
+    field: resume
+    type: text
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: resume
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: resume
+      table: realisations_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: realisations_translations
+    field: corps
+    type: text
+    meta:
+      collection: realisations_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: corps
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: corps
+      table: realisations_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs
+    field: id
+    type: uuid
+    meta:
+      collection: valeurs
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: valeurs
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs
+    field: contexte
+    type: string
+    meta:
+      collection: valeurs
+      conditions: null
+      display: null
+      display_options: null
+      field: contexte
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: >-
+        Quelle grille affiche cette valeur — accueil (brief 2.1, 3 cartes) ou
+        qui-sommes-nous (brief 2.2, 6 cartes).
+      options:
+        choices:
+          - text: Accueil
+            value: accueil
+          - text: Qui sommes-nous
+            value: qui_sommes_nous
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: contexte
+      table: valeurs
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs
+    field: sort
+    type: integer
+    meta:
+      collection: valeurs
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: valeurs
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs
+    field: translations
+    type: alias
+    meta:
+      collection: valeurs
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 100
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: valeurs_translations
+    field: id
+    type: integer
+    meta:
+      collection: valeurs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: valeurs_translations
+      data_type: integer
+      default_value: nextval('valeurs_translations_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs_translations
+    field: valeurs_id
+    type: uuid
+    meta:
+      collection: valeurs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: valeurs_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: valeurs_id
+      table: valeurs_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: valeurs
+      foreign_key_column: id
+  - collection: valeurs_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: valeurs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: valeurs_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: valeurs_translations
+    field: nom
+    type: string
+    meta:
+      collection: valeurs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: nom
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: nom
+      table: valeurs_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: valeurs_translations
+    field: description
+    type: text
+    meta:
+      collection: valeurs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: valeurs_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+systemFields:
+  - collection: directus_activity
+    field: timestamp
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: activity
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: parent
+    schema:
+      is_indexed: true
+relations:
+  - collection: pages_statiques_translations
+    field: pages_statiques_id
+    related_collection: pages_statiques
+    meta:
+      junction_field: null
+      many_collection: pages_statiques_translations
+      many_field: pages_statiques_id
+      one_allowed_collections: null
+      one_collection: pages_statiques
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: pages_statiques_translations
+      column: pages_statiques_id
+      foreign_key_table: pages_statiques
+      foreign_key_column: id
+      constraint_name: pages_statiques_translations_pages_statiques_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: pages_statiques_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: null
+      many_collection: pages_statiques_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: pages_statiques_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: pages_statiques_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: piliers_translations
+    field: piliers_id
+    related_collection: piliers
+    meta:
+      junction_field: null
+      many_collection: piliers_translations
+      many_field: piliers_id
+      one_allowed_collections: null
+      one_collection: piliers
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: piliers_translations
+      column: piliers_id
+      foreign_key_table: piliers
+      foreign_key_column: id
+      constraint_name: piliers_translations_piliers_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: piliers_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: null
+      many_collection: piliers_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: piliers_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: piliers_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: projets_piliers
+    field: projets_id
+    related_collection: projets
+    meta:
+      junction_field: piliers_id
+      many_collection: projets_piliers
+      many_field: projets_id
+      one_allowed_collections: null
+      one_collection: projets
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: piliers
+      sort_field: null
+    schema:
+      table: projets_piliers
+      column: projets_id
+      foreign_key_table: projets
+      foreign_key_column: id
+      constraint_name: projets_piliers_projets_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: projets_piliers
+    field: piliers_id
+    related_collection: piliers
+    meta:
+      junction_field: projets_id
+      many_collection: projets_piliers
+      many_field: piliers_id
+      one_allowed_collections: null
+      one_collection: piliers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projets_piliers
+      column: piliers_id
+      foreign_key_table: piliers
+      foreign_key_column: id
+      constraint_name: projets_piliers_piliers_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: projets_translations
+    field: projets_id
+    related_collection: projets
+    meta:
+      junction_field: null
+      many_collection: projets_translations
+      many_field: projets_id
+      one_allowed_collections: null
+      one_collection: projets
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: projets_translations
+      column: projets_id
+      foreign_key_table: projets
+      foreign_key_column: id
+      constraint_name: projets_translations_projets_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: projets_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: null
+      many_collection: projets_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projets_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: projets_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: realisations_piliers
+    field: realisations_id
+    related_collection: realisations
+    meta:
+      junction_field: piliers_id
+      many_collection: realisations_piliers
+      many_field: realisations_id
+      one_allowed_collections: null
+      one_collection: realisations
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: piliers
+      sort_field: null
+    schema:
+      table: realisations_piliers
+      column: realisations_id
+      foreign_key_table: realisations
+      foreign_key_column: id
+      constraint_name: realisations_piliers_realisations_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: realisations_piliers
+    field: piliers_id
+    related_collection: piliers
+    meta:
+      junction_field: realisations_id
+      many_collection: realisations_piliers
+      many_field: piliers_id
+      one_allowed_collections: null
+      one_collection: piliers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: realisations_piliers
+      column: piliers_id
+      foreign_key_table: piliers
+      foreign_key_column: id
+      constraint_name: realisations_piliers_piliers_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: realisations_translations
+    field: realisations_id
+    related_collection: realisations
+    meta:
+      junction_field: null
+      many_collection: realisations_translations
+      many_field: realisations_id
+      one_allowed_collections: null
+      one_collection: realisations
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: realisations_translations
+      column: realisations_id
+      foreign_key_table: realisations
+      foreign_key_column: id
+      constraint_name: realisations_translations_realisations_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: realisations_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: null
+      many_collection: realisations_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: realisations_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: realisations_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: valeurs_translations
+    field: valeurs_id
+    related_collection: valeurs
+    meta:
+      junction_field: null
+      many_collection: valeurs_translations
+      many_field: valeurs_id
+      one_allowed_collections: null
+      one_collection: valeurs
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: valeurs_translations
+      column: valeurs_id
+      foreign_key_table: valeurs
+      foreign_key_column: id
+      constraint_name: valeurs_translations_valeurs_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: valeurs_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: null
+      many_collection: valeurs_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: valeurs_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: valeurs_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.sqlite3
+
+# Django
+/backend/staticfiles/
+/backend/mediafiles/
+/backend/media/
+
+# Node / Next.js
+node_modules/
+/frontend/.next/
+/frontend/out/
+/frontend/build/
+/frontend/*.tsbuildinfo
+.pnp.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+infra/.env
+infra/nginx/certs/*
+!infra/nginx/certs/.gitkeep
+
+# Éditeurs / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Docker
+*.pid
+wagadu-agenda.ics
+/*.ics
+infra/backups/

@@ -1,0 +1,35 @@
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+npm-debug.log*
+
+# Python (intranet/backend — Django)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+db.sqlite3
+intranet/backend/staticfiles/
+intranet/backend/mediafiles/
+intranet/backend/media/
+intranet/infra/nginx/certs/*
+!intranet/infra/nginx/certs/.gitkeep
+intranet/infra/backups/
+*.ics
+*.pid
+
+# Fonds photo brut hérité du WordPress (source de travail pour le seed des
+# médias, ~430 Mo) — pas servi par le site, seules les copies traitées dans
+# site/public/media/ le sont. Exclu pour garder le dépôt léger.
+/media/

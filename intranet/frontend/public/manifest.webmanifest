@@ -1,0 +1,15 @@
+{
+  "name": "Wagadu Hub",
+  "short_name": "Wagadu Hub",
+  "description": "Plateforme interne de Wagadu Africa",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF6EC",
+  "theme_color": "#4A2A12",
+  "lang": "fr",
+  "icons": [
+    { "src": "/icons/icon-300.png", "sizes": "300x300", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
