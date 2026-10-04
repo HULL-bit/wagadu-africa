@@ -152,7 +152,16 @@ services:
 
   site:
     image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-site:${IMAGE_TAG:-latest}
-    build: ../../site
+    build:
+      context: ../../site
+      args:
+        # Doivent être fournies ici (pas seulement dans `environment:` plus
+        # bas) : NEXT_PUBLIC_* est inliné dans le bundle au moment du build,
+        # jamais relu au démarrage du conteneur — voir site/Dockerfile.
+        NEXT_PUBLIC_SITE_URL: https://${WEBSITE_DOMAIN}
+        NEXT_PUBLIC_HUB_URL: https://${SITE_DOMAIN}
+        NEXT_PUBLIC_DIRECTUS_ADMIN_URL: https://${CMS_DOMAIN}/admin
+        NEXT_PUBLIC_DONORBOX_CAMPAIGN: ${NEXT_PUBLIC_DONORBOX_CAMPAIGN}
     restart: unless-stopped
     env_file: .env
     environment:
