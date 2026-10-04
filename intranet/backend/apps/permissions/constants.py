@@ -18,6 +18,7 @@ MODULE_MEETINGS = "meetings"
 MODULE_AUDIT = "audit"
 MODULE_PLATFORM = "platform"
 MODULE_PROJECTS = "projects"
+MODULE_SYSTEM = "system"
 
 # (code, libellé, module)
 PERMISSION_CATALOG: list[tuple[str, str, str]] = [
@@ -75,6 +76,14 @@ PERMISSION_CATALOG: list[tuple[str, str, str]] = [
     ("projects.view", "Consulter les projets", MODULE_PROJECTS),
     ("projects.manage", "Créer et piloter des projets (jalons, indicateurs, suivi)", MODULE_PROJECTS),
     ("projects.oversee", "Superviser l'ensemble des projets (transverse)", MODULE_PROJECTS),
+    # --- Administration système (incidents, santé des services) ---
+    # NB : l'export complet de la base (dump SQL) n'est volontairement PAS un
+    # code de permission grantable ici — gardé en vérification directe
+    # `IsSuperAdmin` (apps.system.views.DatabaseExportView) car il expose
+    # l'intégralité des données de tous les utilisateurs.
+    ("system.incidents.view", "Consulter les incidents techniques", MODULE_SYSTEM),
+    ("system.incidents.manage", "Créer / mettre à jour / clôturer un incident technique", MODULE_SYSTEM),
+    ("system.health.view", "Consulter l'état des services (base, cache, files d'attente)", MODULE_SYSTEM),
 ]
 
 ALL_PERMISSION_CODES = {code for code, _, _ in PERMISSION_CATALOG}
@@ -198,6 +207,9 @@ SYSTEM_ROLES: dict[str, dict] = {
             "projects.view",
             "projects.manage",
             "projects.oversee",
+            "system.incidents.view",
+            "system.incidents.manage",
+            "system.health.view",
         ],
     },
 }

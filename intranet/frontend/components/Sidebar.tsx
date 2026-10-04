@@ -80,7 +80,7 @@ const GROUPS: Group[] = [
   {
     id: "admin",
     label: "Administration",
-    anyPerm: ["accounts.view", "audit.view", "engagement.announce", "platform.manage_validation_flows", "organization.manage"],
+    anyPerm: ["accounts.view", "audit.view", "engagement.announce", "platform.manage_validation_flows", "organization.manage", "system.incidents.view", "system.health.view"],
     items: [
       { href: "/admin/users", label: "Comptes", perm: "accounts.view", icon: "user" },
       { href: "/admin/departments", label: "Services", perm: "organization.manage", icon: "users" },
@@ -88,6 +88,8 @@ const GROUPS: Group[] = [
       { href: "/admin/permission-overrides", label: "Exceptions", perm: "accounts.manage_permissions", icon: "sliders" },
       { href: "/admin/announcements", label: "Annonces", perm: "engagement.announce", icon: "megaphone" },
       { href: "/admin/audit", label: "Journal d'audit", perm: "audit.view", icon: "archive" },
+      { href: "/admin/incidents", label: "Incidents techniques", perm: "system.incidents.view", icon: "alert-triangle" },
+      { href: "/admin/system", label: "État du système", perm: "system.health.view", icon: "database" },
     ],
   },
 ];

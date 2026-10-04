@@ -29,6 +29,7 @@ api_v1 = [
     path("", include("apps.engagement.urls")),
     path("", include("apps.search.urls")),
     path("", include("apps.reports.urls")),
+    path("", include("apps.system.urls")),
 ]
 
 urlpatterns = [

@@ -47,6 +47,8 @@ const PATHS: Record<string, ReactNode> = {
   twitter: <><path d="M4 4l7.5 10L4 20h2l6.3-6.3L17 20h4l-8-11 7-7h-2l-5.8 5.8L9 4Z" /></>,
   facebook: <><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v7h3v-7h2.5l.5-3H14V8.5a.5.5 0 0 1 .5-.5Z" /></>,
   "message-circle": <><path d="M7.5 19.5A9 9 0 1 0 4.5 16L3 21Z" /></>,
+  "alert-triangle": <><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></>,
+  database: <><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></>,
 };
 
 export type IconName = keyof typeof PATHS;

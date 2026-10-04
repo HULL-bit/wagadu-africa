@@ -53,3 +53,37 @@ export interface AuditEntry {
   message: string;
   ip_address: string | null;
 }
+
+export interface Incident {
+  id: number;
+  title: string;
+  description: string;
+  component: string;
+  severity: string;
+  severity_display: string;
+  status: string;
+  status_display: string;
+  reported_by: string | null;
+  reported_by_name: string;
+  assigned_to: string | null;
+  assigned_to_name: string;
+  resolution_notes: string;
+  created_at: string;
+  updated_at: string;
+  resolved_at: string | null;
+}
+
+interface HealthCheck {
+  ok: boolean;
+  error?: string;
+}
+
+export interface SystemHealth {
+  checked_at: string;
+  database: HealthCheck & { size_bytes: number | null; connections: number | null };
+  redis: HealthCheck & { used_memory_bytes?: number };
+  celery: HealthCheck & { workers?: number };
+  disk: HealthCheck & { total_bytes?: number; used_bytes?: number; free_bytes?: number };
+  incidents: { open_total: number; open_critical: number };
+  audit: { last_24h_total: number; last_24h_critical: number };
+}
