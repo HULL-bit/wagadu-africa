@@ -36,6 +36,17 @@ systemctl enable --now docker
 
 # Vérification
 docker run --rm hello-world
+
+# Swap (2 Go) — nécessaire sur un VPS à 2 Go de RAM : le build simultané de
+# plusieurs images Docker (site, backend, frontend) peut dépasser la RAM
+# disponible et provoquer un OOM-kill. Vultr ne configure pas de swap par
+# défaut.
+fallocate -l 2G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
+free -h   # vérifier que le swap apparaît
 ```
 
 ### Note SELinux
@@ -126,15 +137,22 @@ chmod 600 .env   # lisible uniquement par root
 
 ## 5. Démarrer la stack
 
+Sur un VPS à 2 Go de RAM, construire les 3 images une par une plutôt qu'en
+parallèle (`--build` tout seul lance les builds simultanément, ce qui peut
+dépasser la RAM même avec le swap de l'étape 1) :
+
 ```bash
 cd /opt/wagadu/wagadu-africa/intranet/infra
-docker compose up -d --build
+docker compose build site
+docker compose build backend
+docker compose build frontend
+docker compose up -d
 docker compose ps   # tout doit finir "healthy" ou "running"
 ```
 
-Premier démarrage : build des images `site`/`backend`/`frontend` (~2-5 min),
-puis Caddy demande les 3 certificats Let's Encrypt (quelques secondes à
-quelques minutes si le DNS est bien propagé).
+Premier démarrage : build des images `site`/`backend`/`frontend` (~3-7 min au
+total en séquentiel), puis Caddy demande les 3 certificats Let's Encrypt
+(quelques secondes à quelques minutes si le DNS est bien propagé).
 
 ```bash
 docker compose logs -f caddy   # surveiller l'obtention des certificats
