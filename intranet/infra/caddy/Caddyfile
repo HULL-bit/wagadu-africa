@@ -1,7 +1,38 @@
 # Reverse-proxy de production — HTTPS automatique (Let's Encrypt).
-# Domaine et e-mail ACME lus dans .env : SITE_DOMAIN, ACME_EMAIL.
+# Domaines et e-mail ACME lus dans .env : SITE_DOMAIN (Hub), WEBSITE_DOMAIN
+# (site public), CMS_DOMAIN (Directus), ACME_EMAIL.
 {
 	email {$ACME_EMAIL}
+}
+
+{$WEBSITE_DOMAIN} {
+	encode gzip zstd
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+
+	reverse_proxy site:3000
+}
+
+{$CMS_DOMAIN} {
+	encode gzip zstd
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+
+	request_body {
+		max_size 50MB
+	}
+
+	reverse_proxy directus:8055
 }
 
 {$SITE_DOMAIN} {

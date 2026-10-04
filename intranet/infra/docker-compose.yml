@@ -16,12 +16,14 @@ services:
       - "443:443/udp"
     env_file: .env
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro,z
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
       - backend
       - frontend
+      - site
+      - directus
 
   backend:
     image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-hub-backend:${IMAGE_TAG:-latest}
@@ -60,6 +62,10 @@ services:
     env_file: .env
     volumes:
       - pgdata:/var/lib/postgresql/data
+      # Crée la base wagadu_cms (Directus) en plus de POSTGRES_DB (Hub) au
+      # tout premier démarrage — un seul serveur Postgres pour les deux
+      # projets (voir README). Ne rejoue jamais sur un volume déjà initialisé.
+      - ./postgres-init:/docker-entrypoint-initdb.d:ro,z
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 10s
@@ -103,6 +109,51 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
+
+  # ─── Site public Wagadu Africa + CMS (même VPS, même Postgres) ─────────
+  directus:
+    image: directus/directus:11
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_CLIENT: pg
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_DATABASE: ${DIRECTUS_DB_NAME:-wagadu_cms}
+      DB_USER: ${DIRECTUS_DB_USER:-directus_app}
+      DB_PASSWORD: ${DIRECTUS_DB_PASSWORD}
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+      PUBLIC_URL: https://${CMS_DOMAIN}
+      STORAGE_LOCATIONS: local
+      STORAGE_LOCAL_ROOT: /directus/uploads
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: https://${WEBSITE_DOMAIN}
+    volumes:
+      - directus_uploads:/directus/uploads
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8055/server/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  site:
+    image: ${REGISTRY:-ghcr.io/hull-bit}/wagadu-site:${IMAGE_TAG:-latest}
+    build: ../../site
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DIRECTUS_URL: http://directus:8055
+      NEXT_PUBLIC_SITE_URL: https://${WEBSITE_DOMAIN}
+    depends_on:
+      directus:
+        condition: service_healthy
 
   # ─── Messagerie Rocket.Chat (profil « chat », optionnel) ────────────────
   #   docker compose --profile chat up -d
@@ -170,3 +221,4 @@ volumes:
   mongodata:
   caddy_data:
   caddy_config:
+  directus_uploads:
