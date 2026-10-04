@@ -217,3 +217,26 @@ Le Hub (`backend`/`frontend`) est construit depuis des images GHCR par
 défaut (`ghcr.io/hull-bit/wagadu-hub-*`) avec fallback sur un `build:` local
 si l'image n'existe pas encore — voir `docker-compose.yml`. Le site public et
 Directus se construisent/tirent de la même façon.
+
+## ⚠️ Après CHAQUE reconstruction de `site` : revalider le contenu
+
+`docker build` n'a pas accès réseau à Directus (conteneurs séparés, pas
+encore démarrés pendant le build) — les pages du site se construisent donc
+avec des données vides plutôt que de planter (comportement voulu, voir
+`lib/directus.ts`). Résultat : juste après `docker compose build site` +
+`up -d site`, les sections connectées à Directus (Nos valeurs, Nos piliers,
+Réalisations, Actualités...) apparaissent vides jusqu'à la prochaine
+revalidation — automatique au bout d'1h (`revalidate: 3600`), ou immédiate
+avec :
+
+```bash
+SECRET=$(grep '^REVALIDATE_SECRET=' intranet/infra/.env | cut -d= -f2)
+for tag in realisations piliers valeurs pages_statiques projets actualites parametres_site; do
+  curl -s -X POST "https://${WEBSITE_DOMAIN:-wagadu-africa.org}/api/revalidate" \
+    -H "x-revalidate-secret: $SECRET" -H "Content-Type: application/json" \
+    -d "{\"tag\":\"$tag\"}"
+done
+```
+
+À faire systématiquement après tout `docker compose build site` (ou
+`up -d --build site`) en production.
