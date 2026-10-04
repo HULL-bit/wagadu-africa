@@ -245,7 +245,9 @@ export default async function QuiSommesNousPage() {
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center">
             <BranchAccent className="mx-auto h-10 w-10 text-wagadu-amber" />
-            <h2 className="mt-2 font-display font-semibold text-wagadu-ivory">Nos valeurs</h2>
+            <h2 className="mt-2 font-display font-semibold text-wagadu-ivory">
+              {locale === "fr" ? "Nos valeurs" : "Our values"}
+            </h2>
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {valeurs.map((valeur, index) => {

@@ -231,7 +231,9 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
         <Reveal className="text-center">
           <BranchAccent className="mx-auto h-10 w-10 text-wagadu-amber" />
-          <h2 className="mt-2 font-display font-semibold text-wagadu-ebony">Nos valeurs</h2>
+          <h2 className="mt-2 font-display font-semibold text-wagadu-ebony">
+            {locale === "fr" ? "Nos valeurs" : "Our values"}
+          </h2>
         </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {valeurs.map((valeur, index) => {
@@ -270,7 +272,9 @@ export default async function HomePage() {
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center">
             <BranchAccent className="mx-auto h-10 w-10 text-wagadu-terracotta" flip />
-            <h2 className="mt-2 font-display font-semibold text-wagadu-ebony">Nos trois piliers</h2>
+            <h2 className="mt-2 font-display font-semibold text-wagadu-ebony">
+              {locale === "fr" ? "Nos trois piliers" : "Our three pillars"}
+            </h2>
           </Reveal>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {piliers.map((pilier, index) => {
