@@ -224,8 +224,18 @@ async function setupProjets() {
 }
 
 async function setupPublicPermissions() {
-  const policies = await api("GET", "/policies?filter[admin_access][_eq]=false");
+  // Le rôle "Public" de Directus n'existe pas en tant que ligne `roles` — son
+  // accès anonyme passe par une policy nommée littéralement "$t:public_label"
+  // (clé de traduction interne, pas un libellé à afficher). Filtrer par
+  // `admin_access=false` seul est fragile dès qu'une autre policy non-admin
+  // existe (ex. comptes de service formulaire/newsletter) : `[0]` peut alors
+  // tomber sur la mauvaise policy et rendre une collection invisible pour le
+  // public (bug constaté en pratique sur `actualites`).
+  const policies = await api("GET", "/policies?filter[name][_eq]=$t:public_label");
   const publicPolicy = policies.data[0];
+  if (!publicPolicy) {
+    throw new Error("Policy Public ($t:public_label) introuvable — vérifier le rôle Public de Directus.");
+  }
 
   const grants = [
     {
