@@ -114,7 +114,14 @@ services:
   directus:
     image: directus/directus:11
     restart: unless-stopped
-    env_file: .env
+    # Pas de `env_file: .env` ici volontairement : Directus ne doit recevoir
+    # QUE les variables listées explicitement ci-dessous. Avec `env_file`, il
+    # hérite de tout le .env partagé avec le Hub — notamment `REDIS_URL`, que
+    # Directus détecte et utilise pour son cache/rate-limiter, se connectant
+    # alors au Redis du Hub (non prévu) et plantant si ce Redis est
+    # indisponible à cet instant. La substitution `${...}` ci-dessous
+    # continue de fonctionner : Compose lit .env pour l'interpolation du YAML
+    # indépendamment de `env_file`.
     environment:
       DB_CLIENT: pg
       DB_HOST: postgres
