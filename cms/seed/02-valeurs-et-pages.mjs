@@ -397,6 +397,28 @@ async function seedPagesStatiques() {
         },
       ],
     },
+    {
+      // Nom et statut de fondateur confirmés (transcript WhatsApp + signature
+      // du PDF Blue-Track) — texte factuel à la 3e personne, jamais de
+      // citation inventée au nom de quelqu'un de réel (brief section 4).
+      slug: "mot-fondateur",
+      translations: [
+        {
+          languages_code: "fr",
+          titre: "Dr Ibrahima Cissé",
+          sous_titre: "Fondateur, Wagadu Africa",
+          body:
+            "<p>Dr Ibrahima Cissé a fondé Wagadu Africa avec une conviction : mettre l'héritage africain au service de l'humanité, en conciliant valeurs ancestrales et innovations modernes pour un développement durable et équitable.</p>",
+        },
+        {
+          languages_code: "en",
+          titre: "Dr Ibrahima Cissé",
+          sous_titre: "Founder, Wagadu Africa",
+          body:
+            "<p>Dr Ibrahima Cissé founded Wagadu Africa with one conviction: putting African heritage in service of humanity, reconciling ancestral values with modern innovation for sustainable, equitable development.</p>",
+        },
+      ],
+    },
   ];
 
   for (const row of rows) {
