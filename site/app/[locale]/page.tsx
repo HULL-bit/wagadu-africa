@@ -99,7 +99,7 @@ export default async function HomePage() {
       id: "blue-track-ministere",
       kind: "image",
       src: "/media/photos/ministreoeche.jpeg",
-      objectPosition: "center 40%",
+      objectPosition: "center 25%",
       eyebrow: locale === "fr" ? "BLUE-TRACK — ACTUALITÉ" : "BLUE-TRACK — NEWS",
       title:
         locale === "fr"
