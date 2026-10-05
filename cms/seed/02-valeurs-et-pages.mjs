@@ -368,7 +368,7 @@ async function seedPagesStatiques() {
         },
         {
           languages_code: "en",
-          titre: "Data and tech in service of humanity",
+          titre: "Harnessing Data & Technology to map community realities",
           sous_titre:
             "Wagadu builds concrete data collection and documentation tools so West African communities can assert their rights — Blue-Track is the proof.",
           body:

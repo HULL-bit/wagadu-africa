@@ -72,7 +72,7 @@ export default async function HomePage() {
     {
       id: "positionnement",
       kind: "image",
-      src: "/media/photos/banniere-energy-transition-fund.jpg",
+      src: "/media/fish4acp/DSC03795.jpg",
       eyebrow: "WAGADU AFRICA",
       title: hero?.titre ?? "La donnée et la technologie au service de l'humanité",
       subtitle: hero?.sous_titre,
