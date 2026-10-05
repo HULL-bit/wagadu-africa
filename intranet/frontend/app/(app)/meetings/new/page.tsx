@@ -49,7 +49,7 @@ export default function NewMeetingPage() {
           <label className="label">Fin<input type="datetime-local" required className="input" value={form.end}
             onChange={(e) => setForm({ ...form, end: e.target.value })} /></label>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-wrap gap-4 items-center">
           <label className="label mb-0">Accès
             <select className="input" value={form.access} onChange={(e) => setForm({ ...form, access: e.target.value })}>
               <option value="invited">Sur invitation</option>

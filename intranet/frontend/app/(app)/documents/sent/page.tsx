@@ -42,20 +42,22 @@ export default function SentDocumentsPage() {
               </div>
             </div>
             {open === d.id && (
-              <table className="w-full text-sm mt-2">
-                <tbody className="divide-y divide-wagadu-sand">
-                  {d.recipients.map((r) => (
-                    <tr key={r.id}>
-                      <td className="py-1 font-mono text-xs">{r.user_email}</td>
-                      <td className="text-right">
-                        {r.is_read
-                          ? <span className="text-xs opacity-60">lu le {new Date(r.read_at!).toLocaleDateString("fr-FR")}</span>
-                          : <span className="badge bg-wagadu-amber/30 text-wagadu-brown">non lu</span>}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm mt-2">
+                  <tbody className="divide-y divide-wagadu-sand">
+                    {d.recipients.map((r) => (
+                      <tr key={r.id}>
+                        <td className="py-1 font-mono text-xs">{r.user_email}</td>
+                        <td className="text-right">
+                          {r.is_read
+                            ? <span className="text-xs opacity-60">lu le {new Date(r.read_at!).toLocaleDateString("fr-FR")}</span>
+                            : <span className="badge bg-wagadu-amber/30 text-wagadu-brown">non lu</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </div>
         ))}
