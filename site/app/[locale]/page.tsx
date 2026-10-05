@@ -102,8 +102,8 @@ export default async function HomePage() {
       eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
       title:
         locale === "fr"
-          ? "Une communauté résiliente pour le maintien de la biodiversité et de la durabilité des activités de pêche"
-          : "A resilient community sustaining biodiversity and the long-term future of fishing activities",
+          ? "Des communautés formées, outillées, en mesure d'agir"
+          : "Communities trained, equipped, able to act",
       subtitle:
         locale === "fr"
           ? "Avec FISH4ACP, Wagadu documente la performance économique de la filière ostréicole sénégalaise."
@@ -183,8 +183,8 @@ export default async function HomePage() {
       eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
       title:
         locale === "fr"
-          ? "Chaque cage transportée, un geste répété au service d'une filière durable"
-          : "Every cage carried, a gesture repeated in service of a sustainable industry",
+          ? "Une communauté résiliente pour le maintien de la biodiversité et de la durabilité des activités de pêche"
+          : "A resilient community sustaining biodiversity and the long-term future of fishing activities",
       subtitle:
         locale === "fr"
           ? "Au coucher du soleil, le travail continue sur le parc ostréicole."
