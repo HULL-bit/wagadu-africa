@@ -61,7 +61,7 @@
 	}
 
 	# API Django + admin + statiques (WhiteNoise) → backend
-	@backend path /api/* /django-admin/* /static/*
+	@backend path /api/* /django-admin/* /static/* /media/*
 	handle @backend {
 		reverse_proxy backend:8000
 	}

@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve as serve_static
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
@@ -44,7 +44,20 @@ urlpatterns = [
     ),
 ]
 
-# En dev (stockage local), Django sert les fichiers média (avatars…).
-# En production, MinIO/R2 génère ses propres URLs.
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Tant qu'aucun stockage S3/R2 n'est configuré (MINIO_ACCESS_KEY vide),
+# settings.base bascule sur FileSystemStorage — y compris en production
+# (voir STORAGES dans settings/base.py). Dans ce cas, c'est Django qui doit
+# servir /media/ (avatars, pièces jointes...), sinon les fichiers uploadés
+# sont bien écrits sur disque mais jamais accessibles (404 côté navigateur).
+# `django.conf.urls.static.static()` refuse de servir quoi que ce soit hors
+# DEBUG (no-op silencieux) — on appelle donc directement la vue `serve`.
+# Si MinIO/R2 est configuré, django-storages génère ses propres URLs
+# signées et ce bloc ne sert plus à rien (inoffensif de le garder).
+if settings.STORAGES["default"]["BACKEND"] == "django.core.files.storage.FileSystemStorage":
+    urlpatterns += [
+        re_path(
+            r"^media/(?P<path>.*)$",
+            serve_static,
+            {"document_root": settings.MEDIA_ROOT},
+        ),
+    ]

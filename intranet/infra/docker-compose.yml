@@ -42,6 +42,12 @@ services:
       timeout: 5s
       retries: 6
       start_period: 40s
+    volumes:
+      # Avatars/pièces jointes uploadés (FileSystemStorage tant que MinIO/R2
+      # n'est pas configuré, voir wagadu/urls.py) — sans ce volume nommé, les
+      # fichiers vivaient seulement dans la couche éphémère du conteneur et
+      # disparaissaient à chaque recréation.
+      - backend_media:/app/mediafiles
     depends_on:
       postgres:
         condition: service_healthy
@@ -243,3 +249,4 @@ volumes:
   caddy_data:
   caddy_config:
   directus_uploads:
+  backend_media:
