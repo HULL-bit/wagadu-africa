@@ -74,7 +74,7 @@ export default async function HomePage() {
       kind: "image",
       src: "/media/fish4acp/DSC03795.jpg",
       eyebrow: "WAGADU AFRICA",
-      title: hero?.titre ?? "La donnée et la technologie au service de l'humanité",
+      title: hero?.titre ?? "La donnée et      la technologie  au service de l'humanité",
       subtitle: hero?.sous_titre,
       ctaLabel: tNav("realisations"),
       ctaHref: "/realisations",
@@ -102,8 +102,8 @@ export default async function HomePage() {
       eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
       title:
         locale === "fr"
-          ? "Des communautés formées, outillées, en mesure d'agir"
-          : "Communities trained, equipped, able to act",
+          ? "Une communauté résiliente pour le maintien de la biodiversité et de la durabilité des activités de pêche"
+          : "A resilient community sustaining biodiversity and the long-term future of fishing activities",
       subtitle:
         locale === "fr"
           ? "Avec FISH4ACP, Wagadu documente la performance économique de la filière ostréicole sénégalaise."
@@ -115,7 +115,7 @@ export default async function HomePage() {
       id: "blue-track-ministere",
       kind: "image",
       src: "/media/photos/ministreoeche.jpeg",
-      objectPosition: "center 15%",
+      objectPosition: "center 40%",
       eyebrow: locale === "fr" ? "BLUE-TRACK — ACTUALITÉ" : "BLUE-TRACK — NEWS",
       title:
         locale === "fr"
@@ -135,12 +135,12 @@ export default async function HomePage() {
       eyebrow: locale === "fr" ? "O'CRYSTAL — NOTRE TECHNOLOGIE" : "O'CRYSTAL — OUR TECHNOLOGY",
       title:
         locale === "fr"
-          ? "O'Crystal : l'eau purifiée, produite localement"
-          : "O'Crystal: purified water, produced locally",
+          ? "L'accès à l'eau, un droit humain fondamental"
+          : "Water access, a basic human right",
       subtitle:
         locale === "fr"
-          ? "Une solution technologique conçue et fabriquée par Wagadu Africa."
-          : "A technology solution designed and built by Wagadu Africa.",
+          ? "O'Crystal apporte des solutions."
+          : "O'Crystal brings solutions.",
       ctaLabel: tCommon("enSavoirPlus"),
       ctaHref: "/realisations/ocrystal",
     },
@@ -191,22 +191,6 @@ export default async function HomePage() {
           : "At sunset, the work continues at the oyster farm.",
       ctaLabel: tCommon("enSavoirPlus"),
       ctaHref: "/realisations/fish4acp",
-    },
-    {
-      id: "communaute",
-      kind: "image",
-      src: "/media/fish4acp/groupe-silhouette-coucher-soleil.jpg",
-      eyebrow: locale === "fr" ? "NOS RÉALISATIONS" : "OUR ACHIEVEMENTS",
-      title:
-        locale === "fr"
-          ? "Trois projets, une même exigence : l'impact prouvé"
-          : "Three projects, one same standard: proven impact",
-      subtitle:
-        locale === "fr"
-          ? "Blue-Track, O'Crystal, FISH4ACP — découvrez ce que nous avons réalisé sur le terrain."
-          : "Blue-Track, O'Crystal, FISH4ACP — discover what we have achieved in the field.",
-      ctaLabel: tNav("realisations"),
-      ctaHref: "/realisations",
     },
     {
       id: "horizon",

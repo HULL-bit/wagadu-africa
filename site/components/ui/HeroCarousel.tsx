@@ -95,9 +95,9 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     « filtrés »/teintés comme avant (brief : filtrage trop fort). */}
                 <div className="absolute inset-0 bg-gradient-to-t from-wagadu-ebony/45 via-wagadu-ebony/10 to-transparent" />
 
-                <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
+                <div className="relative flex h-full flex-col items-center justify-center px-6 pb-[10vh] text-center">
                   {slide.eyebrow ? (
-                    <p className="font-mono text-sm tracking-widest text-wagadu-amber">
+                    <p className="rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-sm tracking-widest text-wagadu-amber backdrop-blur-sm">
                       {slide.eyebrow}
                     </p>
                   ) : null}
