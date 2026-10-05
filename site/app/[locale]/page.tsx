@@ -161,22 +161,6 @@ export default async function HomePage() {
       ctaHref: "/realisations/fish4acp",
     },
     {
-      id: "fish4acp-transformation",
-      kind: "image",
-      src: "/media/fish4acp/entretien-beneficiaire.jpg",
-      eyebrow: locale === "fr" ? "FISH4ACP — TECHNOLOGIE" : "FISH4ACP — TECHNOLOGY",
-      title:
-        locale === "fr"
-          ? "Une unité de transformation aux normes"
-          : "A processing unit that meets standards",
-      subtitle:
-        locale === "fr"
-          ? "De l'huître récoltée au produit transformé, une chaîne de valeur documentée de bout en bout."
-          : "From harvested oyster to processed product, a value chain documented end to end.",
-      ctaLabel: tCommon("enSavoirPlus"),
-      ctaHref: "/realisations/fish4acp",
-    },
-    {
       id: "ostreiculture-ecran",
       kind: "image",
       src: "/media/fish4acp/silhouette-cage-coucher-soleil-01.jpg",

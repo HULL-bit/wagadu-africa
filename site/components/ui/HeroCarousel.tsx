@@ -101,7 +101,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                       {slide.eyebrow}
                     </p>
                   ) : null}
-                  <h1 className="mt-4 max-w-4xl text-balance text-center font-display font-semibold">
+                  <h1 className="mt-4 max-w-4xl whitespace-pre-line text-balance text-center font-display font-semibold">
                     {slide.title}
                   </h1>
                   {slide.subtitle ? (
