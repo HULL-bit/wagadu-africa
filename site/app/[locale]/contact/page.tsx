@@ -15,7 +15,7 @@ export async function generateMetadata() {
  */
 const CONTACT = {
   email: "contact@wagadu-africa.org",
-  telephone: "+221 76 160 01 82",
+  telephone: "+221 76 129 85 20",
   adresse: "Cité Marine Almadie 2 N°75, Rufisque, Sénégal",
 } as const;
 
