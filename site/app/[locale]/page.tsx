@@ -80,22 +80,6 @@ export default async function HomePage() {
       ctaHref: "/realisations",
     },
     {
-      id: "heritage",
-      kind: "video",
-      src: "/media/videos/hero-3.mp4",
-      eyebrow: locale === "fr" ? "NOTRE HÉRITAGE" : "OUR HERITAGE",
-      title:
-        locale === "fr"
-          ? "L'héritage africain, au service de l'humanité"
-          : "African heritage, in service of humanity",
-      subtitle:
-        locale === "fr"
-          ? "Wagadu concilie valeurs ancestrales et opportunités modernes pour un progrès harmonieux."
-          : "Wagadu blends ancestral values and modern opportunity for harmonious progress.",
-      ctaLabel: tNav("quiSommesNous"),
-      ctaHref: "/qui-sommes-nous",
-    },
-    {
       id: "fish4acp-ostreiculture",
       kind: "image",
       src: "/media/fish4acp/equipe-terrain-mangrove.jpg",
