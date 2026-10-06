@@ -122,6 +122,11 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
               className="relative h-full w-full max-w-5xl"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* unoptimized : 132 photos uniques en haute résolution — générer
+                  à la volée une variante /_next/image jamais mise en cache
+                  sollicite `sharp` (CPU/RAM) sur un serveur à une seule
+                  coeur, perceptible comme un gel du site au clic. Les
+                  fichiers sources sont déjà à une taille raisonnable. */}
               <Image
                 src={images[index].src}
                 alt={images[index].alt}
@@ -129,6 +134,7 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
                 sizes="100vw"
                 className="object-contain"
                 priority
+                unoptimized
               />
               <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-4 text-center text-sm text-white">
                 {images[index].alt} — {index + 1} / {images.length}
