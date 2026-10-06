@@ -14,13 +14,12 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
-      - "8080:8080"
     env_file: .env
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro,z
       - caddy_data:/data
-      # Portfolio SYSTEM//DIAW (test sans domaine, voir Caddyfile) — fichiers
-      # hors du dépôt wagadu-africa, déposés directement sur le VPS.
+      # Portfolio SYSTEM//DIAW — fichiers hors du dépôt wagadu-africa,
+      # déposés directement sur le VPS.
       - /opt/portfolio/out:/srv/portfolio:ro,z
       - caddy_config:/config
     depends_on:

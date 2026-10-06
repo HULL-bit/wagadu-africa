@@ -77,15 +77,16 @@
 	}
 }
 
-# ─── Portfolio (SYSTEM//DIAW) — test temporaire sans nom de domaine ─────
-# Pas de HTTPS possible via Let's Encrypt sur une IP brute — à remplacer par
-# un vrai bloc de domaine (voir les 3 ci-dessus) une fois un nom acheté.
-:8080 {
+# ─── Portfolio (SYSTEM//DIAW) ────────────────────────────────────────────
+# Canonique sur www. (SITE_ORIGIN par défaut dans src/lib/site.ts du projet) —
+# l'apex redirige vers www., pas l'inverse.
+www.{$PORTFOLIO_DOMAIN} {
 	encode gzip zstd
 	root * /srv/portfolio
 	file_server
 
 	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "DENY"
 		Referrer-Policy "strict-origin-when-cross-origin"
@@ -98,4 +99,8 @@
 		rewrite * /404.html
 		file_server
 	}
+}
+
+{$PORTFOLIO_DOMAIN} {
+	redir https://www.{$PORTFOLIO_DOMAIN}{uri} permanent
 }
