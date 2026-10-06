@@ -95,7 +95,7 @@ async function main() {
     await api("POST", "/items/realisations", {
       slug: "ocrystal",
       status: "published",
-      mise_en_avant: false,
+      mise_en_avant: true,
       template: "standard",
       sort: 3,
       lien_externe: "https://ocrystal.sn",
@@ -127,7 +127,7 @@ async function main() {
     await api("POST", "/items/realisations", {
       slug: "fish4acp",
       status: "published",
-      mise_en_avant: false,
+      mise_en_avant: true,
       template: "standard",
       sort: 4,
       lien_externe: null,
