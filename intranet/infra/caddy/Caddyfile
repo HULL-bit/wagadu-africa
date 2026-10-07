@@ -29,6 +29,18 @@
 	redir https://{$WEBSITE_DOMAIN}{uri} permanent
 }
 
+{$STATS_DOMAIN} {
+	encode gzip zstd
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+
+	reverse_proxy umami:3000
+}
+
 {$CMS_DOMAIN} {
 	encode gzip zstd
 
