@@ -180,6 +180,22 @@ function StandardTemplate({
             {item.date_realisation ? ` — ${item.date_realisation}` : ""}
           </p>
         ) : null}
+        {item.slug === "fish4acp" ? (
+          <div className="mb-8 flex items-center gap-3 rounded-2xl border border-wagadu-sand bg-wagadu-ivory/60 px-5 py-4">
+            <Image
+              src="/media/partners/fao-logo.svg"
+              alt="FAO — Organisation des Nations Unies pour l'alimentation et l'agriculture"
+              width={36}
+              height={36}
+              className="shrink-0"
+            />
+            <p className="text-sm text-wagadu-ebony/70">
+              {locale === "fr"
+                ? "FISH4ACP est un programme de l'Organisation des Nations Unies pour l'alimentation et l'agriculture (FAO)."
+                : "FISH4ACP is a programme of the Food and Agriculture Organization of the United Nations (FAO)."}
+            </p>
+          </div>
+        ) : null}
         <div
           className="prose prose-neutral max-w-none text-lg leading-relaxed prose-headings:font-display prose-a:text-wagadu-terracotta"
           dangerouslySetInnerHTML={{ __html: translation?.corps ?? "" }}

@@ -73,6 +73,7 @@ export default async function HomePage() {
       id: "positionnement",
       kind: "image",
       src: "/media/fish4acp/DSC03795.jpg",
+      objectPosition: "40% 48%",
       eyebrow: "WAGADU AFRICA",
       title: hero?.titre ?? "La donnée et      la technologie  au service de l'humanité",
       subtitle: hero?.sous_titre,
@@ -83,6 +84,7 @@ export default async function HomePage() {
       id: "fish4acp-ostreiculture",
       kind: "image",
       src: "/media/fish4acp/equipe-terrain-mangrove.jpg",
+      objectPosition: "62% 38%",
       eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
       title:
         locale === "fr"
@@ -131,7 +133,8 @@ export default async function HomePage() {
     {
       id: "fish4acp-cooperative",
       kind: "image",
-      src: "/media/fish4acp/pirogue-marquee-fish4acp.jpg",
+      src: "/media/fish4acp/cooperative-yokhoss.jpg",
+      objectPosition: "55% 22%",
       eyebrow: locale === "fr" ? "FISH4ACP — MAÂT" : "FISH4ACP — MAÂT",
       title:
         locale === "fr"
