@@ -65,13 +65,26 @@ export default async function HomePage() {
     : realisations.slice(0, 3);
 
   /**
-   * Retour ONG : limiter à 3-4 diapositives (preuve + communauté + identité +
-   * appel à l'action), chacune avec un titre court, une phrase, un bouton —
-   * plutôt que 8 diapositives diluant le message. Les visuels retirés d'ici
+   * Retour ONG : limiter à 3-4 diapositives de preuve/communauté/CTA — mais
+   * l'utilisateur a explicitement demandé de remettre la vidéo de
+   * bienvenue en tête, donc 5 ici. Les visuels retirés par ailleurs
    * (équipe terrain, O'Crystal, silhouette biodiversité) restent visibles
    * ailleurs sur le site (Réalisations, Thématiques), rien n'est supprimé.
    */
   const heroSlides: HeroSlide[] = [
+    {
+      id: "bienvenue",
+      kind: "video",
+      src: "/media/videos/hero-2-glade-sunset.mp4",
+      eyebrow: "WAGADU AFRICA",
+      title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
+      subtitle:
+        locale === "fr"
+          ? "Une organisation africaine au service de l'humanité, entre héritage et innovation."
+          : "An African organization in service of humanity, between heritage and innovation.",
+      ctaLabel: tNav("realisations"),
+      ctaHref: "/realisations",
+    },
     {
       id: "positionnement",
       kind: "image",
