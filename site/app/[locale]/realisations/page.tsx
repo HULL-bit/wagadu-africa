@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { getRealisations, pickTranslation } from "@/lib/directus";
+import { getFormations, getRealisations, pickTranslation } from "@/lib/directus";
 import { REALISATION_IMAGES, REALISATION_IMAGES_SECONDARY, FALLBACK_CARD_IMAGE } from "@/lib/media-map";
 import type { AppLocale } from "@/i18n/routing";
 
@@ -24,6 +24,7 @@ export default async function RealisationsPage() {
   const t = await getTranslations("nav");
   const tCommon = await getTranslations("common");
   const realisations = await getRealisations(locale);
+  const formations = await getFormations(locale);
 
   return (
     <>
@@ -113,6 +114,47 @@ export default async function RealisationsPage() {
         )}
         </div>
       </div>
+
+      {/* Formations Open Data — retour NGO. Collection Directus `formations`,
+          vide tant que l'ONG n'a pas listé ses formations réelles : la
+          section ne s'affiche que si au moins une ligne existe, jamais de
+          tableau "à compléter" visible aux visiteurs. */}
+      {formations.length > 0 ? (
+        <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+          <Reveal className="text-center">
+            <h2 className="font-display text-2xl font-semibold text-wagadu-ebony">
+              {locale === "fr" ? "Formations Open Data" : "Open Data Training"}
+            </h2>
+          </Reveal>
+          <div className="mt-10 overflow-x-auto rounded-3xl border border-wagadu-sand">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead className="bg-wagadu-sand/40 text-xs font-semibold uppercase tracking-wide text-wagadu-ebony/60">
+                <tr>
+                  <th className="px-5 py-3">{locale === "fr" ? "Intitulé" : "Title"}</th>
+                  <th className="px-5 py-3">{locale === "fr" ? "Année" : "Year"}</th>
+                  <th className="px-5 py-3">{locale === "fr" ? "Lieu" : "Location"}</th>
+                  <th className="px-5 py-3">{locale === "fr" ? "Public" : "Audience"}</th>
+                  <th className="px-5 py-3">{locale === "fr" ? "Participants" : "Participants"}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-wagadu-sand">
+                {formations.map((formation) => {
+                  const tr = pickTranslation(formation.translations, locale);
+                  return (
+                    <tr key={formation.id}>
+                      <td className="px-5 py-3 font-medium text-wagadu-ebony">{tr?.intitule}</td>
+                      <td className="px-5 py-3 text-wagadu-ebony/70">{formation.annee}</td>
+                      <td className="px-5 py-3 text-wagadu-ebony/70">{formation.lieu}</td>
+                      <td className="px-5 py-3 text-wagadu-ebony/70">{tr?.public_cible}</td>
+                      <td className="px-5 py-3 text-wagadu-ebony/70">{formation.participants}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

@@ -17,6 +17,7 @@ export type DirectusSchema = {
   projets: ProjetItem[];
   parametres_site: ParametresSite;
   actualites: ActualiteItem[];
+  formations: FormationItem[];
 };
 
 export type Translated<T> = T & {
@@ -114,6 +115,21 @@ export type PageStatiqueItem = {
   id: string;
   slug: string;
   translations: PageStatiqueTranslation[];
+};
+
+export type FormationTranslation = {
+  languages_code: string;
+  intitule: string;
+  public_cible: string | null;
+};
+
+export type FormationItem = {
+  id: string;
+  annee: string | null;
+  lieu: string | null;
+  participants: number | null;
+  sort: number | null;
+  translations: FormationTranslation[];
 };
 
 export type ActualiteTranslation = {
@@ -396,6 +412,29 @@ export async function getProjets(locale: AppLocale): Promise<ProjetItem[]> {
     [],
   );
   return rows as unknown as ProjetItem[];
+}
+
+/**
+ * Section "Formations Open Data" (retour NGO) — collection vide tant que
+ * l'ONG n'a pas listé ses formations réelles ; le rendu (realisations/
+ * page.tsx) n'affiche la section que si ce tableau n'est pas vide.
+ */
+export async function getFormations(locale: AppLocale): Promise<FormationItem[]> {
+  const client = getClient({ tags: ["formations"], revalidate: 3600 });
+  const rows = await safe(
+    client.request(
+      readItems(
+        "formations",
+        query({
+          sort: ["sort"],
+          fields: ["*", { translations: ["*"] }],
+          ...translationFilter(locale),
+        }),
+      ),
+    ),
+    [],
+  );
+  return rows as unknown as FormationItem[];
 }
 
 export async function getActualites(locale: AppLocale): Promise<ActualiteItem[]> {
