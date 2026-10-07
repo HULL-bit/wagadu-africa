@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Work_Sans, IBM_Plex_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
@@ -60,6 +61,17 @@ export default async function LocaleLayout({
           </main>
           <Footer />
         </NextIntlClientProvider>
+        {/* Umami — analytics sans cookie, pas de bannière de consentement
+            requise (retour NGO, checklist technique). Script conditionnel :
+            tant que NEXT_PUBLIC_UMAMI_WEBSITE_ID n'est pas renseigné (dev
+            local), rien n'est chargé. */}
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ? (
+          <Script
+            src={`${process.env.NEXT_PUBLIC_UMAMI_SRC ?? "https://stats.wagadu-africa.org/script.js"}`}
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="lazyOnload"
+          />
+        ) : null}
       </body>
     </html>
   );
