@@ -180,6 +180,15 @@ services:
     environment:
       DIRECTUS_URL: http://directus:8055
       NEXT_PUBLIC_SITE_URL: https://${WEBSITE_DOMAIN}
+    volumes:
+      # Le cache ISR (.next/cache) vit par défaut dans la couche éphémère du
+      # conteneur : tout `up -d --force-recreate site` (y compris les
+      # redémarrages en cascade déclenchés par un simple changement dans le
+      # `.env` partagé, voir notes d'infra) le vide, et les pages connectées
+      # à Directus retombent sur le contenu vide baké au build jusqu'à la
+      # prochaine revalidation manuelle — bug constaté plusieurs fois en
+      # pratique. Volume nommé = cache qui survit aux recreate.
+      - site_cache:/app/.next/cache
     depends_on:
       directus:
         condition: service_healthy
@@ -271,3 +280,4 @@ volumes:
   caddy_config:
   directus_uploads:
   backend_media:
+  site_cache:
