@@ -14,7 +14,10 @@ export async function generateMetadata() {
   const t = await getTranslations("nav");
   const page = await getPageStatique("qui-sommes-nous", locale);
   const translation = page ? pickTranslation(page.translations, locale) : undefined;
-  return { title: translation?.titre ?? t("quiSommesNous") };
+  return {
+    title: translation?.titre ?? t("quiSommesNous"),
+    description: translation?.sous_titre,
+  };
 }
 
 export default async function QuiSommesNousPage() {

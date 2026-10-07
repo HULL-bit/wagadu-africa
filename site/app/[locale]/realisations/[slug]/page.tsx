@@ -25,7 +25,10 @@ export async function generateMetadata({
   const locale = (await getLocale()) as AppLocale;
   const item = await getRealisationBySlug(slug, locale);
   const translation = item ? pickTranslation(item.translations, locale) : undefined;
-  return { title: translation?.titre ?? slug };
+  return {
+    title: translation?.titre ?? slug,
+    description: translation?.resume,
+  };
 }
 
 const GALLERIES: Record<string, string[]> = {

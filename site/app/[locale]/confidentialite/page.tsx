@@ -5,7 +5,15 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("footer");
-  return { title: t("confidentialite") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("confidentialite"),
+    description:
+      locale === "fr"
+        ? "Comment Wagadu Africa traite les données personnelles collectées via ce site, bientôt en ligne."
+        : "How Wagadu Africa processes personal data collected through this site, coming soon.",
+    robots: { index: false, follow: true },
+  };
 }
 
 /**

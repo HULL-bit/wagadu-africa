@@ -7,7 +7,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("projets") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("projets"),
+    description:
+      locale === "fr"
+        ? "Le portefeuille de nos initiatives en cours et à venir."
+        : "The portfolio of our ongoing and upcoming initiatives.",
+  };
 }
 
 const STATUT_LABEL: Record<string, string> = {

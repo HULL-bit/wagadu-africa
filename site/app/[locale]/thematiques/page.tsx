@@ -9,7 +9,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("thematiques") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("thematiques"),
+    description:
+      locale === "fr"
+        ? "Trois pôles, une même exigence : la donnée et les outils de terrain au service des communautés."
+        : "Three areas, one standard: data and field tools in the service of communities.",
+  };
 }
 
 const ACCENT_TEXT: Record<string, string> = {

@@ -7,7 +7,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("outils") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("outils"),
+    description:
+      locale === "fr"
+        ? "La donnée au service de l'humanité : ce n'est pas un slogan, c'est ce que nous construisons sur le terrain."
+        : "Data in service of humanity: not a slogan, but what we build in the field.",
+  };
 }
 
 const GARANTIES = [

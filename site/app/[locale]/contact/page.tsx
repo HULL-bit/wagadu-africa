@@ -6,7 +6,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("contact") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("contact"),
+    description:
+      locale === "fr"
+        ? "Une question, un partenariat, une envie de nous rejoindre : écrivez-nous."
+        : "A question, a partnership, a wish to join us: write to us.",
+  };
 }
 
 /**

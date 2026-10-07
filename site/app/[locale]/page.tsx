@@ -23,11 +23,20 @@ import {
 } from "@/lib/media-map";
 import type { AppLocale } from "@/i18n/routing";
 
+/**
+ * Titre SEO dédié, distinct du titre affiché dans le carrousel (qui contient
+ * des retours à la ligne volontaires pour l'affichage, à ne jamais mettre
+ * dans un <title> ou un lien partagé) — retour NGO, checklist référencement.
+ */
 export async function generateMetadata() {
   const locale = (await getLocale()) as AppLocale;
-  const page = await getPageStatique("accueil-positionnement", locale);
-  const translation = page ? pickTranslation(page.translations, locale) : undefined;
-  return { title: translation?.titre ?? "Wagadu Africa" };
+  return {
+    title: locale === "fr" ? "La donnée au service de l'humanité" : "Data in Service of Humanity",
+    description:
+      locale === "fr"
+        ? "Wagadu Africa collecte et documente des données de terrain pour que les communautés d'Afrique de l'Ouest fassent valoir leurs droits."
+        : "Wagadu Africa collects and documents field data so West African communities can assert their rights.",
+  };
 }
 
 const ACCENT_CLASSES: Record<string, string> = {

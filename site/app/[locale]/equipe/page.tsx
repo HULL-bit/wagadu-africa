@@ -7,7 +7,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("equipe") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("equipe"),
+    description:
+      locale === "fr"
+        ? "Les personnes qui construisent Wagadu Africa, sur le terrain et avec la donnée."
+        : "The people building Wagadu Africa, in the field and with data.",
+  };
 }
 
 /**

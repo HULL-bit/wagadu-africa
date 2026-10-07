@@ -4,7 +4,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("gouvernance") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("gouvernance"),
+    description:
+      locale === "fr"
+        ? "Notre conseil d'administration et notre organisation, bientôt en ligne."
+        : "Our board and organizational structure, coming soon.",
+  };
 }
 
 /**

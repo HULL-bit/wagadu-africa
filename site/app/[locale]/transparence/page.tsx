@@ -4,7 +4,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("transparence") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("transparence"),
+    description:
+      locale === "fr"
+        ? "La répartition de nos fonds et notre budget annuel, bientôt en ligne."
+        : "Our fund allocation and annual budget, coming soon.",
+  };
 }
 
 /**

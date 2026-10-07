@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const locale = (await getLocale()) as AppLocale;
   const item = await getActualiteBySlug(slug, locale);
   const tr = item ? pickTranslation(item.translations, locale) : undefined;
-  return { title: tr?.titre ?? slug };
+  return { title: tr?.titre ?? slug, description: tr?.chapo };
 }
 
 export default async function ActualiteDetailPage({

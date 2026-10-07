@@ -7,7 +7,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("media") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("media"),
+    description:
+      locale === "fr"
+        ? "Nos photos de terrain, au Sénégal, aux côtés des communautés."
+        : "Our field photos from Senegal, alongside communities.",
+  };
 }
 
 /**

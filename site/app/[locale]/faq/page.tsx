@@ -5,7 +5,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("faq") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("faq"),
+    description:
+      locale === "fr"
+        ? "Les questions les plus fréquentes, sur le don comme sur notre mission."
+        : "The most frequent questions, on donating as well as on our mission.",
+  };
 }
 
 const FAQ_FR = [

@@ -10,7 +10,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("actualites") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("actualites"),
+    description:
+      locale === "fr"
+        ? "Les nouvelles de nos projets, de nos équipes et de nos communautés partenaires."
+        : "News from our projects, our teams and our partner communities.",
+  };
 }
 
 /** Fil d'actualités (brief section 3.3) — première vraie publication : la

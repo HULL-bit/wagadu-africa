@@ -6,7 +6,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("don") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("don"),
+    description:
+      locale === "fr"
+        ? "Soutenez l'agriculture durable, l'accès à l'eau et les initiatives communautaires portées par Wagadu Africa."
+        : "Support sustainable agriculture, access to water and community initiatives led by Wagadu Africa.",
+  };
 }
 
 const USAGES_FR = [

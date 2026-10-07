@@ -4,7 +4,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("ressources") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("ressources"),
+    description:
+      locale === "fr"
+        ? "Nos rapports et études, bientôt disponibles au téléchargement."
+        : "Our reports and studies, available for download soon.",
+  };
 }
 
 export default async function RessourcesPage() {

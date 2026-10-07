@@ -5,7 +5,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("nousRejoindre") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("nousRejoindre"),
+    description:
+      locale === "fr"
+        ? "Bénévolat, stages, offres d'emploi : l'équipe Wagadu grandit avec ses projets."
+        : "Volunteering, internships, job openings: the Wagadu team grows with its projects.",
+  };
 }
 
 /**

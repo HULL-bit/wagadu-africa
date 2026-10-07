@@ -4,7 +4,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("partenaires") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("partenaires"),
+    description:
+      locale === "fr"
+        ? "Nos partenaires techniques, institutionnels et financiers, bientôt présentés ici."
+        : "Our technical, institutional and financial partners, presented here soon.",
+  };
 }
 
 export default async function PartenairesPage() {

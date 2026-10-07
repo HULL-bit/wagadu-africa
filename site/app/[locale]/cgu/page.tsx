@@ -5,7 +5,16 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("footer");
-  return { title: t("cgu") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("cgu"),
+    description:
+      locale === "fr"
+        ? "Les conditions d'utilisation du site wagadu-africa.org, bientôt en ligne."
+        : "The terms of use for wagadu-africa.org, coming soon.",
+    // Page encore en attente de validation du texte réel — pas à indexer.
+    robots: { index: false, follow: true },
+  };
 }
 
 export default async function CguPage() {

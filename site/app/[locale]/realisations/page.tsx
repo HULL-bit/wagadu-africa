@@ -9,7 +9,14 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("nav");
-  return { title: t("realisations") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("realisations"),
+    description:
+      locale === "fr"
+        ? "Les preuves concrètes de notre action, portées par les communautés elles-mêmes."
+        : "The concrete proof of our work, carried by the communities themselves.",
+  };
 }
 
 export default async function RealisationsPage() {

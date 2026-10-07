@@ -5,7 +5,15 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata() {
   const t = await getTranslations("footer");
-  return { title: t("mentionsLegales") };
+  const locale = (await getLocale()) as AppLocale;
+  return {
+    title: t("mentionsLegales"),
+    description:
+      locale === "fr"
+        ? "Les mentions légales de Wagadu Africa, bientôt en ligne."
+        : "Wagadu Africa's legal notice, coming soon.",
+    robots: { index: false, follow: true },
+  };
 }
 
 /**
