@@ -246,17 +246,15 @@ async function seedPiliers() {
       translations: [
         {
           languages_code: "fr",
-          nom: "Technologie",
-          resume:
-            "Recherche de la connaissance, développement de technologies innovantes, accessibles et utiles à tous.",
+          nom: "Données & Technologie",
+          resume: "Collecte, analyse, visualisation et formation : des outils numériques pensés avec les communautés.",
           description_longue:
             "La donnée au service de l'humanité : Data, Tech et IA au service des communautés, illustrés concrètement par Blue-Track — la plateforme de documentation et de défense des droits des pêcheurs.",
         },
         {
           languages_code: "en",
-          nom: "Technology",
-          resume:
-            "Pursuit of knowledge, development of innovative technologies, accessible and useful to all.",
+          nom: "Data & Technology",
+          resume: "Collection, analysis, visualization and training: digital tools designed with communities.",
           description_longue:
             "Data in service of humanity: Data, Tech and AI serving communities, embodied by Blue-Track — the platform fishing communities use to document and defend their rights.",
         },
@@ -269,17 +267,16 @@ async function seedPiliers() {
       translations: [
         {
           languages_code: "fr",
-          nom: "Environnement",
+          nom: "Environnement, climat et biodiversité",
           resume:
-            "Solutions environnementales durables, préservation des ressources naturelles, équilibre entre développement économique et conservation des écosystèmes.",
+            "Des données pour protéger mangroves et zones de pêche, et bâtir une adaptation durable face au changement climatique.",
           description_longue:
             "Gestion des ressources naturelles, biodiversité, énergies renouvelables — un pilier de travail concret et mesurable, pas seulement un décor.",
         },
         {
           languages_code: "en",
-          nom: "Environment",
-          resume:
-            "Sustainable environmental solutions, preservation of natural resources, balance between economic development and ecosystem conservation.",
+          nom: "Environment, climate and biodiversity",
+          resume: "Data to protect mangroves and fishing grounds, building durable adaptation to climate change.",
           description_longue:
             "Natural resource management, biodiversity, renewable energy — a concrete, measurable pillar of work, not just scenery.",
         },

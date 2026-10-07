@@ -81,7 +81,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                   >
                     <Image
                       src={slide.src}
-                      alt=""
+                      alt={slide.title}
                       fill
                       sizes="100vw"
                       priority={index === 0}
@@ -90,12 +90,19 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     />
                   </motion.div>
                 )}
-                {/* Scrim très léger, juste assez pour que le texte reste lisible —
-                    retour utilisateur : les médias doivent rester nets, pas
-                    « filtrés »/teintés comme avant (brief : filtrage trop fort). */}
-                <div className="absolute inset-0 bg-gradient-to-t from-wagadu-ebony/45 via-wagadu-ebony/10 to-transparent" />
+                {/* Scrim très léger sur toute l'image, pour que les visages restent
+                    nets — retour utilisateur : les médias ne doivent jamais être
+                    « filtrés »/teintés comme avant. Le texte, lui, vit dans un
+                    bandeau dédié en bas (plus sombre, voir ci-dessous) plutôt
+                    que centré par-dessus les personnes photographiées (retour
+                    ONG : « dégager les visages »). */}
+                <div className="absolute inset-0 bg-gradient-to-t from-wagadu-ebony/35 via-transparent to-transparent" />
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-wagadu-ebony/90 via-wagadu-ebony/55 to-transparent"
+                />
 
-                <div className="relative flex h-full flex-col items-center justify-center px-6 pb-[10vh] text-center">
+                <div className="relative flex h-full flex-col items-center justify-end px-6 pb-24 text-center sm:pb-28">
                   {slide.eyebrow ? (
                     <p className="rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-sm tracking-widest text-wagadu-amber backdrop-blur-sm">
                       {slide.eyebrow}

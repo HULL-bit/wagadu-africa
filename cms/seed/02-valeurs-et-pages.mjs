@@ -399,8 +399,12 @@ async function seedPagesStatiques() {
     },
     {
       // Nom et statut de fondateur confirmés (transcript WhatsApp + signature
-      // du PDF Blue-Track) — texte factuel à la 3e personne, jamais de
-      // citation inventée au nom de quelqu'un de réel (brief section 4).
+      // du PDF Blue-Track). Texte à la première personne, structuré selon la
+      // demande du document de retours NGO (pourquoi WAGADU existe / ce qui
+      // distingue / une preuve / une invitation, 80-120 mots) — mais aucun
+      // fait ajouté au-delà de ce qui est déjà établi ailleurs sur le site
+      // (FISH4ACP+FAO, Blue-Track présenté au Ministère). Jamais de citation
+      // inventée au nom de quelqu'un de réel (brief section 4).
       slug: "mot-fondateur",
       translations: [
         {
@@ -408,14 +412,14 @@ async function seedPagesStatiques() {
           titre: "Dr Ibrahima Cissé",
           sous_titre: "Fondateur, Wagadu Africa",
           body:
-            "<p>Dr Ibrahima Cissé a fondé Wagadu Africa avec une conviction : mettre l'héritage africain au service de l'humanité, en conciliant valeurs ancestrales et innovations modernes pour un développement durable et équitable.</p>",
+            "<p>Si j'ai fondé Wagadu Africa, c'est par conviction : trop de décisions qui touchent nos communautés — pêcheurs, ostréicultrices, familles côtières — se prennent sans données fiables sur leur réalité. Ce qui nous distingue, c'est notre manière de travailler : nous allions la donnée et le terrain, en formant les communautés à documenter elles-mêmes ce qu'elles vivent, plutôt que de parler à leur place.</p><p>Avec FISH4ACP, aux côtés de la FAO, nous avons accompagné la coopérative de Yokhoss dans la transformation et la valorisation de ses huîtres. Et notre plateforme Blue-Track, née d'une initiative citoyenne, a été présentée au Ministère des Pêches. Rejoignez-nous pour faire de la donnée un outil entre les mains des communautés.</p>",
         },
         {
           languages_code: "en",
           titre: "Dr Ibrahima Cissé",
           sous_titre: "Founder, Wagadu Africa",
           body:
-            "<p>Dr Ibrahima Cissé founded Wagadu Africa with one conviction: putting African heritage in service of humanity, reconciling ancestral values with modern innovation for sustainable, equitable development.</p>",
+            "<p>I founded Wagadu Africa out of one conviction: too many decisions affecting our communities — fishers, oyster farmers, coastal families — are made without reliable data about their reality. What sets us apart is how we work: we bring data and fieldwork together, training communities to document their own reality rather than speaking for them.</p><p>Through FISH4ACP, alongside the FAO, we supported the Yokhoss cooperative in processing and selling its oysters. And Blue-Track, born as a grassroots initiative, was presented to Senegal's Ministry of Fisheries. Join us in putting data into communities' own hands.</p>",
         },
       ],
     },

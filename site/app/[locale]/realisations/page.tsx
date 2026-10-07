@@ -58,7 +58,7 @@ export default async function RealisationsPage() {
                     <div className="relative h-72 overflow-hidden">
                       <Image
                         src={image}
-                        alt=""
+                        alt={translation?.titre ?? ""}
                         fill
                         sizes="(min-width: 640px) 50vw, 100vw"
                         className="object-cover transition duration-700 group-hover:scale-110"

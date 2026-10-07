@@ -1,10 +1,11 @@
 {
   "nav": {
     "accueil": "Accueil",
-    "quiSommesNous": "Qui sommes-nous",
+    "quiSommesNous": "À propos",
+    "equipe": "Équipe",
     "thematiques": "Nos thématiques",
     "realisations": "Nos réalisations",
-    "outils": "Nos outils technologiques",
+    "outils": "Données & Technologie",
     "projets": "Nos Projets",
     "actualites": "Actualités",
     "ressources": "Ressources & publications",

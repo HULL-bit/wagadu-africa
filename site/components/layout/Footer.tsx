@@ -12,6 +12,8 @@ const INSTITUTIONNEL = [
 const RESSOURCES = [
   { href: "/ressources", key: "ressources" },
   { href: "/media", key: "media" },
+  { href: "/outils", key: "outils" },
+  { href: "/projets", key: "projets" },
   { href: "/faq", key: "faq" },
   { href: "/nous-rejoindre", key: "nousRejoindre" },
 ] as const;

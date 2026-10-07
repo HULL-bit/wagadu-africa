@@ -55,20 +55,14 @@ export default async function HomePage() {
     ? realisations.filter((r) => r.mise_en_avant)
     : realisations.slice(0, 3);
 
+  /**
+   * Retour ONG : limiter à 3-4 diapositives (preuve + communauté + identité +
+   * appel à l'action), chacune avec un titre court, une phrase, un bouton —
+   * plutôt que 8 diapositives diluant le message. Les visuels retirés d'ici
+   * (équipe terrain, O'Crystal, silhouette biodiversité) restent visibles
+   * ailleurs sur le site (Réalisations, Thématiques), rien n'est supprimé.
+   */
   const heroSlides: HeroSlide[] = [
-    {
-      id: "bienvenue",
-      kind: "video",
-      src: "/media/videos/hero-2-glade-sunset.mp4",
-      eyebrow: "WAGADU AFRICA",
-      title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
-      subtitle:
-        locale === "fr"
-          ? "Une organisation africaine au service de l'humanité, entre héritage et innovation."
-          : "An African organization in service of humanity, between heritage and innovation.",
-      ctaLabel: tNav("realisations"),
-      ctaHref: "/realisations",
-    },
     {
       id: "positionnement",
       kind: "image",
@@ -76,25 +70,29 @@ export default async function HomePage() {
       objectPosition: "40% 48%",
       eyebrow: "WAGADU AFRICA",
       title: hero?.titre ?? "La donnée et      la technologie  au service de l'humanité",
-      subtitle: hero?.sous_titre,
-      ctaLabel: tNav("realisations"),
+      subtitle:
+        hero?.sous_titre ??
+        (locale === "fr"
+          ? "Des outils concrets de collecte de données, pour que les communautés fassent valoir leurs droits."
+          : "Concrete data tools so communities can document their realities and assert their rights."),
+      ctaLabel: locale === "fr" ? "Découvrir nos réalisations" : "Discover our work",
       ctaHref: "/realisations",
     },
     {
-      id: "fish4acp-ostreiculture",
+      id: "fish4acp-cooperative",
       kind: "image",
-      src: "/media/fish4acp/equipe-terrain-mangrove.jpg",
-      objectPosition: "62% 38%",
-      eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
+      src: "/media/fish4acp/cooperative-yokhoss.jpg",
+      objectPosition: "55% 22%",
+      eyebrow: locale === "fr" ? "FISH4ACP — MAÂT" : "FISH4ACP — MAÂT",
       title:
         locale === "fr"
-          ? "Des communautés formées, outillées, en mesure d'agir"
-          : "Communities trained, equipped, able to act",
+          ? "La coopérative de Yokhoss transforme et vend ses huîtres"
+          : "The Yokhoss cooperative turns oysters into a livelihood",
       subtitle:
         locale === "fr"
-          ? "Avec FISH4ACP, Wagadu documente la performance économique de la filière ostréicole sénégalaise."
-          : "With FISH4ACP, Wagadu documents the economic performance of Senegal's oyster-farming value chain.",
-      ctaLabel: tCommon("enSavoirPlus"),
+          ? "Des femmes ostréicultrices organisées, formées et mieux rémunérées."
+          : "Oyster-farming women, organized, trained, and better paid.",
+      ctaLabel: locale === "fr" ? "Voir le projet FISH4ACP" : "See the FISH4ACP project",
       ctaHref: "/realisations/fish4acp",
     },
     {
@@ -109,59 +107,10 @@ export default async function HomePage() {
           : "Blue-Track presented to the Ministry of Fisheries",
       subtitle:
         locale === "fr"
-          ? "Une étape clé pour faire de cette initiative citoyenne un outil national de gouvernance maritime."
-          : "A key step toward turning this grassroots initiative into a national maritime governance tool.",
-      ctaLabel: tCommon("enSavoirPlus"),
+          ? "Une étape clé vers un outil national de gouvernance maritime."
+          : "A key step toward a national maritime governance tool.",
+      ctaLabel: locale === "fr" ? "Lire l'actualité" : "Read the update",
       ctaHref: "/actualites/blue-track-presentation-ministere-peches",
-    },
-    {
-      id: "ocrystal",
-      kind: "image",
-      src: "/media/tech/ocrystal-bouteille.jpg",
-      eyebrow: locale === "fr" ? "O'CRYSTAL — NOTRE TECHNOLOGIE" : "O'CRYSTAL — OUR TECHNOLOGY",
-      title:
-        locale === "fr"
-          ? "L'accès à l'eau, un droit humain fondamental"
-          : "Water access, a basic human right",
-      subtitle:
-        locale === "fr"
-          ? "O'Crystal apporte des solutions."
-          : "O'Crystal brings solutions.",
-      ctaLabel: tCommon("enSavoirPlus"),
-      ctaHref: "/realisations/ocrystal",
-    },
-    {
-      id: "fish4acp-cooperative",
-      kind: "image",
-      src: "/media/fish4acp/cooperative-yokhoss.jpg",
-      objectPosition: "55% 22%",
-      eyebrow: locale === "fr" ? "FISH4ACP — MAÂT" : "FISH4ACP — MAÂT",
-      title:
-        locale === "fr"
-          ? "La coopérative de Yokhoss, au cœur du projet"
-          : "The Yokhoss cooperative, at the heart of the project",
-      subtitle:
-        locale === "fr"
-          ? "Des femmes ostréicultrices organisées, formées et mieux rémunérées."
-          : "Oyster-farming women, organized, trained, and better paid.",
-      ctaLabel: tCommon("enSavoirPlus"),
-      ctaHref: "/realisations/fish4acp",
-    },
-    {
-      id: "ostreiculture-ecran",
-      kind: "image",
-      src: "/media/fish4acp/silhouette-cage-coucher-soleil-01.jpg",
-      eyebrow: locale === "fr" ? "FISH4ACP — SUR LE TERRAIN" : "FISH4ACP — IN THE FIELD",
-      title:
-        locale === "fr"
-          ? "Une communauté résiliente pour le maintien de la biodiversité et de la durabilité des activités de pêche"
-          : "A resilient community sustaining biodiversity and the long-term future of fishing activities",
-      subtitle:
-        locale === "fr"
-          ? "Au coucher du soleil, le travail continue sur le parc ostréicole."
-          : "At sunset, the work continues at the oyster farm.",
-      ctaLabel: tCommon("enSavoirPlus"),
-      ctaHref: "/realisations/fish4acp",
     },
     {
       id: "horizon",

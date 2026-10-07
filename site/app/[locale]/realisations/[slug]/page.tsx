@@ -113,13 +113,19 @@ type ItemProps = {
   gallery: string[];
 };
 
-function Gallery({ images }: { images: string[] }) {
+function Gallery({ images, titre }: { images: string[]; titre?: string }) {
   if (images.length === 0) return null;
   return (
     <div className="grid grid-cols-3 gap-3">
       {images.map((src) => (
         <div key={src} className="relative aspect-square overflow-hidden rounded-2xl">
-          <Image src={src} alt="" fill sizes="33vw" className="object-cover transition duration-500 hover:scale-110" />
+          <Image
+            src={src}
+            alt={titre ?? ""}
+            fill
+            sizes="33vw"
+            className="object-cover transition duration-500 hover:scale-110"
+          />
         </div>
       ))}
     </div>
@@ -158,7 +164,7 @@ function StandardTemplate({
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 lg:w-1/2">
             <Image
               src={image}
-              alt=""
+              alt={translation?.titre ?? ""}
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               priority
@@ -203,7 +209,7 @@ function StandardTemplate({
 
         {gallery.length > 0 ? (
           <Reveal className="mt-12">
-            <Gallery images={gallery} />
+            <Gallery images={gallery} titre={translation?.titre} />
           </Reveal>
         ) : null}
 
@@ -232,7 +238,7 @@ function ScrollStory({ item, translation, ctaLabel, image, gallery }: ItemProps)
   return (
     <div>
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center text-wagadu-ivory">
-        <Image src={image} alt="" fill sizes="100vw" priority className="object-cover" />
+        <Image src={image} alt={translation?.titre ?? ""} fill sizes="100vw" priority className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-wagadu-ebony/70 via-wagadu-ebony/60 to-wagadu-ebony" />
         <p className="relative font-mono text-sm tracking-widest text-wagadu-amber">
           {item.piliers.map((p) => p.piliers_id.slug).join(" · ")}
@@ -253,7 +259,7 @@ function ScrollStory({ item, translation, ctaLabel, image, gallery }: ItemProps)
       {gallery.length > 0 ? (
         <section className="bg-wagadu-ivory px-6 py-20">
           <Reveal className="mx-auto max-w-3xl">
-            <Gallery images={gallery} />
+            <Gallery images={gallery} titre={translation?.titre} />
           </Reveal>
         </section>
       ) : null}

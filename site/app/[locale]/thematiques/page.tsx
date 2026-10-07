@@ -196,12 +196,20 @@ export default async function ThematiquesPage() {
                   ) : null}
 
                   {pilier.slug === "technologie" ? (
-                    <Link
-                      href="/realisations/blue-track"
-                      className="mt-6 inline-flex w-fit items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
-                    >
-                      {locale === "fr" ? "Voir Blue-Track, notre outil phare" : "See Blue-Track, our flagship tool"} →
-                    </Link>
+                    <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                      <Link
+                        href="/realisations/blue-track"
+                        className="inline-flex w-fit items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
+                      >
+                        {locale === "fr" ? "Voir Blue-Track, notre outil phare" : "See Blue-Track, our flagship tool"} →
+                      </Link>
+                      <Link
+                        href="/outils"
+                        className="inline-flex w-fit items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
+                      >
+                        {locale === "fr" ? "Nos outils et services data" : "Our data tools and services"} →
+                      </Link>
+                    </div>
                   ) : null}
 
                   {pilier.slug === "environnement" ? (
