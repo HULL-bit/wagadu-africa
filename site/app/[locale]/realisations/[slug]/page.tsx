@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { getAllRealisationSlugs, getRealisationBySlug, pickTranslation } from "@/lib/directus";
+import {
+  getAllRealisationSlugs,
+  getRealisationBySlug,
+  pickTranslation,
+  type RealisationTranslation,
+} from "@/lib/directus";
 import { Reveal } from "@/components/ui/Reveal";
 import { REALISATION_IMAGES, FALLBACK_CARD_IMAGE } from "@/lib/media-map";
 import type { AppLocale } from "@/i18n/routing";
@@ -86,6 +91,7 @@ export default async function RealisationDetailPage({
       <ScrollStory
         item={item}
         translation={translation}
+        locale={locale}
         ctaLabel={tCommon("voirLaPlateforme")}
         image={image}
         gallery={gallery}
@@ -107,11 +113,57 @@ export default async function RealisationDetailPage({
 
 type ItemProps = {
   item: NonNullable<Awaited<ReturnType<typeof getRealisationBySlug>>>;
-  translation: { titre: string; resume: string; corps: string } | undefined;
+  translation: ReturnType<typeof pickTranslation<RealisationTranslation>>;
   ctaLabel: string;
   image: string;
   gallery: string[];
 };
+
+/** Les 3 résultats chiffrés du modèle de "fiche projet" (retour NGO) —
+ * n'affiche le bloc que si au moins un résultat est renseigné. */
+function ResultatsChiffres({ translation }: { translation: ItemProps["translation"] }) {
+  const resultats = [translation?.resultat_1, translation?.resultat_2, translation?.resultat_3].filter(
+    (r): r is string => Boolean(r),
+  );
+  if (resultats.length === 0) return null;
+  return (
+    <div className="mt-12 grid gap-4 sm:grid-cols-3">
+      {resultats.map((resultat) => (
+        <div key={resultat} className="rounded-2xl border border-wagadu-sand bg-wagadu-ivory/60 p-5 text-center">
+          <p className="font-display text-lg font-semibold text-wagadu-terracotta">{resultat}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Temoignage({ translation }: { translation: ItemProps["translation"] }) {
+  if (!translation?.temoignage_citation) return null;
+  return (
+    <blockquote className="mt-12 border-l-4 border-wagadu-amber pl-6 italic text-wagadu-ebony/80">
+      <p className="text-lg leading-relaxed">« {translation.temoignage_citation} »</p>
+      {translation.temoignage_auteur ? (
+        <p className="mt-2 text-sm font-semibold not-italic text-wagadu-ebony/60">
+          {translation.temoignage_auteur}
+        </p>
+      ) : null}
+    </blockquote>
+  );
+}
+
+function RapportTelechargeable({ url, locale }: { url?: string | null; locale: AppLocale }) {
+  if (!url) return null;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      className="mt-8 inline-flex items-center gap-2 rounded-full border border-wagadu-terracotta px-6 py-3 text-sm font-semibold text-wagadu-terracotta transition hover:bg-wagadu-terracotta hover:text-white"
+    >
+      {locale === "fr" ? "Télécharger le rapport" : "Download the report"} ↓
+    </a>
+  );
+}
 
 function Gallery({ images, titre }: { images: string[]; titre?: string }) {
   if (images.length === 0) return null;
@@ -207,22 +259,28 @@ function StandardTemplate({
           dangerouslySetInnerHTML={{ __html: translation?.corps ?? "" }}
         />
 
+        <ResultatsChiffres translation={translation} />
+        <Temoignage translation={translation} />
+
         {gallery.length > 0 ? (
           <Reveal className="mt-12">
             <Gallery images={gallery} titre={translation?.titre} />
           </Reveal>
         ) : null}
 
-        {item.lien_externe ? (
-          <a
-            href={item.lien_externe}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-12 inline-block rounded-full bg-wagadu-terracotta px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-wagadu-brown"
-          >
-            {ctaLabel}
-          </a>
-        ) : null}
+        <div className="flex flex-wrap gap-4">
+          {item.lien_externe ? (
+            <a
+              href={item.lien_externe}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-block rounded-full bg-wagadu-terracotta px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-wagadu-brown"
+            >
+              {ctaLabel}
+            </a>
+          ) : null}
+          <RapportTelechargeable url={item.rapport_url} locale={locale} />
+        </div>
       </div>
     </>
   );
@@ -234,7 +292,7 @@ function StandardTemplate({
  * ouverte F(c) du plan : les vraies captures de la plateforme remplaceront
  * ces visuels dès que l'équipe les fournit.
  */
-function ScrollStory({ item, translation, ctaLabel, image, gallery }: ItemProps) {
+function ScrollStory({ item, translation, locale, ctaLabel, image, gallery }: ItemProps & { locale: AppLocale }) {
   return (
     <div>
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center text-wagadu-ivory">
@@ -249,11 +307,16 @@ function ScrollStory({ item, translation, ctaLabel, image, gallery }: ItemProps)
         </p>
       </section>
 
-      <section className="relative flex min-h-[70vh] items-center bg-gradient-to-br from-wagadu-bark to-wagadu-ebony px-6 py-28 text-wagadu-ivory">
+      <section className="relative flex min-h-[70vh] flex-col items-center justify-center bg-gradient-to-br from-wagadu-bark to-wagadu-ebony px-6 py-28 text-wagadu-ivory">
         <div
           className="prose prose-invert mx-auto max-w-2xl text-lg leading-relaxed prose-headings:font-display prose-a:text-wagadu-amber"
           dangerouslySetInnerHTML={{ __html: translation?.corps ?? "" }}
         />
+        <div className="mx-auto w-full max-w-2xl">
+          <ResultatsChiffres translation={translation} />
+          <Temoignage translation={translation} />
+          <RapportTelechargeable url={item.rapport_url} locale={locale} />
+        </div>
       </section>
 
       {gallery.length > 0 ? (

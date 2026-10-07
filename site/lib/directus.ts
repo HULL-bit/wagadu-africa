@@ -28,6 +28,13 @@ export type RealisationTranslation = {
   titre: string;
   resume: string;
   corps: string;
+  /** Modèle de "fiche projet" (retour NGO) — vides tant que non confirmés,
+   * le rendu n'affiche chaque bloc que si son contenu est renseigné. */
+  resultat_1?: string | null;
+  resultat_2?: string | null;
+  resultat_3?: string | null;
+  temoignage_citation?: string | null;
+  temoignage_auteur?: string | null;
 };
 
 export type PilierTranslation = {
@@ -55,6 +62,7 @@ export type RealisationItem = {
   lien_externe: string | null;
   date_realisation: string | null;
   localisation_label: string | null;
+  rapport_url?: string | null;
   piliers: Array<{ piliers_id: PilierItem }>;
   translations: RealisationTranslation[];
 };
