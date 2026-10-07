@@ -8,16 +8,17 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 /**
- * 6 entrées max (retour NGO : « menu du haut trop chargé ») — Outils et
+ * Menu allégé (retour NGO : « menu du haut trop chargé ») — Outils et
  * Projets restent accessibles (liens depuis Thématiques/pied de page), mais
  * sortent du menu principal ; Intranet reste hors de cette liste, en lien
- * discret à droite (déjà le cas, voir plus bas + Footer.tsx).
+ * discret à droite (déjà le cas, voir plus bas + Footer.tsx). Équipe retirée
+ * du menu (retour utilisateur : pas encore assez de contenu réel pour
+ * justifier un onglet) — la page reste accessible directement par son URL.
  */
 const PRIMARY_NAV = [
   { href: "/qui-sommes-nous", key: "quiSommesNous" },
   { href: "/thematiques", key: "thematiques" },
   { href: "/realisations", key: "realisations" },
-  { href: "/equipe", key: "equipe" },
   { href: "/actualites", key: "actualites" },
   { href: "/contact", key: "contact" },
 ] as const;
