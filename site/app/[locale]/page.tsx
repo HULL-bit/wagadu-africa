@@ -196,8 +196,12 @@ export default async function HomePage() {
               <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
               <div>
                 <BranchAccent className="h-9 w-9 text-wagadu-amber" />
+                {/* Texte réel sur 4 paragraphes — colonnes façon presse pour
+                    éviter une section démesurément haute sur une seule
+                    colonne ; `break-inside-avoid` empêche un paragraphe
+                    d'être coupé entre deux colonnes. */}
                 <div
-                  className="prose prose-invert mt-3 max-w-none text-xl italic leading-relaxed text-wagadu-ivory/90 prose-p:mb-4"
+                  className="prose prose-invert mt-3 max-w-none columns-1 gap-10 text-lg italic leading-relaxed text-wagadu-ivory/90 [&_p]:mb-4 [&_p]:break-inside-avoid lg:columns-2"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
                 <p className="mt-4 font-display text-lg font-semibold text-wagadu-ivory">
