@@ -211,18 +211,22 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div className="relative">
-                <h3 className="relative font-display text-2xl font-semibold text-wagadu-ivory">
+              <div>
+                <h3 className="font-display text-2xl font-semibold text-wagadu-ivory">
                   {locale === "fr" ? "Ancrés dans ce que nous sommes" : "Rooted in who we are"}
                 </h3>
+                {/* Guillemet décoratif dans le flux normal, sur sa propre
+                    ligne au-dessus du texte — retour utilisateur : la
+                    version en position absolue chevauchait les premiers
+                    mots du paragraphe. */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -left-2 top-12 select-none font-display text-[7rem] leading-none text-wagadu-amber/25"
+                  className="block select-none font-display text-6xl leading-none text-wagadu-amber/40"
                 >
                   &ldquo;
                 </span>
                 <div
-                  className="prose prose-invert relative mt-4 max-w-none pl-2 text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
+                  className="prose prose-invert max-w-none text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
                 <p
