@@ -191,7 +191,7 @@ export default async function HomePage() {
             style={{ backgroundImage: "url(/media/brand/motif-africain-colore.jpg)", backgroundSize: "280px" }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-wagadu-ebony/88 via-wagadu-ebony/75 to-wagadu-bark/85" />
-          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Reveal className="grid gap-10 sm:grid-cols-[minmax(0,300px)_1fr] sm:items-start">
               <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
               <div>
@@ -199,9 +199,11 @@ export default async function HomePage() {
                 {/* Texte réel sur 4 paragraphes — colonnes façon presse pour
                     éviter une section démesurément haute sur une seule
                     colonne ; `break-inside-avoid` empêche un paragraphe
-                    d'être coupé entre deux colonnes. */}
+                    d'être coupé entre deux colonnes. 3 colonnes dès `lg`
+                    (conteneur élargi à 7xl pour leur laisser une largeur de
+                    lecture correcte), 2 dès `md` en transition. */}
                 <div
-                  className="prose prose-invert mt-3 max-w-none columns-1 gap-10 text-lg italic leading-relaxed text-wagadu-ivory/90 [&_p]:mb-4 [&_p]:break-inside-avoid lg:columns-2"
+                  className="prose prose-invert mt-3 max-w-none columns-1 gap-8 text-base italic leading-relaxed text-wagadu-ivory/90 [&_p]:mb-4 [&_p]:break-inside-avoid md:columns-2 lg:columns-3"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
                 <p className="mt-4 font-display text-lg font-semibold text-wagadu-ivory">
