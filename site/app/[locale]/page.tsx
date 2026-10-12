@@ -191,27 +191,40 @@ export default async function HomePage() {
             style={{ backgroundImage: "url(/media/brand/motif-africain-colore.jpg)", backgroundSize: "280px" }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-wagadu-ebony/88 via-wagadu-ebony/75 to-wagadu-bark/85" />
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <Reveal className="grid gap-10 sm:grid-cols-[minmax(0,300px)_1fr] sm:items-start">
-              <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            {/* Texte réel sur 4 paragraphes (retour utilisateur : les
+                colonnes CSS cassaient avec des paragraphes de longueurs trop
+                inégales). Nouvelle organisation : photo + identité groupées
+                et "collées" au défilement à gauche (toujours visibles),
+                citation phare en ouverture pour accrocher l'œil, corps du
+                texte à droite en colonne unique à largeur de lecture
+                confortable plutôt qu'étiré ou fragmenté. */}
+            <Reveal className="grid gap-12 lg:grid-cols-[320px_1fr] lg:items-start">
+              <div className="flex flex-col items-center gap-5 text-center lg:sticky lg:top-28 lg:items-start lg:text-left">
+                <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
+                <div>
+                  <p className="font-display text-xl font-semibold text-wagadu-ivory">
+                    {motFondateur.titre}
+                  </p>
+                  {motFondateur.sous_titre ? (
+                    <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-wagadu-amber">
+                      {motFondateur.sous_titre}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+
               <div>
                 <BranchAccent className="h-9 w-9 text-wagadu-amber" />
-                {/* Texte réel sur 4 paragraphes — colonnes façon presse pour
-                    éviter une section démesurément haute sur une seule
-                    colonne ; `break-inside-avoid` empêche un paragraphe
-                    d'être coupé entre deux colonnes. 3 colonnes dès `lg`
-                    (conteneur élargi à 7xl pour leur laisser une largeur de
-                    lecture correcte), 2 dès `md` en transition. */}
+                <p className="mt-4 max-w-2xl font-display text-2xl font-semibold leading-snug text-wagadu-ivory sm:text-3xl">
+                  {locale === "fr"
+                    ? "« Je suis parce que nous sommes. »"
+                    : "“I am because we are.”"}
+                </p>
                 <div
-                  className="prose prose-invert mt-3 max-w-none columns-1 gap-8 text-base italic leading-relaxed text-wagadu-ivory/90 [&_p]:mb-4 [&_p]:break-inside-avoid md:columns-2 lg:columns-3"
+                  className="prose prose-invert mt-8 max-w-2xl text-lg leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
-                <p className="mt-4 font-display text-lg font-semibold text-wagadu-ivory">
-                  {motFondateur.titre}
-                </p>
-                {motFondateur.sous_titre ? (
-                  <p className="text-sm text-wagadu-amber">{motFondateur.sous_titre}</p>
-                ) : null}
               </div>
             </Reveal>
           </div>

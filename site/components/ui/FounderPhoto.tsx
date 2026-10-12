@@ -20,7 +20,7 @@ export function FounderPhoto({ src, alt }: { src: string; alt: string }) {
     >
       <div className="shape-blob animate-pulse-ring absolute -inset-2 bg-gradient-to-br from-wagadu-amber via-wagadu-terracotta to-wagadu-brown opacity-80" />
       <div className="shape-blob relative h-full w-full overflow-hidden shadow-2xl ring-4 ring-wagadu-ivory/10">
-        <Image src={src} alt={alt} fill sizes="300px" className="object-cover" />
+        <Image src={src} alt={alt} fill sizes="320px" className="object-cover" />
       </div>
     </motion.div>
   );
