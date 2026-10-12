@@ -221,12 +221,12 @@ export default async function HomePage() {
                     mots du paragraphe. */}
                 <span
                   aria-hidden
-                  className="block select-none font-display text-6xl leading-none text-wagadu-amber/40"
+                  className="mt-3 block select-none font-display text-6xl leading-none text-wagadu-amber/40"
                 >
                   &ldquo;
                 </span>
                 <div
-                  className="prose prose-invert max-w-none text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
+                  className="prose prose-invert mt-3 max-w-none text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
                 <p
