@@ -191,16 +191,13 @@ export default async function HomePage() {
             style={{ backgroundImage: "url(/media/brand/motif-africain-colore.jpg)", backgroundSize: "280px" }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-wagadu-ebony/88 via-wagadu-ebony/75 to-wagadu-bark/85" />
-          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            {/* Texte réel sur 4 paragraphes (retour utilisateur : les
-                colonnes CSS cassaient avec des paragraphes de longueurs trop
-                inégales). Nouvelle organisation : photo + identité groupées
-                et "collées" au défilement à gauche (toujours visibles),
-                citation phare en ouverture pour accrocher l'œil, corps du
-                texte à droite en colonne unique à largeur de lecture
-                confortable plutôt qu'étiré ou fragmenté. */}
-            <Reveal className="grid gap-12 lg:grid-cols-[320px_1fr] lg:items-start">
-              <div className="flex flex-col items-center gap-5 text-center lg:sticky lg:top-28 lg:items-start lg:text-left">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Photo + identité centrées et "collées" au défilement à
+                gauche ; corps du texte à droite, large (moins de retours à
+                la ligne = section moins haute) et habillé en citation
+                (grand guillemet décoratif) plutôt qu'en pull-quote séparé. */}
+            <Reveal className="grid gap-12 lg:grid-cols-[360px_1fr] lg:items-start">
+              <div className="flex flex-col items-center gap-5 text-center lg:sticky lg:top-28">
                 <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
                 <div>
                   <p className="font-display text-xl font-semibold text-wagadu-ivory">
@@ -214,15 +211,15 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div>
-                <BranchAccent className="h-9 w-9 text-wagadu-amber" />
-                <p className="mt-4 max-w-2xl font-display text-2xl font-semibold leading-snug text-wagadu-ivory sm:text-3xl">
-                  {locale === "fr"
-                    ? "« Je suis parce que nous sommes. »"
-                    : "“I am because we are.”"}
-                </p>
+              <div className="relative">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -left-2 -top-10 select-none font-display text-[7rem] leading-none text-wagadu-amber/25"
+                >
+                  &ldquo;
+                </span>
                 <div
-                  className="prose prose-invert mt-8 max-w-2xl text-lg leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
+                  className="prose prose-invert relative max-w-none pl-2 text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
               </div>
