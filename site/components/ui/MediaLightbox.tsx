@@ -52,6 +52,11 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
             onClick={() => setIndex(i)}
             className="group relative block w-full overflow-hidden rounded-2xl shadow-sm break-inside-avoid"
           >
+            {/* unoptimized : même raison que la vue plein écran plus bas —
+                132 vignettes qui passent par le redimensionnement serveur
+                (`sharp`) en même temps, au scroll, suffisent à saturer le
+                seul cœur du VPS et à bloquer toute la galerie. Les fichiers
+                sources sont déjà compressés à une taille web raisonnable. */}
             <Image
               src={item.src}
               alt={item.alt}
@@ -59,6 +64,7 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
               height={400}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               className="h-auto w-full object-cover transition duration-500 group-hover:scale-105"
+              unoptimized
             />
             <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 text-left text-sm text-white opacity-0 transition group-hover:opacity-100">
               {item.alt}
