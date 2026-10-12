@@ -178,6 +178,40 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Mot du fondateur — juste après "Nos valeurs" (retour utilisateur :
+          faire remonter cette section) ; n'apparaît que si le contenu réel
+          (nom, titre, message) a été renseigné dans Directus (page_statique
+          "mot-fondateur") ; jamais de citation inventée au nom de quelqu'un
+          de réel (brief section 4, exigence d'authenticité). */}
+      {motFondateur?.body ? (
+        <section className="relative overflow-hidden bg-wagadu-ebony py-24">
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-repeat opacity-20"
+            style={{ backgroundImage: "url(/media/brand/motif-africain-colore.jpg)", backgroundSize: "280px" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-wagadu-ebony/88 via-wagadu-ebony/75 to-wagadu-bark/85" />
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <Reveal className="grid gap-10 sm:grid-cols-[minmax(0,300px)_1fr] sm:items-start">
+              <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
+              <div>
+                <BranchAccent className="h-9 w-9 text-wagadu-amber" />
+                <div
+                  className="prose prose-invert mt-3 max-w-none text-xl italic leading-relaxed text-wagadu-ivory/90 prose-p:mb-4"
+                  dangerouslySetInnerHTML={{ __html: motFondateur.body }}
+                />
+                <p className="mt-4 font-display text-lg font-semibold text-wagadu-ivory">
+                  {motFondateur.titre}
+                </p>
+                {motFondateur.sous_titre ? (
+                  <p className="text-sm text-wagadu-amber">{motFondateur.sous_titre}</p>
+                ) : null}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
       {/* Motif africain riche et multicolore — séparateur de section plein
           écran (brief 4 : "en franc", jamais en fond de texte courant). */}
       <div
@@ -358,38 +392,6 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      {/* Mot du fondateur — n'apparaît que si le contenu réel (nom, titre,
-          message) a été renseigné dans Directus (page_statique
-          "mot-fondateur") ; jamais de citation inventée au nom de quelqu'un
-          de réel (brief section 4, exigence d'authenticité). */}
-      {motFondateur?.body ? (
-        <section className="relative overflow-hidden bg-wagadu-ebony py-24">
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-repeat opacity-20"
-            style={{ backgroundImage: "url(/media/brand/motif-africain-colore.jpg)", backgroundSize: "280px" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-wagadu-ebony/88 via-wagadu-ebony/75 to-wagadu-bark/85" />
-          <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <Reveal className="grid gap-10 sm:grid-cols-[minmax(0,240px)_1fr] sm:items-center">
-              <FounderPhoto src="/media/photos/mot-fondateur.jpg" alt={motFondateur.titre ?? ""} />
-              <div>
-                <BranchAccent className="h-9 w-9 text-wagadu-amber" />
-                <div
-                  className="prose prose-invert mt-3 max-w-none text-lg italic leading-relaxed text-wagadu-ivory/90 prose-p:mb-4"
-                  dangerouslySetInnerHTML={{ __html: motFondateur.body }}
-                />
-                <p className="mt-4 font-display text-lg font-semibold text-wagadu-ivory">
-                  {motFondateur.titre}
-                </p>
-                {motFondateur.sous_titre ? (
-                  <p className="text-sm text-wagadu-amber">{motFondateur.sous_titre}</p>
-                ) : null}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
 
       {/* CTA don — fond plein cadre en haute résolution (jamais un visuel
           ~300px étiré à toute la largeur, ça devient flou) ; le médaillon

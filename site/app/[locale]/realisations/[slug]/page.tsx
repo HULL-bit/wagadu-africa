@@ -315,6 +315,15 @@ function ScrollStory({ item, translation, locale, ctaLabel, image, gallery }: It
           className="prose prose-invert mx-auto max-w-2xl text-lg leading-relaxed prose-headings:font-display prose-a:text-wagadu-amber"
           dangerouslySetInnerHTML={{ __html: translation?.corps ?? "" }}
         />
+        {item.slug === "blue-track" ? (
+          <div className="mx-auto mt-10 w-full max-w-2xl rounded-2xl border border-wagadu-ivory/15 bg-white/5 px-5 py-4">
+            <p className="text-sm text-wagadu-ivory/80">
+              {locale === "fr"
+                ? "Blue-Track est soutenu par l'Energy Transition Fund (ETF) : « Combler le fossé technologique pour améliorer la résilience de la pêche artisanale face aux impacts de l'exploitation du pétrole et du gaz au Sénégal »."
+                : "Blue-Track is supported by the Energy Transition Fund (ETF): “Bridging the technology gap to strengthen the resilience of small-scale fishing against the impacts of oil and gas exploitation in Senegal.”"}
+            </p>
+          </div>
+        ) : null}
         <div className="mx-auto w-full max-w-2xl">
           <ResultatsChiffres translation={translation} />
           <Temoignage translation={translation} />
