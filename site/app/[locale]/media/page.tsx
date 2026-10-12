@@ -63,12 +63,20 @@ function getNouveauPhotos(): string[] {
   }
 }
 
+/** Vraie vignette pré-générée (`cms/seed` n'y touche pas — voir le script
+ * ponctuel qui les a produites), pas l'image source plein format. */
+function thumbOf(src: string): string {
+  const i = src.lastIndexOf("/");
+  return `${src.slice(0, i)}/thumbs${src.slice(i)}`;
+}
+
 export default async function MediaPage() {
   const locale = (await getLocale()) as AppLocale;
   const t = await getTranslations("nav");
 
   const legendees: LightboxImage[] = GALLERY_LEGENDEE.map((item) => ({
     src: item.src,
+    thumbSrc: thumbOf(item.src),
     alt: locale === "fr" ? item.legendeFr : item.legendeEn,
   }));
   const dejaListees = new Set(GALLERY_LEGENDEE.map((item) => item.src.split("/").pop()));
@@ -76,6 +84,7 @@ export default async function MediaPage() {
     .filter((src) => !dejaListees.has(src.split("/").pop()))
     .map((src) => ({
       src,
+      thumbSrc: thumbOf(src),
       alt: locale === "fr" ? "Photo de terrain, programme FISH4ACP" : "Field photo, FISH4ACP programme",
     }));
 

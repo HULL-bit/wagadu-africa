@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 
-export type LightboxImage = { src: string; alt: string };
+export type LightboxImage = { src: string; thumbSrc?: string; alt: string };
 
 /**
  * Grille cliquable + visionneuse plein écran (retour utilisateur : « on doit
@@ -52,13 +52,16 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
             onClick={() => setIndex(i)}
             className="group relative block w-full overflow-hidden rounded-2xl shadow-sm break-inside-avoid"
           >
-            {/* unoptimized : même raison que la vue plein écran plus bas —
-                132 vignettes qui passent par le redimensionnement serveur
-                (`sharp`) en même temps, au scroll, suffisent à saturer le
-                seul cœur du VPS et à bloquer toute la galerie. Les fichiers
-                sources sont déjà compressés à une taille web raisonnable. */}
+            {/* `thumbSrc` : vraie petite vignette pré-générée (~640px,
+                qualité 68), pas l'image source — avec 132 photos, servir le
+                fichier plein format en vignette forçait le navigateur à
+                télécharger/décoder 132 JPEG haute résolution d'un coup
+                (rendu flou/sombre tant que ça charge), et laisser Next.js
+                les redimensionner à la volée (`sharp`) saturait le seul
+                cœur du VPS. `unoptimized` : le fichier est déjà à la bonne
+                taille, inutile de le repasser par l'optimiseur. */}
             <Image
-              src={item.src}
+              src={item.thumbSrc ?? item.src}
               alt={item.alt}
               width={600}
               height={400}
