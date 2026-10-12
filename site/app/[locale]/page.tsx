@@ -225,6 +225,12 @@ export default async function HomePage() {
                   className="prose prose-invert relative mt-4 max-w-none pl-2 text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
+                <p
+                  aria-hidden
+                  className="pointer-events-none -mt-6 select-none text-right font-display text-[7rem] leading-none text-wagadu-amber/25"
+                >
+                  &rdquo;
+                </p>
               </div>
             </Reveal>
           </div>
