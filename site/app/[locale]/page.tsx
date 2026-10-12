@@ -229,11 +229,15 @@ export default async function HomePage() {
                   className="prose prose-invert mt-3 max-w-none text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
+                {/* Même glyphe qu'en ouverture (retour utilisateur : les
+                    deux guillemets doivent avoir la même forme) plutôt
+                    qu'une vraie paire ouvrante/fermante, visuellement très
+                    différente à cette taille décorative. */}
                 <p
                   aria-hidden
-                  className="pointer-events-none -mt-6 select-none text-right font-display text-[7rem] leading-none text-wagadu-amber/25"
+                  className="pointer-events-none mt-2 select-none text-right font-display text-[7rem] leading-none text-wagadu-amber/25"
                 >
-                  &rdquo;
+                  &ldquo;
                 </p>
               </div>
             </Reveal>
