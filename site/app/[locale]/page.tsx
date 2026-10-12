@@ -212,14 +212,17 @@ export default async function HomePage() {
               </div>
 
               <div className="relative">
+                <h3 className="relative font-display text-2xl font-semibold text-wagadu-ivory">
+                  {locale === "fr" ? "Ancrés dans ce que nous sommes" : "Rooted in who we are"}
+                </h3>
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -left-2 -top-10 select-none font-display text-[7rem] leading-none text-wagadu-amber/25"
+                  className="pointer-events-none absolute -left-2 top-12 select-none font-display text-[7rem] leading-none text-wagadu-amber/25"
                 >
                   &ldquo;
                 </span>
                 <div
-                  className="prose prose-invert relative max-w-none pl-2 text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
+                  className="prose prose-invert relative mt-4 max-w-none pl-2 text-lg italic leading-relaxed text-wagadu-ivory/85 [&_p]:mb-5"
                   dangerouslySetInnerHTML={{ __html: motFondateur.body }}
                 />
               </div>
