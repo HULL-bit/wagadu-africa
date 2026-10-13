@@ -128,14 +128,20 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2 }}
-              className="relative h-full w-full max-w-5xl"
+              className="relative mx-auto w-full max-w-5xl"
+              style={{ height: "85vh" }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* unoptimized : 132 photos uniques en haute résolution — générer
                   à la volée une variante /_next/image jamais mise en cache
                   sollicite `sharp` (CPU/RAM) sur un serveur à une seule
                   coeur, perceptible comme un gel du site au clic. Les
-                  fichiers sources sont déjà à une taille raisonnable. */}
+                  fichiers sources sont déjà à une taille raisonnable.
+                  Hauteur en `vh` fixe plutôt que `h-full` : en production,
+                  la chaîne flex (fixed inset-0 > flex items-center > h-full)
+                  rendait une hauteur nulle pour ce conteneur — l'image ne
+                  s'affichait jamais (seul le fond sombre était visible),
+                  alors que ça fonctionnait en développement local. */}
               <Image
                 src={images[index].src}
                 alt={images[index].alt}
