@@ -132,24 +132,19 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
               style={{ height: "85vh" }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* unoptimized : 132 photos uniques en haute résolution — générer
-                  à la volée une variante /_next/image jamais mise en cache
-                  sollicite `sharp` (CPU/RAM) sur un serveur à une seule
-                  coeur, perceptible comme un gel du site au clic. Les
-                  fichiers sources sont déjà à une taille raisonnable.
-                  Hauteur en `vh` fixe plutôt que `h-full` : en production,
-                  la chaîne flex (fixed inset-0 > flex items-center > h-full)
-                  rendait une hauteur nulle pour ce conteneur — l'image ne
-                  s'affichait jamais (seul le fond sombre était visible),
-                  alors que ça fonctionnait en développement local. */}
-              <Image
+              {/* <img> natif plutôt que next/image : l'image est déjà
+                  `unoptimized` (aucun bénéfice à passer par next/image ici),
+                  et sa logique interne de `fill` restait cassée en
+                  production (seul le fond sombre s'affichait au clic, image
+                  jamais visible) malgré plusieurs correctifs CSS sur le
+                  conteneur — pourtant fonctionnel en développement local.
+                  Une balise <img> classique avec une taille 100%/100% n'a
+                  aucune dépendance à ce calcul interne. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={images[index].src}
                 alt={images[index].alt}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
-                unoptimized
+                className="h-full w-full object-contain"
               />
               <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-4 text-center text-sm text-white">
                 {images[index].alt} — {index + 1} / {images.length}
