@@ -107,28 +107,21 @@ export default async function OutilsPage() {
         <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
           <div className="order-2 lg:order-1">
             <span className="text-sm font-semibold uppercase tracking-wide text-wagadu-terracotta">
-              {locale === "fr" ? "Notre collaboration" : "Our collaboration"}
+              {locale === "fr" ? "Notre projet" : "Our project"}
             </span>
-            <div className="mt-2 flex items-center gap-3">
-              <Image
-                src="/media/osm/logo-osm-senegal.png"
-                alt="OpenStreetMap Sénégal"
-                width={40}
-                height={40}
-                className="shrink-0 rounded-lg"
-              />
-              <h2 className="font-display text-3xl font-semibold text-wagadu-ebony">OpenStreetMap (OSM)</h2>
-            </div>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-wagadu-ebony">
+              {locale === "fr" ? "Cartographie par drone" : "Drone Mapping"}
+            </h2>
             <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
               {locale === "fr"
-                ? "Wagadu collabore avec OpenStreetMap (OSM) pour la cartographie communautaire par drone : capter des données géospatiales précises et à jour, directement utiles aux communautés et aux décisions qui les concernent."
-                : "Wagadu collaborates with OpenStreetMap (OSM) on community drone mapping — capturing precise, up-to-date geospatial data that directly serves the communities and the decisions that affect them."}
+                ? "Wagadu déploie des drones pour la cartographie communautaire : capter des données géospatiales précises et à jour, directement utiles aux communautés et aux décisions qui les concernent."
+                : "Wagadu deploys drones for community mapping — capturing precise, up-to-date geospatial data that directly serves the communities and the decisions that affect them."}
             </p>
           </div>
           <div className="shape-leaf relative order-1 aspect-[4/3] overflow-hidden lg:order-2">
             <Image
-              src="/media/tech/fish4acp-dashboard.png"
-              alt={locale === "fr" ? "Données géospatiales OSM au service du suivi FISH4ACP" : "OSM geospatial data powering FISH4ACP monitoring"}
+              src="/media/osm/drone-telecommande-equipe.jpg"
+              alt={locale === "fr" ? "Préparation du drone avant un vol de cartographie" : "Preparing the drone before a mapping flight"}
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               className="object-cover"
@@ -153,8 +146,8 @@ export default async function OutilsPage() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
               {locale === "fr"
-                ? "Pour FISH4ACP, Wagadu a développé un tableau de bord qui consolide les profils des 18 structures bénéficiaires appuyées par la FAO : financement engagé et décaissé, emplois créés, participation des femmes, sur six régions côtières du Sénégal — alimenté notamment par les données de cartographie collectées avec OSM."
-                : "For FISH4ACP, Wagadu built a dashboard that consolidates profiles of the 18 beneficiary structures supported by the FAO: committed and disbursed funding, jobs created, women's participation, across six coastal regions of Senegal — fed in part by the mapping data collected with OSM."}
+                ? "Pour FISH4ACP, Wagadu a développé un tableau de bord qui consolide les profils des 18 structures bénéficiaires appuyées par la FAO : financement engagé et décaissé, emplois créés, participation des femmes, sur six régions côtières du Sénégal — alimenté notamment par les données de cartographie collectées sur le terrain."
+                : "For FISH4ACP, Wagadu built a dashboard that consolidates profiles of the 18 beneficiary structures supported by the FAO: committed and disbursed funding, jobs created, women's participation, across six coastal regions of Senegal — fed in part by field mapping data."}
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link
