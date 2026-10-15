@@ -137,13 +137,13 @@ export default async function OutilsPage() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
-          <div className="shape-leaf relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-video overflow-hidden rounded-2xl bg-wagadu-ebony/5">
             <Image
               src="/media/tech/fish4acp-dashboard.png"
               alt={locale === "fr" ? "Tableau de bord de suivi FISH4ACP x Wagadu" : "FISH4ACP x Wagadu monitoring dashboard"}
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <div>
