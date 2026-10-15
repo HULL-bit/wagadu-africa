@@ -9,7 +9,7 @@
 export const PILIER_IMAGES: Record<string, string> = {
   maat: "/media/fish4acp/cooperative-yokhoss.jpg",
   // Poste de suivi Blue-Track — même photo que `REALISATION_IMAGES["blue-track"]`.
-  technologie: "/media/tech/blue-track-carte-marine.png",
+  technologie: "/media/tech/datatech.png",
   environnement: "/media/fish4acp/ostreiculture-coucher-soleil.jpg",
 };
 
