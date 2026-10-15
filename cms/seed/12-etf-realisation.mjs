@@ -72,7 +72,7 @@ async function main() {
       },
       {
         languages_code: "en",
-        titre: "Gap Bridging: Fishery & Oil and Gas",
+        titre: "Gap Bridging: Fishery and Oil&Gas",
         resume:
           "Bridging the gap in new technologies to protect small-scale fisheries against negative impacts of oil and gas projects in Senegal.",
         corps:
