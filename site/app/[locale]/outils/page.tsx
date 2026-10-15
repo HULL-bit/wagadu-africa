@@ -149,6 +149,20 @@ export default async function OutilsPage() {
                 ? "Pour FISH4ACP, Wagadu a développé un tableau de bord qui consolide les profils des 18 structures bénéficiaires appuyées par la FAO : financement engagé et décaissé, emplois créés, participation des femmes, sur six régions côtières du Sénégal — alimenté notamment par les données de cartographie collectées sur le terrain."
                 : "For FISH4ACP, Wagadu built a dashboard that consolidates profiles of the 18 beneficiary structures supported by the FAO: committed and disbursed funding, jobs created, women's participation, across six coastal regions of Senegal — fed in part by field mapping data."}
             </p>
+            <div className="mt-4 flex items-center gap-3 rounded-2xl border border-wagadu-sand bg-wagadu-ivory/60 px-4 py-3">
+              <Image
+                src="/media/osm/logo-osm-senegal.png"
+                alt="OpenStreetMap Sénégal"
+                width={32}
+                height={32}
+                className="shrink-0 rounded-md"
+              />
+              <p className="text-sm text-wagadu-ebony/70">
+                {locale === "fr"
+                  ? "Réalisé en collaboration avec OpenStreetMap (OSM) pour la cartographie."
+                  : "Built in collaboration with OpenStreetMap (OSM) for the mapping."}
+              </p>
+            </div>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link
                 href="/realisations/fish4acp"
