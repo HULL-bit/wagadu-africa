@@ -39,7 +39,7 @@ export const REALISATION_IMAGES: Record<string, string> = {
   "mangroves-reforestation": "/media/photos/mangrove-foret-cotiere.jpg",
   // Formation des pêcheurs de Kayar (législation, protection du milieu
   // marin, impacts pétrole/gaz) — photos réelles fournies par l'ONG.
-  etf: "/media/etf/02102026-dsc02094.jpg",
+  etf: "/media/etf/02102026-dsc02199.jpg",
 };
 
 /** Deuxième visuel réel par réalisation — insert en médaillon sur les cartes
