@@ -37,6 +37,9 @@ export const REALISATION_IMAGES: Record<string, string> = {
   // (Gasi Bay), l'autre pris à Sumatra pour une autre campagne — ni l'un ni
   // l'autre ne représentent le travail de Wagadu.
   "mangroves-reforestation": "/media/photos/mangrove-foret-cotiere.jpg",
+  // Formation des pêcheurs de Kayar (législation, protection du milieu
+  // marin, impacts pétrole/gaz) — photos réelles fournies par l'ONG.
+  etf: "/media/etf/02102026-dsc02094.jpg",
 };
 
 /** Deuxième visuel réel par réalisation — insert en médaillon sur les cartes
@@ -49,6 +52,7 @@ export const REALISATION_IMAGES_SECONDARY: Record<string, string> = {
   ocrystal: "/media/tech/technologie-02-laptop.jpg",
   fish4acp: "/media/fish4acp/recolte-huitres-plage.jpg",
   "mangroves-reforestation": "/media/vision/equipe-mangrove-parc-huitres.jpg",
+  etf: "/media/etf/02102026-dsc02190.jpg",
 };
 
 export const FALLBACK_CARD_IMAGE = "/media/fish4acp/zone-ostreicole-pirogues.jpg";

@@ -32,6 +32,27 @@ export async function generateMetadata({
 }
 
 const GALLERIES: Record<string, string[]> = {
+  etf: [
+    "/media/etf/02102026-dsc02072.jpg",
+    "/media/etf/02102026-dsc02080.jpg",
+    "/media/etf/02102026-dsc02090.jpg",
+    "/media/etf/02102026-dsc02095.jpg",
+    "/media/etf/02102026-dsc02113.jpg",
+    "/media/etf/02102026-dsc02116.jpg",
+    "/media/etf/02102026-dsc02121.jpg",
+    "/media/etf/02102026-dsc02136.jpg",
+    "/media/etf/02102026-dsc02140.jpg",
+    "/media/etf/02102026-dsc02145.jpg",
+    "/media/etf/02102026-dsc02149.jpg",
+    "/media/etf/02102026-dsc02155.jpg",
+    "/media/etf/02102026-dsc02159.jpg",
+    "/media/etf/02102026-dsc02163.jpg",
+    "/media/etf/02102026-dsc02170.jpg",
+    "/media/etf/02102026-dsc02183.jpg",
+    "/media/etf/02102026-dsc02192.jpg",
+    "/media/etf/02102026-dsc02196.jpg",
+    "/media/etf/02102026-dsc02199.jpg",
+  ],
   "blue-track": [
     "/media/photos/blue-track-plateforme-full.jpg",
     "/media/photos/banniere-energy-transition-fund.jpg",

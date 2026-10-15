@@ -46,18 +46,17 @@ const GALLERY_LEGENDEE: Array<{ src: string; legendeFr: string; legendeEn: strin
   { src: "/media/fish4acp/silhouette-cage-coucher-soleil-03.jpg", legendeFr: "Transport d'une cage ostréicole, coucher de soleil", legendeEn: "Carrying an oyster cage, sunset" },
 ];
 
-/** Le reste du fonds photo terrain (112 fichiers) — pas de légende unique par
- * photo (trop nombreuses pour en rédiger une à la main pour chacune), listées
- * directement depuis le dossier au moment du build plutôt que copiées à la
- * main une par une dans le code. */
-function getNouveauPhotos(): string[] {
-  const dir = path.join(process.cwd(), "public/media/nouveau");
+/** Fonds photo terrain listés directement depuis leur dossier au moment du
+ * build (trop nombreux pour une légende unique écrite à la main pour
+ * chacun) plutôt que copiés un par un dans le code. */
+function getFolderPhotos(folder: string): string[] {
+  const dir = path.join(process.cwd(), `public/media/${folder}`);
   try {
     return fs
       .readdirSync(dir)
       .filter((f) => /\.jpe?g$/i.test(f))
       .sort()
-      .map((f) => `/media/nouveau/${f}`);
+      .map((f) => `/media/${folder}/${f}`);
   } catch {
     return [];
   }
@@ -80,15 +79,23 @@ export default async function MediaPage() {
     alt: locale === "fr" ? item.legendeFr : item.legendeEn,
   }));
   const dejaListees = new Set(GALLERY_LEGENDEE.map((item) => item.src.split("/").pop()));
-  const reste: LightboxImage[] = getNouveauPhotos()
+  const reste: LightboxImage[] = getFolderPhotos("nouveau")
     .filter((src) => !dejaListees.has(src.split("/").pop()))
     .map((src) => ({
       src,
       thumbSrc: thumbOf(src),
       alt: locale === "fr" ? "Photo de terrain, programme FISH4ACP" : "Field photo, FISH4ACP programme",
     }));
+  const etf: LightboxImage[] = getFolderPhotos("etf").map((src) => ({
+    src,
+    thumbSrc: thumbOf(src),
+    alt:
+      locale === "fr"
+        ? "Formation des pêcheurs de Kayar, projet ETF (Energy Transition Fund)"
+        : "Training of Kayar fishermen, ETF (Energy Transition Fund) project",
+  }));
 
-  const images = [...legendees, ...reste];
+  const images = [...legendees, ...reste, ...etf];
 
   return (
     <>
