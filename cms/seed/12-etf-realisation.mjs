@@ -64,17 +64,17 @@ async function main() {
     translations: [
       {
         languages_code: "fr",
-        titre: "Combler le fossé technologique pour protéger la pêche artisanale face aux impacts négatifs des projets pétroliers et gaziers au Sénégal",
+        titre: "Combler l'écart : pêche et pétrole",
         resume:
-          "Formés au droit et aux technologies, les pêcheurs de Kayar documentent eux-mêmes les impacts de l'exploitation pétrolière et gazière sur leur activité.",
+          "Combler le fossé technologique pour protéger la pêche artisanale face aux impacts négatifs des projets pétroliers et gaziers au Sénégal.",
         corps:
           "<p>Les pêcheurs de Kayar ont reçu des formations sur la législation, la protection du milieu marin et les impacts négatifs de l'exploitation pétrolière et gazière. Cela leur a donné les moyens de s'y opposer plus efficacement. Ils comprennent désormais l'enjeu, ses conséquences, et savent qu'ils sont protégés par la loi. Ni les institutions publiques ni les institutions privées n'ont le droit de nuire à leurs activités ou aux ressources dont ils dépendent.</p><p>Auparavant, ils ne pouvaient pas faire valoir leurs griefs faute de moyens pour les prouver ; c'est pourquoi Wagadu les a formés et équipés pour utiliser ces technologies. Ainsi, une communauté informée, consciente de ses droits et qui comprend l'enjeu, est capable de produire ses propres preuves pour faire fructifier les connaissances reçues. Les synergies entre communautés amélioreront la visibilité et feront passer le paradigme de victimes à celui de personnes responsables de leur propre avenir.</p>",
       },
       {
         languages_code: "en",
-        titre: "Bridging the gap in new technologies to protect small-scale fisheries against negative impacts of oil and gas projects in Senegal",
+        titre: "Gap Bridging: Fishery and Oil",
         resume:
-          "Trained in law and technology, Kayar's fishing communities now document for themselves the impacts of oil and gas exploitation on their livelihoods.",
+          "Bridging the gap in new technologies to protect small-scale fisheries against negative impacts of oil and gas projects in Senegal.",
         corps:
           "<p>Kayar fishermen have received trainings in legislation, marine environment protection and negative impacts oil and gas exploitation. This has empowered and enabled them to oppose more effectively. They now understand the issue, its consequences and they also know that they are protected by the legislation. Neither public nor private institutions have the right to harm their activities or the resources on which they depend.</p><p>Previously, they were unable to pursue their grievances because they lacked the means to prove them, for this reason Wagadu has trained and equipped them to use the technologies. Thus, an informed community that is aware of its rights and understands the issue is able to provide its own evidence to catalyze the knowledge received. Synergies between communities will improve visibility and change the paradigm from one of victims to one of people who are responsible for their own future.</p>",
       },
