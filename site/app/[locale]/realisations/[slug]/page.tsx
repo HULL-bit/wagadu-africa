@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import Link from "next/link";
 import {
   getAllRealisationSlugs,
   getRealisationBySlug,
@@ -224,6 +225,12 @@ function StandardTemplate({
       <div className="relative overflow-hidden bg-gradient-to-br from-wagadu-terracotta via-wagadu-brown to-wagadu-ebony text-wagadu-ivory">
         <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:px-8 lg:py-24">
           <div className="lg:w-1/2">
+            <Link
+              href="/realisations"
+              className="mb-4 inline-flex items-center gap-1 text-sm font-semibold text-wagadu-ivory/80 hover:text-wagadu-ivory"
+            >
+              ← {locale === "fr" ? "Retour aux réalisations" : "Back to achievements"}
+            </Link>
             <div className="mb-4 flex flex-wrap items-center gap-2">
               {item.piliers.map((p) => (
                 <span
@@ -322,6 +329,12 @@ function ScrollStory({ item, translation, locale, ctaLabel, image, gallery }: It
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center text-wagadu-ivory">
         <Image src={image} alt={translation?.titre ?? ""} fill sizes="100vw" priority className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-wagadu-ebony/70 via-wagadu-ebony/60 to-wagadu-ebony" />
+        <Link
+          href="/realisations"
+          className="absolute left-4 top-4 z-10 inline-flex items-center gap-1 text-sm font-semibold text-wagadu-ivory/80 hover:text-wagadu-ivory sm:left-6 sm:top-6"
+        >
+          ← {locale === "fr" ? "Retour aux réalisations" : "Back to achievements"}
+        </Link>
         <p className="relative font-mono text-sm tracking-widest text-wagadu-amber">
           {item.piliers.map((p) => p.piliers_id.slug).join(" · ")}
         </p>
