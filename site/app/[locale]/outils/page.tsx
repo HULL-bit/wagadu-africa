@@ -52,7 +52,7 @@ export default async function OutilsPage() {
             ? "La donnée au service de l'humanité : ce n'est pas un slogan, c'est ce que nous construisons sur le terrain."
             : "Data in service of humanity: not a slogan, but what we build in the field."
         }
-        image="/media/tech/datatech.png"
+        image="/media/osm/drone-homme-ville.jpg"
         bgTexture="/media/photos/terrain-01-remise-attestations-large.jpg"
       />
 
@@ -68,7 +68,7 @@ export default async function OutilsPage() {
         <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
           <div className="shape-leaf relative aspect-[4/3] overflow-hidden">
             <Image
-              src="/media/tech/datatech.png"
+              src="/media/photos/blue-track-plateforme-full.jpg"
               alt="Blue-Track"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
@@ -125,25 +125,14 @@ export default async function OutilsPage() {
                 : "Wagadu collaborates with OpenStreetMap (OSM) on community drone mapping — capturing precise, up-to-date geospatial data that directly serves the communities and the decisions that affect them."}
             </p>
           </div>
-          <div className="relative order-1 grid aspect-[4/3] grid-cols-2 gap-2 overflow-hidden rounded-2xl lg:order-2">
-            <div className="relative h-full overflow-hidden rounded-xl">
-              <Image
-                src="/media/osm/drone-homme-ville.jpg"
-                alt={locale === "fr" ? "Pilotage de drone pour la cartographie communautaire" : "Flying a drone for community mapping"}
-                fill
-                sizes="(min-width: 1024px) 22vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative h-full overflow-hidden rounded-xl">
-              <Image
-                src="/media/osm/drone-telecommande-equipe.jpg"
-                alt={locale === "fr" ? "Préparation du drone avant un vol de cartographie" : "Preparing the drone before a mapping flight"}
-                fill
-                sizes="(min-width: 1024px) 22vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="shape-leaf relative order-1 aspect-[4/3] overflow-hidden lg:order-2">
+            <Image
+              src="/media/tech/fish4acp-dashboard.png"
+              alt={locale === "fr" ? "Données géospatiales OSM au service du suivi FISH4ACP" : "OSM geospatial data powering FISH4ACP monitoring"}
+              fill
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              className="object-cover"
+            />
           </div>
         </Reveal>
 
