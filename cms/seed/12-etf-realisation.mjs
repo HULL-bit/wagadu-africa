@@ -64,7 +64,7 @@ async function main() {
     translations: [
       {
         languages_code: "fr",
-        titre: "Combler l'écart : pêche et pétrole",
+        titre: "Combler l'écart : pêche, pétrole et gaz",
         resume:
           "Combler le fossé technologique pour protéger la pêche artisanale face aux impacts négatifs des projets pétroliers et gaziers au Sénégal.",
         corps:
@@ -72,7 +72,7 @@ async function main() {
       },
       {
         languages_code: "en",
-        titre: "Gap Bridging: Fishery and Oil",
+        titre: "Gap Bridging: Fishery & Oil and Gas",
         resume:
           "Bridging the gap in new technologies to protect small-scale fisheries against negative impacts of oil and gas projects in Senegal.",
         corps:
