@@ -109,7 +109,16 @@ export default async function OutilsPage() {
             <span className="text-sm font-semibold uppercase tracking-wide text-wagadu-terracotta">
               {locale === "fr" ? "Notre collaboration" : "Our collaboration"}
             </span>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-wagadu-ebony">OpenStreetMap (OSM)</h2>
+            <div className="mt-2 flex items-center gap-3">
+              <Image
+                src="/media/osm/logo-osm-senegal.png"
+                alt="OpenStreetMap Sénégal"
+                width={40}
+                height={40}
+                className="shrink-0 rounded-lg"
+              />
+              <h2 className="font-display text-3xl font-semibold text-wagadu-ebony">OpenStreetMap (OSM)</h2>
+            </div>
             <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
               {locale === "fr"
                 ? "Wagadu collabore avec OpenStreetMap (OSM) pour la cartographie communautaire par drone : capter des données géospatiales précises et à jour, directement utiles aux communautés et aux décisions qui les concernent."
@@ -158,12 +167,22 @@ export default async function OutilsPage() {
                 ? "Pour FISH4ACP, Wagadu a développé un tableau de bord qui consolide les profils des 18 structures bénéficiaires appuyées par la FAO : financement engagé et décaissé, emplois créés, participation des femmes, sur six régions côtières du Sénégal — alimenté notamment par les données de cartographie collectées avec OSM."
                 : "For FISH4ACP, Wagadu built a dashboard that consolidates profiles of the 18 beneficiary structures supported by the FAO: committed and disbursed funding, jobs created, women's participation, across six coastal regions of Senegal — fed in part by the mapping data collected with OSM."}
             </p>
-            <Link
-              href="/realisations/fish4acp"
-              className="mt-6 inline-flex w-fit items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
-            >
-              {tCommon("enSavoirPlus")} →
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link
+                href="/realisations/fish4acp"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
+              >
+                {tCommon("enSavoirPlus")} →
+              </Link>
+              <a
+                href="/tools/fish4acp-wagadu.html"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-wagadu-ebony/60 hover:text-wagadu-terracotta"
+              >
+                {locale === "fr" ? "Voir le tableau de bord" : "View the dashboard"} ↗
+              </a>
+            </div>
           </div>
         </Reveal>
 
