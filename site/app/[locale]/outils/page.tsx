@@ -138,6 +138,35 @@ export default async function OutilsPage() {
           </div>
         </Reveal>
 
+        <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
+          <div className="shape-leaf relative aspect-[4/3] overflow-hidden">
+            <Image
+              src="/media/tech/fish4acp-dashboard.png"
+              alt={locale === "fr" ? "Tableau de bord de suivi FISH4ACP x Wagadu" : "FISH4ACP x Wagadu monitoring dashboard"}
+              fill
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <span className="text-sm font-semibold uppercase tracking-wide text-wagadu-terracotta">FISH4ACP</span>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-wagadu-ebony">
+              {locale === "fr" ? "Suivi des bénéficiaires FAO" : "FAO beneficiary monitoring"}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
+              {locale === "fr"
+                ? "Pour FISH4ACP, Wagadu a développé un tableau de bord qui consolide les profils des 18 structures bénéficiaires appuyées par la FAO : financement engagé et décaissé, emplois créés, participation des femmes, sur six régions côtières du Sénégal — alimenté notamment par les données de cartographie collectées avec OSM."
+                : "For FISH4ACP, Wagadu built a dashboard that consolidates profiles of the 18 beneficiary structures supported by the FAO: committed and disbursed funding, jobs created, women's participation, across six coastal regions of Senegal — fed in part by the mapping data collected with OSM."}
+            </p>
+            <Link
+              href="/realisations/fish4acp"
+              className="mt-6 inline-flex w-fit items-center gap-1 text-sm font-semibold text-wagadu-terracotta hover:underline"
+            >
+              {tCommon("enSavoirPlus")} →
+            </Link>
+          </div>
+        </Reveal>
+
         <div className="mt-20">
           <Reveal className="text-center">
             <h2 className="font-display text-2xl font-semibold text-wagadu-ebony">
