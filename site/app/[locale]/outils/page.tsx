@@ -68,7 +68,7 @@ export default async function OutilsPage() {
         <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
           <div className="shape-leaf relative aspect-[4/3] overflow-hidden">
             <Image
-              src="/media/photos/blue-track-plateforme-full.jpg"
+              src="/media/photos/blue-track-configuration.jpg"
               alt="Blue-Track"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
