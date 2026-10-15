@@ -104,6 +104,40 @@ export default async function OutilsPage() {
           </div>
         </Reveal>
 
+        <Reveal delay={0.1} className="mt-16 grid items-center gap-10 rounded-3xl border border-wagadu-sand bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-12">
+          <div className="order-2 lg:order-1">
+            <span className="text-sm font-semibold uppercase tracking-wide text-wagadu-terracotta">
+              {locale === "fr" ? "Notre collaboration" : "Our collaboration"}
+            </span>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-wagadu-ebony">OpenStreetMap (OSM)</h2>
+            <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
+              {locale === "fr"
+                ? "Wagadu collabore avec OpenStreetMap (OSM) pour la cartographie communautaire par drone : capter des données géospatiales précises et à jour, directement utiles aux communautés et aux décisions qui les concernent."
+                : "Wagadu collaborates with OpenStreetMap (OSM) on community drone mapping — capturing precise, up-to-date geospatial data that directly serves the communities and the decisions that affect them."}
+            </p>
+          </div>
+          <div className="relative order-1 grid aspect-[4/3] grid-cols-2 gap-2 overflow-hidden rounded-2xl lg:order-2">
+            <div className="relative h-full overflow-hidden rounded-xl">
+              <Image
+                src="/media/osm/drone-homme-ville.jpg"
+                alt={locale === "fr" ? "Pilotage de drone pour la cartographie communautaire" : "Flying a drone for community mapping"}
+                fill
+                sizes="(min-width: 1024px) 22vw, 45vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-full overflow-hidden rounded-xl">
+              <Image
+                src="/media/osm/drone-telecommande-equipe.jpg"
+                alt={locale === "fr" ? "Préparation du drone avant un vol de cartographie" : "Preparing the drone before a mapping flight"}
+                fill
+                sizes="(min-width: 1024px) 22vw, 45vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </Reveal>
+
         <div className="mt-20">
           <Reveal className="text-center">
             <h2 className="font-display text-2xl font-semibold text-wagadu-ebony">
