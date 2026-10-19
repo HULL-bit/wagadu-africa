@@ -142,7 +142,7 @@ export default async function OutilsPage() {
           <div>
             <span className="text-sm font-semibold uppercase tracking-wide text-wagadu-terracotta">FISH4ACP</span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-wagadu-ebony">
-              {locale === "fr" ? "Suivi des bénéficiaires FAO" : "FAO beneficiary monitoring"}
+              {locale === "fr" ? "Outils OpenStreetMap pour la collecte de données" : "Open Street Map tools for data collection"}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-wagadu-ebony/80">
               {locale === "fr"
