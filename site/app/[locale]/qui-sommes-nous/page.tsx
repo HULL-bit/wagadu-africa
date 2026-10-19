@@ -9,6 +9,21 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 import { getPageStatique, getValeurs, pickTranslation } from "@/lib/directus";
 import type { AppLocale } from "@/i18n/routing";
 
+/**
+ * Découpe le champ `body` (rich text Directus, ex. "<h2>Mission</h2><p>...
+ * </p><h2>Vision</h2><p>...</p>") en sections par titre `<h2>`, pour les
+ * afficher comme des blocs visuellement séparés plutôt qu'un seul bloc de
+ * texte fusionné (retour utilisateur : "design les et separes les").
+ */
+function splitRichTextSections(html: string): Array<{ heading: string; bodyHtml: string }> {
+  const parts = html.split(/<h2>(.*?)<\/h2>/);
+  const sections: Array<{ heading: string; bodyHtml: string }> = [];
+  for (let i = 1; i < parts.length; i += 2) {
+    sections.push({ heading: parts[i], bodyHtml: parts[i + 1] ?? "" });
+  }
+  return sections.length > 0 ? sections : [{ heading: "", bodyHtml: html }];
+}
+
 export async function generateMetadata() {
   const locale = (await getLocale()) as AppLocale;
   const t = await getTranslations("nav");
@@ -122,12 +137,22 @@ export default async function QuiSommesNousPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-wagadu-ebony/85 via-wagadu-ebony/75 to-wagadu-ebony/90" />
           <div className="relative mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <Reveal>
-            <div
-              className="prose prose-invert max-w-none text-lg leading-relaxed text-wagadu-ivory/90 prose-headings:font-display prose-a:text-wagadu-amber"
-              dangerouslySetInnerHTML={{ __html: translation.body }}
-            />
-          </Reveal>
+          <div className="space-y-12">
+            {splitRichTextSections(translation.body).map((section, index) => (
+              <Reveal key={section.heading} delay={index * 0.08}>
+                <div className={index > 0 ? "border-t border-wagadu-ivory/15 pt-10" : ""}>
+                  <BranchAccent className="h-8 w-8 text-wagadu-amber" flip={index % 2 === 1} />
+                  <h2 className="mt-3 font-display text-2xl font-semibold text-wagadu-ivory">
+                    {section.heading}
+                  </h2>
+                  <div
+                    className="prose prose-invert mt-3 max-w-none text-lg leading-relaxed text-wagadu-ivory/90 prose-a:text-wagadu-amber"
+                    dangerouslySetInnerHTML={{ __html: section.bodyHtml }}
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
           <Reveal delay={0.1} className="grid grid-cols-2 gap-4">
             <div className="shape-leaf relative col-span-2 aspect-video overflow-hidden shadow-xl ring-1 ring-wagadu-ivory/10">
               <Image
