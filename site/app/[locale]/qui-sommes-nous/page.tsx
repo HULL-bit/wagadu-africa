@@ -113,7 +113,7 @@ export default async function QuiSommesNousPage() {
     {
       id: "equipe-2",
       kind: "image",
-      src: "/media/fish4acp/equipe-terrain-vehicule.jpg",
+      src: "/media/etf/02102026-dsc02095.jpg",
       eyebrow: locale === "fr" ? "REJOIGNEZ-NOUS" : "JOIN US",
       title:
         locale === "fr"
