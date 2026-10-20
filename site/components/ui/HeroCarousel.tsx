@@ -103,7 +103,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     en pastille, comme avant — distincte de la carte de titre
                     ci-dessous (retour utilisateur). */}
                 {slide.eyebrow ? (
-                  <p className="absolute left-1/2 top-5 z-[1] -translate-x-1/2 rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:top-6 sm:text-sm">
+                  <p className="absolute left-1/2 top-10 z-[1] -translate-x-1/2 rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:top-14 sm:text-sm">
                     {slide.eyebrow}
                   </p>
                 ) : null}
