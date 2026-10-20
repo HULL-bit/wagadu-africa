@@ -105,15 +105,15 @@ export default async function HomePage() {
       kind: "image",
       src: "/media/nouveau/dsc03894-large.jpg",
       objectPosition: "center 55%",
-      eyebrow: locale === "fr" ? "FISH4ACP — MAÂT" : "FISH4ACP — MAÂT",
+      eyebrow: "FISH4ACP — MAÂT",
       title:
         locale === "fr"
           ? "Maât en action : sécurité alimentaire et dignité des communautés"
           : "Maât in action: food security and community dignity",
       subtitle:
         locale === "fr"
-          ? "À travers la coopérative de Yokhoss, Wagadu œuvre pour la souveraineté alimentaire, les droits humains et la justice sociale des communautés côtières."
-          : "Through the Yokhoss cooperative, Wagadu works toward food sovereignty, human rights and social justice for coastal communities.",
+          ? "À travers la coopérative de Yokhoss, Wagadu allie sécurité alimentaire et protection de la biodiversité : une ostréiculture durable qui préserve les mangroves dont dépendent les communautés côtières."
+          : "Through the Yokhoss cooperative, Wagadu links food security to biodiversity protection: sustainable oyster farming that preserves the mangroves coastal communities depend on.",
       ctaLabel: locale === "fr" ? "Voir le projet FISH4ACP" : "See the FISH4ACP project",
       ctaHref: "/realisations/fish4acp",
     },
