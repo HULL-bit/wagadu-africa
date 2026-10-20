@@ -103,17 +103,17 @@ export default async function HomePage() {
     {
       id: "fish4acp-cooperative",
       kind: "image",
-      src: "/media/fish4acp/cooperative-yokhoss.jpg",
-      objectPosition: "55% 22%",
+      src: "/media/nouveau/dsc03894-large.jpg",
+      objectPosition: "center 55%",
       eyebrow: locale === "fr" ? "FISH4ACP — MAÂT" : "FISH4ACP — MAÂT",
       title:
         locale === "fr"
-          ? "La coopérative de Yokhoss transforme et vend ses huîtres"
-          : "The Yokhoss cooperative turns oysters into a livelihood",
+          ? "Maât en action : sécurité alimentaire et dignité des communautés"
+          : "Maât in action: food security and community dignity",
       subtitle:
         locale === "fr"
-          ? "Des femmes ostréicultrices organisées, formées et mieux rémunérées."
-          : "Oyster-farming women, organized, trained, and better paid.",
+          ? "À travers la coopérative de Yokhoss, Wagadu œuvre pour la souveraineté alimentaire, les droits humains et la justice sociale des communautés côtières."
+          : "Through the Yokhoss cooperative, Wagadu works toward food sovereignty, human rights and social justice for coastal communities.",
       ctaLabel: locale === "fr" ? "Voir le projet FISH4ACP" : "See the FISH4ACP project",
       ctaHref: "/realisations/fish4acp",
     },
