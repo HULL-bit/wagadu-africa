@@ -105,11 +105,11 @@ export default async function HomePage() {
       kind: "image",
       src: "/media/nouveau/dsc03894-large.jpg",
       objectPosition: "center 55%",
-      eyebrow: "FISH4ACP — MAÂT",
+      eyebrow: locale === "fr" ? "FISH4ACP — ENVIRONNEMENT & BIODIVERSITÉ" : "FISH4ACP — ENVIRONMENT & BIODIVERSITY",
       title:
         locale === "fr"
-          ? "Maât en action : sécurité alimentaire et dignité des communautés"
-          : "Maât in action: food security and community dignity",
+          ? "Environnement et biodiversité : sécurité alimentaire et dignité des communautés"
+          : "Environment and biodiversity: food security and community dignity",
       subtitle:
         locale === "fr"
           ? "À travers la coopérative de Yokhoss, Wagadu allie sécurité alimentaire et protection de la biodiversité : une ostréiculture durable qui préserve les mangroves dont dépendent les communautés côtières."
