@@ -64,7 +64,7 @@ export default async function HomePage() {
     ? realisations.filter((r) => r.mise_en_avant)
     : realisations.slice(0, 3);
 
-  /**
+  /**et 
    * Retour ONG : limiter à 3-4 diapositives de preuve/communauté/CTA — mais
    * l'utilisateur a explicitement demandé de remettre la vidéo de
    * bienvenue en tête, donc 5 ici. Les visuels retirés par ailleurs
@@ -88,7 +88,7 @@ export default async function HomePage() {
     {
       id: "positionnement",
       kind: "image",
-      src: "/media/fish4acp/DSC03795.jpg",
+      src: "/media/carrouss-web/drone2.jpg",
       objectPosition: "40% 48%",
       eyebrow: "WAGADU AFRICA",
       title: hero?.titre ?? "La donnée et      la technologie  au service de l'humanité",
@@ -135,9 +135,25 @@ export default async function HomePage() {
       ctaHref: "/actualites/blue-track-presentation-ministere-peches",
     },
     {
+      id: "maat-biodiversite",
+      kind: "image",
+      src: "/media/carrouss-web/maat1.jpg",
+      eyebrow: locale === "fr" ? "MAÂT — ENVIRONNEMENT" : "MAÂT — ENVIRONMENT",
+      title:
+        locale === "fr"
+          ? "Protéger la biodiversité, garantir la sécurité alimentaire"
+          : "Protecting biodiversity, securing food for communities",
+      subtitle:
+        locale === "fr"
+          ? "Les principes de Maât guident notre action pour des écosystèmes sains et des communautés durablement nourries."
+          : "Maât's principles guide our work for healthy ecosystems and lasting food security.",
+      ctaLabel: tCommon("enSavoirPlus"),
+      ctaHref: "/qui-sommes-nous",
+    },
+    {
       id: "horizon",
-      kind: "video",
-      src: "/media/videos/bg-video.mp4",
+      kind: "image",
+      src: "/media/nouveau/dsc03813-large.jpg",
       eyebrow: locale === "fr" ? "REJOIGNEZ-NOUS" : "JOIN US",
       title: locale === "fr" ? "Un horizon à construire, ensemble" : "A horizon to build, together",
       subtitle:
