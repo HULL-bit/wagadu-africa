@@ -101,19 +101,27 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                 {/* Petite carte flottante, centrée, pas toute la largeur —
                     son fond est un vrai flou de verre (`backdrop-blur`) de ce
                     qu'il y a juste derrière elle, jamais de l'image elle-même
-                    qui reste nette partout ailleurs. */}
-                <div className="absolute inset-x-0 bottom-6 z-[1] flex justify-center px-6 sm:bottom-10">
-                  <div className="w-full max-w-[22rem] rounded-3xl bg-wagadu-ebony/45 px-5 py-4 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-sm sm:px-6 sm:py-5">
+                    qui reste nette partout ailleurs. `items-center` (pas
+                    seulement `text-center`) pour que l'étiquette, le logo
+                    partenaire et le bouton soient eux aussi de vraies
+                    pastilles centrées, pas des blocs étirés en largeur. */}
+                <div className="absolute inset-x-0 bottom-5 z-[1] flex justify-center px-4 sm:bottom-10 sm:px-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: "easeOut" }}
+                    className="flex w-full max-w-[25rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-5 py-4 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-md sm:px-7 sm:py-6"
+                  >
                     {slide.eyebrow ? (
                       <p className="font-mono text-[0.65rem] font-semibold tracking-widest text-wagadu-amber">
                         {slide.eyebrow}
                       </p>
                     ) : null}
-                    <h1 className="mt-1.5 line-clamp-2 whitespace-pre-line text-balance font-display text-base font-semibold sm:text-lg">
+                    <h1 className="mt-1.5 line-clamp-2 max-w-[22rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
                       {slide.title}
                     </h1>
                     {slide.subtitle ? (
-                      <p className="mt-1.5 line-clamp-2 text-xs text-wagadu-ivory/80 sm:text-sm">
+                      <p className="mt-1.5 line-clamp-2 max-w-[22rem] text-center text-xs text-wagadu-ivory/80 sm:text-sm">
                         {slide.subtitle}
                       </p>
                     ) : null}
@@ -139,7 +147,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                         {slide.ctaLabel} →
                       </Link>
                     ) : null}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             );
