@@ -20,6 +20,10 @@ export type HeroSlide = {
    * photos au cadrage vertical/portrait affichées dans ce format large, où
    * un centrage par défaut coupe les visages en haut de l'image. */
   objectPosition?: string;
+  /** Logo du partenaire associé à cette diapo (ex. FAO pour FISH4ACP) — pour
+   * mettre en évidence un partenariat réel plutôt que de ne le mentionner
+   * qu'en texte (retour utilisateur). */
+  partnerLogo?: { src: string; alt: string };
 };
 
 /**
@@ -115,6 +119,20 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     <p className="mt-6 max-w-2xl text-lg text-wagadu-ivory/85 sm:text-xl">
                       {slide.subtitle}
                     </p>
+                  ) : null}
+                  {slide.partnerLogo ? (
+                    <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-lg">
+                      <Image
+                        src={slide.partnerLogo.src}
+                        alt={slide.partnerLogo.alt}
+                        width={28}
+                        height={28}
+                        className="h-7 w-auto"
+                      />
+                      <span className="font-mono text-xs font-semibold tracking-wide text-wagadu-ebony">
+                        {slide.partnerLogo.alt}
+                      </span>
+                    </div>
                   ) : null}
                   {slide.ctaLabel && slide.ctaHref ? (
                     <Link

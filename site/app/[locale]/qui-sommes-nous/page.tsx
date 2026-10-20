@@ -77,6 +77,11 @@ export default async function QuiSommesNousPage() {
         locale === "fr"
           ? "La coopérative de Yokhoss, un exemple de coopération"
           : "The Yokhoss cooperative, an example of cooperation",
+      subtitle:
+        locale === "fr"
+          ? "Dans le cadre du projet FISH4ACP, mené avec l'appui de la FAO (Organisation des Nations Unies pour l'alimentation et l'agriculture)."
+          : "Part of the FISH4ACP project, carried out with the support of the FAO (Food and Agriculture Organization of the United Nations).",
+      partnerLogo: { src: "/media/partners/fao-logo.svg", alt: "FAO" },
     },
     {
       id: "sur-le-terrain",
