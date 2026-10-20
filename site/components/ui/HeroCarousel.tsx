@@ -66,82 +66,94 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
           {slides.map((slide, index) => {
             const isActive = index === selectedIndex;
             return (
-              <div key={slide.id} className="relative h-full min-w-0 flex-[0_0_100%]">
-                {slide.kind === "video" ? (
-                  <video
-                    className="absolute inset-0 h-full w-full object-cover"
-                    src={isActive ? slide.src : undefined}
-                    autoPlay={isActive}
-                    muted
-                    loop
-                    playsInline
-                    preload="none"
-                  />
-                ) : (
-                  <motion.div
-                    className="absolute inset-0 h-full w-full"
-                    animate={shouldReduceMotion ? undefined : { scale: isActive ? 1.09 : 1 }}
-                    transition={{ duration: 7, ease: "linear" }}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.title}
-                      fill
-                      sizes="100vw"
-                      priority={index === 0}
-                      className="object-cover"
-                      style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+              <div key={slide.id} className="flex h-full min-w-0 flex-[0_0_100%] flex-col">
+                {/* Média plein cadre, sans aucun voile ni texte superposé
+                    (retour utilisateur : le texte en gros plan dessus
+                    empêchait d'apprécier les photos). Le texte vit désormais
+                    dans son propre bandeau ci-dessous. */}
+                <div className="relative flex-1 overflow-hidden">
+                  {slide.kind === "video" ? (
+                    <video
+                      className="absolute inset-0 h-full w-full object-cover"
+                      src={isActive ? slide.src : undefined}
+                      autoPlay={isActive}
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
                     />
-                  </motion.div>
-                )}
-                {/* Scrim très léger sur toute l'image, pour que les visages restent
-                    nets — retour utilisateur : les médias ne doivent jamais être
-                    « filtrés »/teintés comme avant. Le texte, lui, vit dans un
-                    bandeau dédié en bas (plus sombre, voir ci-dessous) plutôt
-                    que centré par-dessus les personnes photographiées (retour
-                    ONG : « dégager les visages »). */}
-                <div className="absolute inset-0 bg-gradient-to-t from-wagadu-ebony/35 via-transparent to-transparent" />
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-wagadu-ebony/85 via-wagadu-ebony/40 to-transparent"
-                />
-
-                <div className="relative flex h-full flex-col items-center justify-end px-6 pb-10 text-center sm:pb-14">
-                  {slide.eyebrow ? (
-                    <p className="rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-sm tracking-widest text-wagadu-amber backdrop-blur-sm">
-                      {slide.eyebrow}
-                    </p>
-                  ) : null}
-                  <h1 className="mt-4 max-w-3xl whitespace-pre-line text-balance text-center font-display text-[1.75rem] font-semibold sm:text-[2.25rem] lg:text-[2.75rem]">
-                    {slide.title}
-                  </h1>
-                  {slide.subtitle ? (
-                    <p className="mt-4 max-w-2xl text-base text-wagadu-ivory/85 sm:text-lg">
-                      {slide.subtitle}
-                    </p>
-                  ) : null}
-                  {slide.partnerLogo ? (
-                    <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-lg">
-                      <Image
-                        src={slide.partnerLogo.src}
-                        alt={slide.partnerLogo.alt}
-                        width={28}
-                        height={28}
-                        className="h-7 w-auto"
-                      />
-                      <span className="font-mono text-xs font-semibold tracking-wide text-wagadu-ebony">
-                        {slide.partnerLogo.alt}
-                      </span>
-                    </div>
-                  ) : null}
-                  {slide.ctaLabel && slide.ctaHref ? (
-                    <Link
-                      href={slide.ctaHref}
-                      className="mt-8 inline-block rounded-full bg-wagadu-terracotta px-7 py-3.5 text-base font-semibold text-white transition hover:bg-wagadu-amber hover:text-wagadu-ebony"
+                  ) : (
+                    <motion.div
+                      className="absolute inset-0 h-full w-full"
+                      animate={shouldReduceMotion ? undefined : { scale: isActive ? 1.09 : 1 }}
+                      transition={{ duration: 7, ease: "linear" }}
                     >
-                      {slide.ctaLabel} →
-                    </Link>
+                      <Image
+                        src={slide.src}
+                        alt={slide.title}
+                        fill
+                        sizes="100vw"
+                        priority={index === 0}
+                        className="object-cover"
+                        style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+                      />
+                    </motion.div>
+                  )}
+                </div>
+
+                {/* Bandeau de légende — fond flouté de la même photo plutôt
+                    qu'un simple voile sombre, pour rester joli sans jamais
+                    recouvrir l'image elle-même. */}
+                <div className="relative shrink-0 overflow-hidden bg-wagadu-ebony px-6 py-8 text-center sm:py-10">
+                  {slide.kind === "image" ? (
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 scale-110 bg-cover blur-md"
+                      style={{
+                        backgroundImage: `url(${slide.src})`,
+                        backgroundPosition: slide.objectPosition ?? "center",
+                      }}
+                    />
                   ) : null}
+                  <div aria-hidden className="absolute inset-0 bg-wagadu-ebony/80" />
+
+                  <div className="relative mx-auto flex max-w-3xl flex-col items-center">
+                    {slide.eyebrow ? (
+                      <p className="rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-sm tracking-widest text-wagadu-amber backdrop-blur-sm">
+                        {slide.eyebrow}
+                      </p>
+                    ) : null}
+                    <h1 className="mt-4 max-w-3xl whitespace-pre-line text-balance text-center font-display text-[1.75rem] font-semibold sm:text-[2.25rem] lg:text-[2.75rem]">
+                      {slide.title}
+                    </h1>
+                    {slide.subtitle ? (
+                      <p className="mt-4 max-w-2xl text-base text-wagadu-ivory/85 sm:text-lg">
+                        {slide.subtitle}
+                      </p>
+                    ) : null}
+                    {slide.partnerLogo ? (
+                      <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-lg">
+                        <Image
+                          src={slide.partnerLogo.src}
+                          alt={slide.partnerLogo.alt}
+                          width={28}
+                          height={28}
+                          className="h-7 w-auto"
+                        />
+                        <span className="font-mono text-xs font-semibold tracking-wide text-wagadu-ebony">
+                          {slide.partnerLogo.alt}
+                        </span>
+                      </div>
+                    ) : null}
+                    {slide.ctaLabel && slide.ctaHref ? (
+                      <Link
+                        href={slide.ctaHref}
+                        className="mt-6 inline-block rounded-full bg-wagadu-terracotta px-7 py-3.5 text-base font-semibold text-white transition hover:bg-wagadu-amber hover:text-wagadu-ebony"
+                      >
+                        {slide.ctaLabel} →
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             );
@@ -175,7 +187,9 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             </svg>
           </button>
 
-          <div className="absolute inset-x-0 bottom-8 flex justify-center gap-2">
+          {/* Points remontés en haut (plutôt qu'en bas, par-dessus le nouveau
+              bandeau de légende) pour ne jamais chevaucher le texte ou le CTA. */}
+          <div className="absolute inset-x-0 top-5 z-10 flex justify-center gap-2">
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
