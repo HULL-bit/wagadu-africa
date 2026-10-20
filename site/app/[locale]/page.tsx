@@ -137,7 +137,7 @@ export default async function HomePage() {
     {
       id: "maat-biodiversite",
       kind: "image",
-      src: "/media/carrouss-web/maat1.jpg",
+      src: "/media/carrouss-web/maat-femme-panier.jpg",
       eyebrow: locale === "fr" ? "MAÂT — ENVIRONNEMENT" : "MAÂT — ENVIRONMENT",
       title:
         locale === "fr"
