@@ -72,15 +72,15 @@ export default async function QuiSommesNousPage() {
       id: "communautes-partenaires",
       kind: "image",
       src: "/media/fish4acp/cooperative-yokhoss.jpg",
-      eyebrow: locale === "fr" ? "NOS COMMUNAUTÉS PARTENAIRES" : "OUR PARTNER COMMUNITIES",
+      eyebrow: "FISH4ACP",
       title:
         locale === "fr"
-          ? "La coopérative de Yokhoss, un exemple de coopération"
-          : "The Yokhoss cooperative, an example of cooperation",
+          ? "La coopérative de Yokhoss, une des communautés accompagnées par FISH4ACP"
+          : "The Yokhoss cooperative, one of the communities supported by FISH4ACP",
       subtitle:
         locale === "fr"
-          ? "Dans le cadre du projet FISH4ACP, mené avec l'appui de la FAO (Organisation des Nations Unies pour l'alimentation et l'agriculture)."
-          : "Part of the FISH4ACP project, carried out with the support of the FAO (Food and Agriculture Organization of the United Nations).",
+          ? "FISH4ACP, mené avec l'appui de la FAO (Organisation des Nations Unies pour l'alimentation et l'agriculture), accompagne 18 structures de pêche et d'aquaculture sur six régions côtières du Sénégal — Yokhoss en est un exemple."
+          : "FISH4ACP, carried out with the support of the FAO (Food and Agriculture Organization of the United Nations), supports 18 fisheries and aquaculture structures across six coastal regions of Senegal — Yokhoss is one example.",
       partnerLogo: { src: "/media/partners/fao-logo.svg", alt: "FAO" },
     },
     {
