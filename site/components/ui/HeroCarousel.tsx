@@ -103,20 +103,20 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-wagadu-ebony/35 via-transparent to-transparent" />
                 <div
                   aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-wagadu-ebony/90 via-wagadu-ebony/55 to-transparent"
+                  className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-wagadu-ebony/85 via-wagadu-ebony/40 to-transparent"
                 />
 
-                <div className="relative flex h-full flex-col items-center justify-end px-6 pb-24 text-center sm:pb-28">
+                <div className="relative flex h-full flex-col items-center justify-end px-6 pb-10 text-center sm:pb-14">
                   {slide.eyebrow ? (
                     <p className="rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-sm tracking-widest text-wagadu-amber backdrop-blur-sm">
                       {slide.eyebrow}
                     </p>
                   ) : null}
-                  <h1 className="mt-4 max-w-4xl whitespace-pre-line text-balance text-center font-display font-semibold">
+                  <h1 className="mt-4 max-w-3xl whitespace-pre-line text-balance text-center font-display text-[1.75rem] font-semibold sm:text-[2.25rem] lg:text-[2.75rem]">
                     {slide.title}
                   </h1>
                   {slide.subtitle ? (
-                    <p className="mt-6 max-w-2xl text-lg text-wagadu-ivory/85 sm:text-xl">
+                    <p className="mt-4 max-w-2xl text-base text-wagadu-ivory/85 sm:text-lg">
                       {slide.subtitle}
                     </p>
                   ) : null}
