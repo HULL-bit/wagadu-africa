@@ -120,13 +120,13 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
                     transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: "easeOut" }}
-                    className="flex w-full max-w-[25rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-5 py-4 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-md sm:px-7 sm:py-6"
+                    className="flex w-full max-w-[27rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-6 py-5 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-lg sm:px-8 sm:py-7"
                   >
-                    <h1 className="line-clamp-2 max-w-[22rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
+                    <h1 className="line-clamp-2 max-w-[24rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
                       {slide.title}
                     </h1>
                     {slide.subtitle ? (
-                      <p className="mt-1.5 line-clamp-2 max-w-[22rem] text-center text-xs text-wagadu-ivory/80 sm:text-sm">
+                      <p className="mt-1.5 line-clamp-2 max-w-[24rem] text-center text-xs text-wagadu-ivory/80 sm:text-sm">
                         {slide.subtitle}
                       </p>
                     ) : null}
@@ -147,7 +147,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     {slide.ctaLabel && slide.ctaHref ? (
                       <Link
                         href={slide.ctaHref}
-                        className="mt-2.5 inline-flex items-center gap-1 text-xs font-semibold text-wagadu-amber hover:text-wagadu-ivory"
+                        className="mt-4 inline-block rounded-full bg-wagadu-terracotta px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-wagadu-amber hover:text-wagadu-ebony"
                       >
                         {slide.ctaLabel} →
                       </Link>
