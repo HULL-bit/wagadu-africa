@@ -98,6 +98,16 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                   </motion.div>
                 )}
 
+                {/* Étiquette (ex. "WAGADU AFRICA", "BLUE-TRACK — NEWS",
+                    "JOIN US") remise directement sur l'image, avec son fond
+                    en pastille, comme avant — distincte de la carte de titre
+                    ci-dessous (retour utilisateur). */}
+                {slide.eyebrow ? (
+                  <p className="absolute left-4 top-5 z-[1] rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:left-6 sm:top-6 sm:text-sm">
+                    {slide.eyebrow}
+                  </p>
+                ) : null}
+
                 {/* Petite carte flottante, centrée, pas toute la largeur —
                     son fond est un vrai flou de verre (`backdrop-blur`) de ce
                     qu'il y a juste derrière elle, jamais de l'image elle-même
@@ -112,12 +122,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: "easeOut" }}
                     className="flex w-full max-w-[25rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-5 py-4 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-md sm:px-7 sm:py-6"
                   >
-                    {slide.eyebrow ? (
-                      <p className="font-mono text-[0.65rem] font-semibold tracking-widest text-wagadu-amber">
-                        {slide.eyebrow}
-                      </p>
-                    ) : null}
-                    <h1 className="mt-1.5 line-clamp-2 max-w-[22rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
+                    <h1 className="line-clamp-2 max-w-[22rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
                       {slide.title}
                     </h1>
                     {slide.subtitle ? (
