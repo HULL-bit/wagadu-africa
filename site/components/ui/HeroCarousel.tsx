@@ -103,7 +103,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     en pastille, comme avant — distincte de la carte de titre
                     ci-dessous (retour utilisateur). */}
                 {slide.eyebrow ? (
-                  <p className="absolute left-4 top-5 z-[1] rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:left-6 sm:top-6 sm:text-sm">
+                  <p className="absolute left-1/2 top-5 z-[1] -translate-x-1/2 rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:top-6 sm:text-sm">
                     {slide.eyebrow}
                   </p>
                 ) : null}
@@ -115,7 +115,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     seulement `text-center`) pour que l'étiquette, le logo
                     partenaire et le bouton soient eux aussi de vraies
                     pastilles centrées, pas des blocs étirés en largeur. */}
-                <div className="absolute inset-x-0 bottom-5 z-[1] flex justify-center px-4 sm:bottom-10 sm:px-6">
+                <div className="absolute inset-x-0 bottom-10 z-[1] flex justify-center px-4 sm:bottom-16 sm:px-6">
                   <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
@@ -186,9 +186,9 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             </svg>
           </button>
 
-          {/* Points remontés en haut (plutôt qu'en bas, par-dessus le nouveau
-              bandeau de légende) pour ne jamais chevaucher le texte ou le CTA. */}
-          <div className="absolute inset-x-0 top-5 z-10 flex justify-center gap-2">
+          {/* Points en bas de l'image, sous la carte de légende (remontée),
+              pas en haut — l'étiquette occupe déjà le haut, centrée. */}
+          <div className="absolute inset-x-0 bottom-3 z-10 flex justify-center gap-2">
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
