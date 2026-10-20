@@ -120,7 +120,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
                     transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: "easeOut" }}
-                    className="flex w-full max-w-[27rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-6 py-5 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-xl sm:max-w-lg sm:px-8 sm:py-7"
+                    className="flex w-full max-w-[27rem] flex-col items-center rounded-3xl bg-wagadu-ebony/45 px-6 py-5 text-center shadow-xl ring-1 ring-white/15 backdrop-blur-lg sm:max-w-lg sm:px-8 sm:py-7"
                   >
                     <h1 className="line-clamp-2 max-w-[24rem] whitespace-pre-line text-balance text-center font-display text-base font-semibold sm:text-xl">
                       {slide.title}
