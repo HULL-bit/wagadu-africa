@@ -74,14 +74,14 @@ export default async function HomePage() {
   const heroSlides: HeroSlide[] = [
     {
       id: "bienvenue",
-      kind: "video",
-      src: "/media/videos/hero-2-glade-sunset.mp4",
+      kind: "image",
+      src: "/media/etf/02102026-dsc02199.jpg",
       eyebrow: "WAGADU AFRICA",
       title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
       subtitle:
         locale === "fr"
-          ? "Une organisation africaine au service de l'humanité, entre héritage et innovation."
-          : "An African organization in service of humanity, between heritage and innovation.",
+          ? "« Lorsque les nouvelles technologies et les données sont mises au service des communautés, elles deviennent des leviers de souveraineté alimentaire, de préservation de l'environnement et d'amélioration durable de la qualité de vie, dans le respect des principes de la Maât : équilibre, justice, vérité et harmonie entre l'humain et la nature. »"
+          : "“When new technologies and data serve communities, they become powerful drivers of food sovereignty, environmental protection, and an improved quality of life, guided by the principles of Ma’at: balance, justice, truth, and harmony between humanity and nature.”",
       ctaLabel: tNav("realisations"),
       ctaHref: "/realisations",
     },
@@ -106,14 +106,11 @@ export default async function HomePage() {
       src: "/media/nouveau/dsc03894-large.jpg",
       objectPosition: "center 55%",
       eyebrow: locale === "fr" ? "FISH4ACP — ENVIRONNEMENT & BIODIVERSITÉ" : "FISH4ACP — ENVIRONMENT & BIODIVERSITY",
-      title:
-        locale === "fr"
-          ? "Environnement et biodiversité : sécurité alimentaire et dignité des communautés"
-          : "Environment and biodiversity: food security and community dignity",
+      title: locale === "fr" ? "Environnement et biodiversité" : "Environment and biodiversity",
       subtitle:
         locale === "fr"
-          ? "À travers la coopérative de Yokhoss, Wagadu allie sécurité alimentaire et protection de la biodiversité : une ostréiculture durable qui préserve les mangroves dont dépendent les communautés côtières."
-          : "Through the Yokhoss cooperative, Wagadu links food security to biodiversity protection: sustainable oyster farming that preserves the mangroves coastal communities depend on.",
+          ? "Dans les îles du Saloum, les femmes développent des activités génératrices de revenus durables pour subvenir aux besoins de leurs familles, tout en préservant l'environnement et en valorisant les ressources naturelles."
+          : "In the Saloum Islands, women develop sustainable income-generating activities to support their families while protecting the environment and making the most of natural resources.",
       ctaLabel: locale === "fr" ? "Voir le projet FISH4ACP" : "See the FISH4ACP project",
       ctaHref: "/realisations/fish4acp",
     },

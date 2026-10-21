@@ -98,16 +98,6 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                   </motion.div>
                 )}
 
-                {/* Étiquette (ex. "WAGADU AFRICA", "BLUE-TRACK — NEWS",
-                    "JOIN US") remise directement sur l'image, avec son fond
-                    en pastille, comme avant — distincte de la carte de titre
-                    ci-dessous (retour utilisateur). */}
-                {slide.eyebrow ? (
-                  <p className="absolute left-1/2 top-10 z-[1] -translate-x-1/2 rounded-full bg-wagadu-ebony/50 px-4 py-1.5 font-mono text-xs tracking-widest text-wagadu-amber backdrop-blur-sm sm:top-14 sm:text-sm">
-                    {slide.eyebrow}
-                  </p>
-                ) : null}
-
                 {/* Petite carte flottante, centrée, pas toute la largeur —
                     son fond est un vrai flou de verre (`backdrop-blur`) de ce
                     qu'il y a juste derrière elle, jamais de l'image elle-même
