@@ -139,8 +139,8 @@ export default async function HomePage() {
           : "Protecting biodiversity, securing food for communities",
       subtitle:
         locale === "fr"
-          ? "« Produire localement, nourrir durablement : un combat pour la souveraineté alimentaire. »"
-          : "“Producing locally, feeding sustainably — a fight for food sovereignty.”",
+          ? "« Produire localement, nourrir durablement : un combat pour la souveraineté alimentaire de l'Afrique. »"
+          : "“Producing locally, feeding sustainably: a fight for Africa’s food sovereignty.”",
       ctaLabel: tCommon("enSavoirPlus"),
       ctaHref: "/qui-sommes-nous",
     },
