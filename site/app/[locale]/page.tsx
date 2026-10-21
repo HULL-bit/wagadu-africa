@@ -80,8 +80,8 @@ export default async function HomePage() {
       title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
       subtitle:
         locale === "fr"
-          ? "« Lorsque les nouvelles technologies et les données sont mises au service des communautés, elles deviennent des leviers de souveraineté alimentaire, de préservation de l'environnement et d'amélioration durable de la qualité de vie, dans le respect des principes de la Maât : équilibre, justice, vérité et harmonie entre l'humain et la nature. »"
-          : "“When new technologies and data serve communities, they become powerful drivers of food sovereignty, environmental protection, and an improved quality of life, guided by the principles of Ma’at: balance, justice, truth, and harmony between humanity and nature.”",
+          ? "« Dans le respect des principes de la Maât, la technologie et la donnée deviennent des leviers de souveraineté alimentaire et de préservation de l'environnement. »"
+          : "“Guided by the principles of Ma’at, technology and data become drivers of food sovereignty and environmental protection.”",
       ctaLabel: tNav("realisations"),
       ctaHref: "/realisations",
     },
