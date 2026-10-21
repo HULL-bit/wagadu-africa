@@ -90,15 +90,10 @@ export default async function HomePage() {
     {
       id: "positionnement",
       kind: "image",
-      src: "/media/carrouss-web/drone2.jpg",
+      src: "/media/carrouss-web/drone3.jpg",
       objectPosition: "40% 48%",
       eyebrow: "WAGADU AFRICA",
       title: hero?.titre ?? "La donnée et      la technologie  au service de l'humanité",
-      subtitle:
-        hero?.sous_titre ??
-        (locale === "fr"
-          ? "Des outils concrets de collecte de données, pour que les communautés fassent valoir leurs droits."
-          : "Concrete data tools so communities can document their realities and assert their rights."),
       ctaLabel: locale === "fr" ? "Découvrir nos réalisations" : "Discover our work",
       ctaHref: "/realisations",
     },
@@ -128,8 +123,8 @@ export default async function HomePage() {
           : "Blue-Track presented to the Ministry of Fisheries",
       subtitle:
         locale === "fr"
-          ? "Une étape clé vers un outil national de gouvernance maritime."
-          : "A key step toward a national maritime governance tool.",
+          ? "Une étape clé vers un outil régional de gouvernance maritime."
+          : "A key step toward a regional maritime governance tool.",
       ctaLabel: locale === "fr" ? "Lire l'actualité" : "Read the update",
       ctaHref: "/actualites/blue-track-presentation-ministere-peches",
     },
