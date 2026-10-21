@@ -20,6 +20,10 @@ export type HeroSlide = {
    * photos au cadrage vertical/portrait affichées dans ce format large, où
    * un centrage par défaut coupe les visages en haut de l'image. */
   objectPosition?: string;
+  /** Échelle du zoom lent (Ken Burns) quand la diapo est active — 1 = aucun
+   * zoom. Par défaut 1.09 ; à réduire pour les photos déjà cadrées serré,
+   * où ce zoom les fait paraître trop zoomées (retour utilisateur). */
+  zoomScale?: number;
   /** Logo du partenaire associé à cette diapo (ex. FAO pour FISH4ACP) — pour
    * mettre en évidence un partenariat réel plutôt que de ne le mentionner
    * qu'en texte (retour utilisateur). */
@@ -83,7 +87,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                 ) : (
                   <motion.div
                     className="absolute inset-0 h-full w-full"
-                    animate={shouldReduceMotion ? undefined : { scale: isActive ? 1.09 : 1 }}
+                    animate={shouldReduceMotion ? undefined : { scale: isActive ? (slide.zoomScale ?? 1.09) : 1 }}
                     transition={{ duration: 7, ease: "linear" }}
                   >
                     <Image

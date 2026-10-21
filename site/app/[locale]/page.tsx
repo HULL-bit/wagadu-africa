@@ -76,6 +76,8 @@ export default async function HomePage() {
       id: "bienvenue",
       kind: "image",
       src: "/media/etf/02102026-dsc02199.jpg",
+      objectPosition: "center 60%",
+      zoomScale: 1,
       eyebrow: "WAGADU AFRICA",
       title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
       subtitle:
