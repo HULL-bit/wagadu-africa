@@ -139,8 +139,8 @@ export default async function HomePage() {
           : "Protecting biodiversity, securing food for communities",
       subtitle:
         locale === "fr"
-          ? "Les principes de Maât guident notre action pour des écosystèmes sains et des communautés durablement nourries."
-          : "Maât's principles guide our work for healthy ecosystems and lasting food security.",
+          ? "« Produire localement, nourrir durablement : un combat pour la souveraineté alimentaire de l'Afrique. »"
+          : "“Producing locally, feeding sustainably: a fight for Africa’s food sovereignty.”",
       ctaLabel: tCommon("enSavoirPlus"),
       ctaHref: "/qui-sommes-nous",
     },
