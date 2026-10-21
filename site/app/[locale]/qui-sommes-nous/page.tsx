@@ -79,8 +79,8 @@ export default async function QuiSommesNousPage() {
           : "The Yokhoss cooperative, one of the communities supported by FISH4ACP",
       subtitle:
         locale === "fr"
-          ? "FISH4ACP, mené avec l'appui de la FAO (Organisation des Nations Unies pour l'alimentation et l'agriculture), accompagne 18 structures de pêche et d'aquaculture sur six régions côtières du Sénégal — Yokhoss en est un exemple."
-          : "FISH4ACP, carried out with the support of the FAO (Food and Agriculture Organization of the United Nations), supports 18 fisheries and aquaculture structures across six coastal regions of Senegal — Yokhoss is one example.",
+          ? "FISH4ACP, avec l'appui de la FAO, accompagne 18 structures de pêche au Sénégal."
+          : "FISH4ACP, backed by the FAO, supports 18 fisheries structures across Senegal.",
       partnerLogo: { src: "/media/partners/fao-logo.svg", alt: "FAO" },
     },
     {

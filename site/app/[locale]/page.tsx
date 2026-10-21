@@ -82,8 +82,8 @@ export default async function HomePage() {
       title: locale === "fr" ? "Bienvenue chez Wagadu Africa" : "Welcome to Wagadu Africa",
       subtitle:
         locale === "fr"
-          ? "« Dans le respect des principes de la Maât, la technologie et la donnée deviennent des leviers de souveraineté alimentaire et de préservation de l'environnement. »"
-          : "“Guided by the principles of Ma’at, technology and data become drivers of food sovereignty and environmental protection.”",
+          ? "« Au service de la Maât, la technologie devient un levier de souveraineté alimentaire. »"
+          : "“Guided by Ma’at, technology becomes a driver of food sovereignty.”",
       ctaLabel: tNav("realisations"),
       ctaHref: "/realisations",
     },
@@ -106,8 +106,8 @@ export default async function HomePage() {
       title: locale === "fr" ? "Environnement et biodiversité" : "Environment and biodiversity",
       subtitle:
         locale === "fr"
-          ? "Dans les îles du Saloum, les femmes développent des activités génératrices de revenus durables pour subvenir aux besoins de leurs familles, tout en préservant l'environnement et en valorisant les ressources naturelles."
-          : "In the Saloum Islands, women develop sustainable income-generating activities to support their families while protecting the environment and making the most of natural resources.",
+          ? "Aux îles du Saloum, les femmes développent des revenus durables tout en préservant l'environnement."
+          : "In the Saloum Islands, women build sustainable incomes while protecting the environment.",
       ctaLabel: locale === "fr" ? "Voir le projet FISH4ACP" : "See the FISH4ACP project",
       ctaHref: "/realisations/fish4acp",
     },
@@ -139,8 +139,8 @@ export default async function HomePage() {
           : "Protecting biodiversity, securing food for communities",
       subtitle:
         locale === "fr"
-          ? "« Produire localement, nourrir durablement : un combat pour la souveraineté alimentaire de l'Afrique. »"
-          : "“Producing locally, feeding sustainably: a fight for Africa’s food sovereignty.”",
+          ? "« Produire localement, nourrir durablement : un combat pour la souveraineté alimentaire. »"
+          : "“Producing locally, feeding sustainably — a fight for food sovereignty.”",
       ctaLabel: tCommon("enSavoirPlus"),
       ctaHref: "/qui-sommes-nous",
     },
