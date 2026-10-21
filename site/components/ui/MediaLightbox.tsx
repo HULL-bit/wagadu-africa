@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 export type LightboxImage = { src: string; thumbSrc?: string; alt: string };
@@ -11,19 +12,31 @@ export type LightboxImage = { src: string; thumbSrc?: string; alt: string };
  * clavier (flèches, Échap) + précédent/suivant pour parcourir toute la
  * galerie sans refermer la visionneuse.
  *
- * Pas de `motion`/`AnimatePresence` ici (contrairement au reste du site) :
- * en production, la photo (et les boutons fermer/précédent/suivant)
- * n'apparaissaient jamais au clic — seul le fond sombre s'affichait, sans
- * la moindre erreur console, alors que tout fonctionnait en développement
- * local. Après plusieurs correctifs ciblant uniquement l'image (fill vs
- * hauteur explicite, next/image vs <img> natif) sans succès, ce composant
- * est reconstruit en éliminant la bibliothèque d'animation elle-même —
- * rendu conditionnel simple, styles de positionnement critiques en inline
- * plutôt qu'en classes Tailwind, pour supprimer toute dépendance restante
- * qui pourrait se comporter différemment entre les deux environnements.
+ * Root cause enfin identifiée du bug « seul le fond sombre s'affiche » :
+ * CHAQUE page est enveloppée par `<PageTransition>` (`components/layout/
+ * PageTransition.tsx`), qui anime `transform`/`filter` sur un `motion.div`
+ * autour de `{children}` — et Framer Motion laisse ces propriétés posées en
+ * style inline (valeurs au repos) même une fois l'animation terminée. Or en
+ * CSS, un ancêtre avec `transform` OU `filter` devient le bloc conteneur de
+ * tout descendant en `position: fixed` : notre `inset:0` ne couvrait donc
+ * plus le viewport mais la hauteur totale de LA PAGE, et le contenu centré
+ * (image + boutons) se retrouvait centré sur cette hauteur-là — hors écran
+ * dès qu'on cliquait une vignette en bas d'une longue galerie, pendant que
+ * le fond sombre (lui aussi `inset:0`) restait visible à l'endroit du
+ * scroll. D'où : fond visible, rien d'autre, aucune erreur console. Fixé en
+ * sortant la visionneuse de l'arbre React via un portail direct dans
+ * `document.body`, qui échappe à n'importe quel ancêtre transformé.
  */
 export function MediaLightbox({ images }: { images: LightboxImage[] }) {
   const [index, setIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Portail vers document.body : seul moyen fiable de savoir qu'on est
+    // côté client (document n'existe pas pendant le SSR).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   const close = useCallback(() => setIndex(null), []);
   const prev = useCallback(
@@ -78,15 +91,16 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
         ))}
       </div>
 
-      {current ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={close}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
+      {current && mounted
+        ? createPortal(
+            <div
+              role="dialog"
+              aria-modal="true"
+              onClick={close}
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
             right: 0,
             bottom: 0,
             zIndex: 2147483647,
@@ -212,9 +226,11 @@ export function MediaLightbox({ images }: { images: LightboxImage[] }) {
             >
               {current.alt} — {index !== null ? index + 1 : 0} / {images.length}
             </p>
-          </div>
-        </div>
-      ) : null}
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
