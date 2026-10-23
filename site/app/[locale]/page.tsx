@@ -188,6 +188,14 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Bande de motif bogolan — séparateur plein écran entre "Nos valeurs"
+          et "Mot du fondateur" (retour utilisateur). */}
+      <div
+        className="h-10 w-full bg-repeat sm:h-14"
+        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "150px" }}
+        aria-hidden
+      />
+
       {/* Mot du fondateur — juste après "Nos valeurs" (retour utilisateur :
           faire remonter cette section) ; n'apparaît que si le contenu réel
           (nom, titre, message) a été renseigné dans Directus (page_statique
@@ -332,6 +340,14 @@ export default async function HomePage() {
       <div className="bg-wagadu-sand/30">
         <WaveDivider fillClassName="fill-wagadu-ebony" />
       </div>
+
+      {/* Bande de motif bogolan — séparateur plein écran entre "Nos trois
+          piliers" et "Achievements" (retour utilisateur). */}
+      <div
+        className="h-10 w-full bg-repeat sm:h-14"
+        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "150px" }}
+        aria-hidden
+      />
 
       {/* Réalisations à la une — fond motif africain (retour utilisateur : « un
           bg images cette image ») au lieu d'un fond blanc uni ; opacité
