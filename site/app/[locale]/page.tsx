@@ -189,10 +189,11 @@ export default async function HomePage() {
       </section>
 
       {/* Bande de motif bogolan — séparateur plein écran entre "Nos valeurs"
-          et "Mot du fondateur" (retour utilisateur). */}
+          et "Mot du fondateur" (retour utilisateur). Même gabarit que les
+          bandes "motif-africain-colore" déjà sur cette page. */}
       <div
-        className="h-10 w-full bg-repeat sm:h-14"
-        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "150px" }}
+        className="h-40 w-full bg-repeat sm:h-56"
+        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "300px" }}
         aria-hidden
       />
 
@@ -342,10 +343,11 @@ export default async function HomePage() {
       </div>
 
       {/* Bande de motif bogolan — séparateur plein écran entre "Nos trois
-          piliers" et "Achievements" (retour utilisateur). */}
+          piliers" et "Achievements" (retour utilisateur). Même gabarit que
+          la bande équivalente ci-dessus. */}
       <div
-        className="h-10 w-full bg-repeat sm:h-14"
-        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "150px" }}
+        className="h-40 w-full bg-repeat sm:h-56"
+        style={{ backgroundImage: "url(/media/brand/motif-bogolan-bande.jpg)", backgroundSize: "300px" }}
         aria-hidden
       />
 
