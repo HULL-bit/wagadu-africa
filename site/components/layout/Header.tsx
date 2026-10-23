@@ -54,9 +54,9 @@ export function Header() {
             <Image
               src="/media/brand/logo-couleur.png"
               alt="Wagadu Africa"
-              width={72}
-              height={72}
-              className="h-[4.5rem] w-[4.5rem] object-contain"
+              width={88}
+              height={88}
+              className="h-[5.5rem] w-[5.5rem] object-contain"
               priority
             />
           </motion.div>
