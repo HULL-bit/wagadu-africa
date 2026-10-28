@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../messaging/presentation/chat_page.dart';
+import '../../messaging/state/messaging_providers.dart';
 import '../models/member.dart';
 import '../state/directory_provider.dart';
 
@@ -77,12 +79,39 @@ class _MemberTile extends StatelessWidget {
   }
 }
 
-class _MemberDetailSheet extends StatelessWidget {
+class _MemberDetailSheet extends ConsumerStatefulWidget {
   const _MemberDetailSheet({required this.member});
   final Member member;
 
   @override
+  ConsumerState<_MemberDetailSheet> createState() => _MemberDetailSheetState();
+}
+
+class _MemberDetailSheetState extends ConsumerState<_MemberDetailSheet> {
+  bool _opening = false;
+
+  Future<void> _message() async {
+    setState(() => _opening = true);
+    try {
+      final channel =
+          await ref.read(messagingRepositoryProvider).openDirectChannel(widget.member.id);
+      if (!mounted) return;
+      Navigator.of(context).pop();
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChatPage(channel: channel)));
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Impossible d\'ouvrir la conversation.')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _opening = false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final member = widget.member;
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
       child: Column(
@@ -106,6 +135,12 @@ class _MemberDetailSheet extends StatelessWidget {
           _InfoRow(icon: Icons.email_outlined, text: member.email),
           if (member.phone != null && member.phone!.isNotEmpty)
             _InfoRow(icon: Icons.phone_outlined, text: member.phone!),
+          const SizedBox(height: 16),
+          FilledButton.icon(
+            onPressed: _opening ? null : _message,
+            icon: const Icon(Icons.chat_bubble_outline),
+            label: Text(_opening ? 'Ouverture…' : 'Envoyer un message'),
+          ),
         ],
       ),
     );
