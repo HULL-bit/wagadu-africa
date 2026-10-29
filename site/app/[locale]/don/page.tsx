@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
+import { DonationBackground } from "@/components/ui/DonationBackground";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import type { AppLocale } from "@/i18n/routing";
@@ -123,40 +124,61 @@ export default async function DonPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        {donorboxCampaign ? (
-          <Reveal delay={0.15} className="mt-16 flex flex-col items-center">
-            <h2 className="font-display text-2xl font-semibold text-wagadu-ebony">
-              {locale === "fr" ? "Faire un don" : "Make a donation"}
-            </h2>
-            <iframe
-              src={`https://donorbox.org/embed/${donorboxCampaign}?default_interval=o`}
-              name="donorbox"
-              seamless
-              title={locale === "fr" ? "Formulaire de don Donorbox" : "Donorbox donation form"}
-              className="mt-6 w-full max-w-[500px] min-w-[250px]"
-              style={{ height: 900 }}
-              frameBorder={0}
-              scrolling="no"
-              allow="payment"
-            />
-          </Reveal>
-        ) : (
-          <Reveal delay={0.15} className="mt-16 rounded-3xl bg-wagadu-sand/40 p-8 text-center">
-            <p className="text-base text-wagadu-ebony/80">
-              {locale === "fr"
-                ? "Le paiement en ligne n'est pas encore disponible sur le site. Pour faire un don dès maintenant, contactez-nous directement — nous vous indiquerons la marche à suivre."
-                : "Online payment isn't available on the site yet. To donate right away, contact us directly — we'll let you know how to proceed."}
-            </p>
-            <a
-              href="mailto:contact@wagadu-africa.org"
-              className="mt-6 inline-block rounded-full bg-wagadu-terracotta px-8 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-wagadu-amber hover:text-wagadu-ebony"
-            >
-              contact@wagadu-africa.org
-            </a>
-          </Reveal>
-        )}
-      </div>
+      <section className="relative mt-16 overflow-hidden py-20">
+        {/* 3 vraies photos de terrain en fondu, légèrement floutées — pour
+            rappeler concrètement à quoi servent les dons (retour
+            utilisateur), plutôt qu'un fond uni derrière le formulaire. */}
+        <DonationBackground
+          images={[
+            {
+              src: "/media/fish4acp/recolte-huitres-sourire.jpg",
+              alt: locale === "fr" ? "Récolte d'huîtres, sécurité alimentaire" : "Oyster harvest, food security",
+            },
+            {
+              src: "/media/vision/atelier-protection-communautes.jpg",
+              alt: locale === "fr" ? "Atelier de protection des communautés" : "Community protection workshop",
+            },
+            {
+              src: "/media/photos/mangrove-foret-cotiere.jpg",
+              alt: locale === "fr" ? "Mangrove, conservation de l'environnement" : "Mangrove, environmental conservation",
+            },
+          ]}
+        />
+        <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          {donorboxCampaign ? (
+            <Reveal delay={0.15} className="flex flex-col items-center">
+              <h2 className="font-display text-2xl font-semibold text-wagadu-ebony">
+                {locale === "fr" ? "Faire un don" : "Make a donation"}
+              </h2>
+              <iframe
+                src={`https://donorbox.org/embed/${donorboxCampaign}?default_interval=o`}
+                name="donorbox"
+                seamless
+                title={locale === "fr" ? "Formulaire de don Donorbox" : "Donorbox donation form"}
+                className="mt-6 w-full max-w-[500px] min-w-[250px] rounded-2xl shadow-xl"
+                style={{ height: 900 }}
+                frameBorder={0}
+                scrolling="no"
+                allow="payment"
+              />
+            </Reveal>
+          ) : (
+            <Reveal delay={0.15} className="rounded-3xl bg-white/90 p-8 text-center shadow-xl backdrop-blur-sm">
+              <p className="text-base text-wagadu-ebony/80">
+                {locale === "fr"
+                  ? "Le paiement en ligne n'est pas encore disponible sur le site. Pour faire un don dès maintenant, contactez-nous directement — nous vous indiquerons la marche à suivre."
+                  : "Online payment isn't available on the site yet. To donate right away, contact us directly — we'll let you know how to proceed."}
+              </p>
+              <a
+                href="mailto:contact@wagadu-africa.org"
+                className="mt-6 inline-block rounded-full bg-wagadu-terracotta px-8 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-wagadu-amber hover:text-wagadu-ebony"
+              >
+                contact@wagadu-africa.org
+              </a>
+            </Reveal>
+          )}
+        </div>
+      </section>
     </>
   );
 }
